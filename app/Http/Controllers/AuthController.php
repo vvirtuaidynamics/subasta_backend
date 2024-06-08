@@ -79,7 +79,15 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json(['user' => [
+            'user' => $user->name,
+            'email' => $user->email,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'token' => $token,
+            'modules' => $this->getModules($user)
+        ],
+        ]);
     }
 
     /**
@@ -96,6 +104,39 @@ class AuthController extends Controller
         $request->user()->tokens()->delete();
 
         return response()->json(['message' => 'Loggedout successfully']);
+    }
+
+    public function user(Request $request)
+    {
+        return $request->user();
+    }
+
+    private function getModules(User $user)
+    {
+        return [
+            [
+                'label' => 'nombre_modulo_1',
+                'ico' => 'imagen',
+                'modules' => [
+                    [
+                        'label' => 'nombre_submodulo_1',
+                        'ico' => 'imagen',
+                        'url' => 'ruta_correspondiente_en_el_front',
+                        'model' => 'modelo_asociado',
+                        'permissions' => [
+                            'has_add' => true,
+                            'has_edit' => true,
+                            'has_delete' => false,
+                            'has_history' => false,
+                            'has_show' => true,
+                            'has_otro_definido' => true,
+                        ],
+                    ],
+
+                ],
+            ],
+
+        ];
     }
 }
 
