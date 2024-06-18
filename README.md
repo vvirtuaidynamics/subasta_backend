@@ -17,6 +17,8 @@ Descripción de las librerias empleadas:
  - "laravel/sanctum": Se emplea para la autenticación y gestión.
  - "maatwebsite/excel" : Se emplea para importar y exportar datos desde o hacia excel o csv.
  https://docs.laravel-excel.com/3.1/getting-started/installation.html
+ - "darkaonline/l5-swagger": Paquete para documentar la api.
+ https://github.com/DarkaOnLine/L5-Swagger
 
 
 ## Indicaciones 
@@ -61,4 +63,27 @@ En el servicio se validarian los datos y si no hay error se llamaria metodo
 correspondiente en el repositorio que seria el encargado de guardar los datos en la db.
 $this->postRepository->save($data);
 
+## Swagger && API Doc
+Articulo: 
+https://medium.com/@nelsonisioma1/how-to-document-your-laravel-api-with-swagger-and-php-attributes-1564fc11c305
+
+Podemos publicar la configuración de L5-Swagger's 
+
+$ php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+Podemos generar la documentación ejecutando los siguientes comandos.
+
+$ php artisan l5-swagger:generate
+
+Podemos ver la documentación generada en: 
+
+{hosname}/api/documentation
+
+
+## Localization
+Emplearemos para la gestión de la localización o idioma la siguiente librería.
+composer require --dev laravel-lang/common
+
+php artisan lang:add en
+
+php artisan lang:add es
 
