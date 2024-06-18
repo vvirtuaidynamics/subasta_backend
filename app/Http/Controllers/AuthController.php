@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use OpenApi\Annotations as OA;
 
-/**
- * @OA\Info(title="Subasta Backend", version="1.0")
- */
+
 class AuthController extends Controller
 {
     /**
@@ -20,8 +18,9 @@ class AuthController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"name","email","password"},
+     *             required={"username","name","email","password"},
      *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="username", type="string", example="john"),
      *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
      *             @OA\Property(property="password", type="string", format="password", example="password")
      *         )
@@ -33,13 +32,15 @@ class AuthController extends Controller
     public function register(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'username' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -55,8 +56,8 @@ class AuthController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"email","password"},
-     *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+     *             required={"identity","password"},
+     *             @OA\Property(property="identity", type="string", format="email", example="john@example.com"),
      *             @OA\Property(property="password", type="string", format="password", example="password")
      *         )
      *     ),
@@ -67,9 +68,10 @@ class AuthController extends Controller
     public function login(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'identity' => 'required|string|email',
             'password' => 'required|string',
         ]);
+
 
         $user = User::where('email', $request->email)->first();
 
