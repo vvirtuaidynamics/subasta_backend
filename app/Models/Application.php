@@ -11,6 +11,8 @@ class Application extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['label', 'ico', 'order'];
+
     public function modules()
     {
         return $this->hasMany(Module::class);

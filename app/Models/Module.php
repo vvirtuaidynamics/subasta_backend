@@ -10,6 +10,8 @@ class Module extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['label', 'ico', 'model_name', 'model_namespace', 'order', 'application_id'];
+
     public function application()
     {
         return $this->belongsTo(Application::class);

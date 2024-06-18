@@ -9,6 +9,8 @@ class Permission extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['code', 'name', 'module_id'];
+
     public function users()
     {
         return $this->belongsToMany(User::class);
