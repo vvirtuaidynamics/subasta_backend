@@ -14,13 +14,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
 
+/**
+ * Rutas públicas.
+ */
+/**
+ * Registro por default model=User, puede ser Client o Carrier
+ */
+Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
+
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+/**
+ * Rutas protegias
+ */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 });
 
