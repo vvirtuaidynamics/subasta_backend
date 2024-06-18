@@ -7,8 +7,11 @@
     "require": {
         "php": "^8.2",
         "ext-pdo": "*",
+        "barryvdh/laravel-dompdf": "^2.2",
         "darkaonline/l5-swagger": "^8.6",
+        "flowframe/laravel-trend": "^0.2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "jason-guru/laravel-make-repository": "^0.0.3",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8"
