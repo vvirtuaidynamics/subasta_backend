@@ -11,17 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-//        $table->id();
-//        $table->string('name');
-//        $table->string('last_name')->nullable();
-//        $table->string('email')->unique();
-//        $table->timestamp('email_verified_at')->nullable();
-//        $table->string('password');
-//        $table->rememberToken();
-//        $table->string('status')->default('pending');
-//        $table->timestamp('last_login_at')->nullable();
-//        $table->timestamp('deleted_at')->nullable();
-//        $table->timestamps();
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username', length: 50)->index()->unique();
@@ -34,8 +23,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('status', length: 25)->default('pending');
             $table->timestamp('last_login_at')->nullable();
+            $table->text('avatar')->nullable();
             $table->timestamp('deleted_at')->nullable();
-
             $table->timestamps();
         });
     }
