@@ -24,6 +24,16 @@
       margin:0;
       background: #fafafa;
     }
+    .swagger-ui svg:not(:root) {
+        display: none;
+    }
+    .topbar-wrapper .link:before {
+        content: url('/icons/favicon-96x96.png');
+    }
+    .topbar-wrapper .link:after {
+        content: 'API - Subasta';
+    }
+
     </style>
 </head>
 
