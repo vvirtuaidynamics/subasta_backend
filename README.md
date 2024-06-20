@@ -14,6 +14,9 @@ Descripción de las librerias empleadas:
    https://github.com/Flowframe/laravel-trend
  - "jason-guru/laravel-make-repository": Facilita la implementación del patrón de reppositorios.
    https://github.com/jason-guru/laravel-make-repository
+ - "santigarcor/laratrust": Gestión de roles y permisos.
+
+    https://laratrust.santigarcor.me/
  - "laravel/sanctum": Se emplea para la autenticación y gestión.
  - "maatwebsite/excel" : Se emplea para importar y exportar datos desde o hacia excel o csv.
  https://docs.laravel-excel.com/3.1/getting-started/installation.html
@@ -86,4 +89,13 @@ composer require --dev laravel-lang/common
 php artisan lang:add en
 
 php artisan lang:add es
+
+## Roles y permisos con santigarcor/laratrust
+You can install the package using composer:
+
+composer require santigarcor/laratrust
+
+Publish the configuration file:
+
+php artisan vendor:publish --tag="laratrust"
 
