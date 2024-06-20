@@ -68,7 +68,7 @@ class AuthController extends Controller
     public function login(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
-            'identity' => 'required|string|email',
+            'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
@@ -83,7 +83,7 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => [
-                'user' => $user->name,
+                'user' => $user->username,
                 'email' => $user->email,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,

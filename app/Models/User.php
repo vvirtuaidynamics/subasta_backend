@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'user',
+        'username',
         'first_name',
         'last_name',
         'email',
@@ -78,15 +79,21 @@ class User extends Authenticatable
     public function permissionsByModule($module)
     {
         if ($this->sa) {
-            return $module->permissions()->get();
+            return $module->permissions;
         }
         return $this->getAllPermissions()->where('module_id', $module->id);
     }
 
     public function getAllPermissions()
     {
-        $direct_permissions = $this->permissions();
-        $permissions_roles = $this->roles()->whereHas('permissions')->select('permissions.*');
+        $id = $this->id;
+        $direct_permissions = Permission::whereHas('users', function (Builder $query) use ($id) {
+            $query->where('users.id', $id);
+        })->select('id', 'name', 'code', 'module_id');
+        $roles = $this->roles->pluck('id');
+        $permissions_roles = Permission::whereHas('roles', function (Builder $query) use ($roles) {
+            $query->whereIn('roles.id', $roles);
+        })->select('id', 'name', 'code', 'module_id');
         $permissions = $direct_permissions->union($permissions_roles)->distinct()->get();
         return $permissions;
     }
@@ -94,21 +101,21 @@ class User extends Authenticatable
     public function appList()
     {
         $apps = Application::orderBy('order', 'asc')->get();
-        $ids_apps = collect([]);
+        $ids_apps = [];
         foreach ($apps as $app) {
-            $modules = $app->modules()->orderBy('order', 'asc')->get();
-            $ids_model = collect([]);
+            $modules = Module::where('application_id', $app->id)->get();
+            $ids_model = [];
             foreach ($modules as $mod) {
                 $perms = $this->permissionsByModule($mod);
                 $mod->permissions = $perms;
                 if ($perms->count() > 0) {
-                    $ids_model->push($mod->id);
-                    $ids_apps->push($mod->aplicacion_id);
+                    $ids_model[] = $mod->id;
+                    $ids_apps[] = $mod->application_id;
                 }
             }
             $app->modules = $modules->whereIn('id', $ids_model);
         }
-        $ids_apps = $ids_apps->unique();
+        $ids_apps = collect($ids_apps)->unique();
         $app_list = collect([]);
         foreach ($ids_apps as $id) {
             foreach ($apps as $app) {

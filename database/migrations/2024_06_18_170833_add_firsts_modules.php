@@ -33,7 +33,7 @@ return new class extends Migration
         ];
 
         $user = User::create([
-            'user' => 'admin',
+            'username' => 'admin',
             'first_name' => 'first_name',
             'last_name' => 'last_name',
             'email' => 'admin@gmail.com',
@@ -43,7 +43,7 @@ return new class extends Migration
         ]);
 
         $user = User::create([
-            'user' => 'test',
+            'username' => 'test',
             'first_name' => 'first_name',
             'last_name' => 'last_name',
             'email' => 'test@gmail.com',
