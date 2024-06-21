@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Api\Base\BaseRepository;
+use App\Http\Api\Base\BaseRepositoryInterface;
 use App\Models\User;
 use DragonCode\Support\Helpers\Boolean;
 use Illuminate\Support\Facades\Gate;
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
     }
 
     /**

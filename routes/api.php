@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +26,25 @@ Route::post('/register/{model?}', [AuthController::class, 'register'])->name('re
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 /**
+ * Probando implementación.
+ */
+
+Route::apiResource('/users', \App\Http\Api\User\UserController::class);
+
+/**
  * Rutas protegias
  */
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
+    /**
+     * User
+     */
+
+
+
+
 });
 

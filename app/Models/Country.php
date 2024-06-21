@@ -10,6 +10,7 @@ class Country extends BaseModel
 {
     use HasFactory;
     protected $table = 'countries';
+    protected $fillable = ['name'];
 
 
     // Relations
