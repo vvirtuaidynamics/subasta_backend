@@ -11,7 +11,6 @@
         "darkaonline/l5-swagger": "^8.6",
         "flowframe/laravel-trend": "^0.2.0",
         "guzzlehttp/guzzle": "^7.2",
-        "jason-guru/laravel-make-repository": "^0.0.3",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
@@ -20,6 +19,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "jason-guru/laravel-make-repository": "^0.0.3",
         "laravel-lang/common": "^6.3",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

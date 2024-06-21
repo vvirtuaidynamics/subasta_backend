@@ -30,8 +30,8 @@ Descripción de las librerias empleadas:
 - Desarrollar la lógica en servicios por módulo.
 - Desarrollar la parte de acceso a datos en repositorios por módulos.
 
-
-
+## Implementación de patrón repositorio.
+###  
 
 ## Notas
 - Para crear un Modelo (Model), Controlador (Controller) y Migración (Migration): 
