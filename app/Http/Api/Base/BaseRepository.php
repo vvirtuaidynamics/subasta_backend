@@ -67,6 +67,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     protected $scopes = [];
 
+
     /**
      * BaseRepository constructor.
      */
@@ -277,7 +278,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate($limit = 25, array $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate($limit = 30, array $columns = ['*'], $pageName = 'page', $page = null)
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
 

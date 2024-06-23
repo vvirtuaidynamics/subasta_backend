@@ -56,7 +56,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'page_default_size' => env('PAGE_DEFAULT_SIZE', 30),
     'asset_url' => env('ASSET_URL'),
 
     /*

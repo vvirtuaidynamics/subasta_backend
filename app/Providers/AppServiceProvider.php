@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Http\Api\Base\BaseRepository;
 use App\Http\Api\Base\BaseRepositoryInterface;
 use App\Models\User;
-use DragonCode\Support\Helpers\Boolean;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

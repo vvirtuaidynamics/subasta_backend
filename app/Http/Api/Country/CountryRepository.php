@@ -3,7 +3,7 @@
 namespace App\Http\Api\Country;
 
 use App\Models\Country;
-use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
+use App\Http\Api\Base\BaseRepository;
 
 
 /**
@@ -12,11 +12,11 @@ use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 class CountryRepository extends BaseRepository
 {
     /**
-     * @return string
-     *  Return the model
+     * @return Country
      */
-    public function model() : Country
+    public function model()
     {
        return Country::class;
     }
+
 }

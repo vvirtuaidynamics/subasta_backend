@@ -29,7 +29,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
  * Probando implementación.
  */
 
-Route::apiResource('/users', \App\Http\Api\User\UserController::class);
+Route::apiResource('/user', \App\Http\Api\User\UserController::class);
+Route::apiResource('/country', \App\Http\Api\Country\CountryController::class)->only(['index','show']);
 
 /**
  * Rutas protegias
