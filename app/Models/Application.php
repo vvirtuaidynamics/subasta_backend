@@ -15,6 +15,6 @@ class Application extends Model
 
     public function modules()
     {
-        return $this->hasMany(Module::class);
+        return $this->hasMany(Module::class)->orderBy('order', 'asc');
     }
 }
