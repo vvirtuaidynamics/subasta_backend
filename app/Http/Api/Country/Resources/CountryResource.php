@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Api\Country;
+namespace App\Http\Api\Country\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Collection;
 
 class CountryResource extends JsonResource
 {
@@ -26,7 +25,7 @@ class CountryResource extends JsonResource
             'longitude'=>$this->longitude,
             'timezones'=>$this->timezones,
             'translations'=>$this->translations,
-
+            'flag'=>$this->flag,
         ];
     }
 }

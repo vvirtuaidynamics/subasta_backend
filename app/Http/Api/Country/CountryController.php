@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class CountryController extends BaseController
 {
-    private $countryRepository;
+    private $service;
 
-    public function __construct(CountryRepository $countryRepository)
+    public function __construct()
     {
-        $this->countryRepository = $countryRepository;
+        $this->service = new CountryService();
     }
 
     /**
@@ -24,8 +24,9 @@ class CountryController extends BaseController
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="limit", type="integer", example="25"),
+     *             @OA\Property(property="limit", type="integer", example="30", default="30"),
      *             @OA\Property(property="page", type="integer", example="1"),
+     *             @OA\Property(property="order", type="array", example='"orders": [{"column": "phone_code","direction": "desc"},{"column": "name","direction": "desc"}]'),
      *
      *         )
      *     ),
@@ -37,66 +38,34 @@ class CountryController extends BaseController
      */
     public function index(Request $request)
     {
-        if(!isset($this->countryRepository)) $this->countryRepository = new CountryRepository();
-        $columns = $request->has('columns') ? $request->toArray('columns'):['*'];
-        // Orden
-        if($request->has('page')){
-            $page = $request->integer('page');
-            $limit = $request->has('limit') ? $request->integer('limit'): config('app.page_default_size');
-            $data = $this->countryRepository->paginate($limit, $columns, 'page', $page );
-            return $this->successResponse($data);
-        }
-
-        if($request->has('order')){
-            $orderBys = $request->input('order');
-            dd($orderBys);
-
-
-        }
-
-        $data = CountryResource::collection($this->countryRepository->all($columns));
-        return $this->successResponse($data);
+        return $this->service->list($request);
     }
 
     /**
      * @OA\Get(
-     *     path="/api/country/{country_id}",
+     *     path="/api/country/{id}",
      *     tags={"Country"},
-     *     summary="Get a country with country_id",
-     *     @OA\RequestBody(
+     *     summary="Get a country with id",
+     *     @OA\Request(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"country_id"},
-     *            @OA\Property(property="country_id", type="integer", example="1"),
+     *             required={"id"},
+     *            @OA\Property(property="id", type="integer", example="1"),
      *         )
      *     ),
      *     @OA\Response(response=200, description="Country get successfully"),
      *     @OA\Response(response=400, description="Bad Request"),
      *     @OA\Response(response=401, description="Unauthenticated"),
      *     @OA\Response(response=403, description="Forbidden")
+     *     @OA\Response(response=404, description="Not found")
      * )
      */
     public function show($id)
     {
-        //
-        if(!isset($this->countryRepository)) $this->countryRepository = new CountryRepository();
-        $data = new CountryResource($this->countryRepository->getById($id));
-        return $this->successResponse($data);
-
+        return $this->service->show($id);
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    public function destroy($id)
-    {
-        //
-    }
+
 }

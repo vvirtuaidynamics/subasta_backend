@@ -2,7 +2,7 @@
 
 use App\Http\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Api\Country\CountryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,16 +21,13 @@ use Illuminate\Support\Facades\Route;
  * Registro por default model=User, puede ser Client o Carrier
  */
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
-
-
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-
+Route::get('/dev', [AuthController::class, 'dev'])->name('dev');
 /**
  * Probando implementación.
  */
 
 Route::apiResource('/user', \App\Http\Api\User\UserController::class);
-Route::apiResource('/country', \App\Http\Api\Country\CountryController::class)->only(['index','show']);
 
 /**
  * Rutas protegias
@@ -43,6 +40,14 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * User
      */
+
+
+    /**
+     * Country Routes
+     */
+    Route::get('/country', [CountryController::class, 'index'])->name('country_index');
+    Route::get('/country/{id}', [CountryController::class, 'show'])->name('country_show');
+
 
 
 

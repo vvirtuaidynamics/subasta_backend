@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreCountryRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Este es un modelo que .
      */
     public function authorize(): bool
     {
