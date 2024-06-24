@@ -9,5 +9,13 @@ class BaseModel extends Model
 {
     use HasFactory;
 
+    public static $readonly = false;
+    public static $navigationMain = false;
+    public static $navigationParent = '';
+    public static $navigationLabel = '';
+    public static $navigationIcon = '';
+    public static $navigationRoute = '';
+
+
 
 }
