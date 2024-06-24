@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Helpers;
+
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 
@@ -49,6 +51,7 @@ if (!function_exists('get_models')) {
             $table = (new $modelClass)->getTable();
             $columns = Schema::getColumnListing($table);
 
+
             if ($modelClass instanceof \Illuminate\Database\Eloquent\Model) {
                 $model_fields = [];
                 foreach ($columns as $column) {
@@ -61,6 +64,7 @@ if (!function_exists('get_models')) {
                     return ["column" => $column, "type" => $type];
                 }
             }
+
         }
         return $schemas;
     }
