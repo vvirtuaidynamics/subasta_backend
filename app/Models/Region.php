@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Api\Base\BaseModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Region extends BaseModel

@@ -12,55 +12,56 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $table = 'regions';
-
-        Schema::create($table, function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary(true);
-            $table->string('name');
-            $table->string('wikiDataId');
-            $table->json('translations');
-        });
-
-        // Seed region table
-        DB::table($table)->delete();
-
-        $json = file_get_contents('database/data/regions.json');
-        $data = json_decode($json, true);
-        if($data)
-            foreach ($data as $region){
-                DB::table($table)->insert([
-                    'id'=>$region['id'],
-                    'name'=>$region['name'],
-                    'translations'=>json_encode($region['translations']),
-                    'wikiDataId'=>$region['wikiDataId'],
-                ]);
-
-            }
-
-        $table = 'subregions';
-
-        Schema::create($table, function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary(true);
-            $table->unsignedBigInteger('region_id');
-            $table->string('name');
-            $table->json('translations');
-            $table->string('wikiDataId');
-        });
-        DB::table($table)->delete();
-
-        $json = file_get_contents('database/data/subregions.json');
-        $data = json_decode($json, true);
-        if($data)
-            foreach ($data as $item){
-                DB::table($table)->insert([
-                    'id'=>$item['id'],
-                    'region_id'=>$item['region_id'],
-                    'name'=>$item['name'],
-                    'wikiDataId'=>$item['wikiDataId'],
-                    'translations'=>json_encode($item['translations']),
-                ]);
-
-            }
+//        Correr solo en producción si hace falta.
+//        $table = 'regions';
+//
+//        Schema::create($table, function (Blueprint $table) {
+//            $table->unsignedBigInteger('id')->primary(true);
+//            $table->string('name');
+//            $table->string('wikiDataId');
+//            $table->json('translations');
+//        });
+//
+//        // Seed region table
+//        DB::table($table)->delete();
+//
+//        $json = file_get_contents('database/data/regions.json');
+//        $data = json_decode($json, true);
+//        if($data)
+//            foreach ($data as $region){
+//                DB::table($table)->insert([
+//                    'id'=>$region['id'],
+//                    'name'=>$region['name'],
+//                    'translations'=>json_encode($region['translations']),
+//                    'wikiDataId'=>$region['wikiDataId'],
+//                ]);
+//
+//            }
+//
+//        $table = 'subregions';
+//
+//        Schema::create($table, function (Blueprint $table) {
+//            $table->unsignedBigInteger('id')->primary(true);
+//            $table->unsignedBigInteger('region_id');
+//            $table->string('name');
+//            $table->json('translations');
+//            $table->string('wikiDataId');
+//        });
+//        DB::table($table)->delete();
+//
+//        $json = file_get_contents('database/data/subregions.json');
+//        $data = json_decode($json, true);
+//        if($data)
+//            foreach ($data as $item){
+//                DB::table($table)->insert([
+//                    'id'=>$item['id'],
+//                    'region_id'=>$item['region_id'],
+//                    'name'=>$item['name'],
+//                    'wikiDataId'=>$item['wikiDataId'],
+//                    'translations'=>json_encode($item['translations']),
+//                ]);
+//
+//            }
 
         $table = 'countries';
 
@@ -84,8 +85,6 @@ return new class extends Migration
             $table->string('nationality')->nullable();
             $table->string('latitude');
             $table->string('longitude');
-            $table->string('emoji')->nullable();
-            $table->string('emojiU')->nullable();
             $table->json('timezones')->nullable();
             $table->json('translations')->nullable();
         });
@@ -116,8 +115,6 @@ return new class extends Migration
                     'subregion'=>$item['subregion'],
                     'latitude'=>$item['latitude'],
                     'longitude'=>$item['longitude'],
-                    'emoji'=>$item['emoji'],
-                    'emojiU'=>$item['emojiU'],
                     'timezones'=>json_encode($item['timezones']),
                     'translations'=>json_encode($item['translations']),
                 ]);
@@ -158,21 +155,45 @@ return new class extends Migration
 
             }
 
+//        Correr solo en producción si es necesario.
+
         $table = 'cities';
 
         Schema::create($table, function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary(true);
-            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->unsignedBigInteger('country_id');
             $table->string('name');
             $table->string('state_code');
             $table->string('state_name');
             $table->string('country_code');
             $table->string('country_name');
-            $table->string('wikiDataId');
             $table->string('latitude');
             $table->string('longitude');
+
         });
+
+        $json = file_get_contents('database/data/cities.json');
+        $data = json_decode($json, true);
+        $country_ids = array(233,207);
+        if($data)
+            foreach ($data as $item){
+               if(in_array($item['country_id'], $country_ids))
+               {
+                DB::table($table)->insert([
+                    'id'=>$item['id'],
+                    'name'=>$item['name'],
+                    'country_id'=>$item['country_id'],
+                    'country_code'=>$item['country_code'],
+                    'country_name'=>$item['country_name'],
+                    'state_id'=>$item['state_id'],
+                    'state_code'=>$item['state_code'],
+                    'state_name'=>$item['state_name'],
+                    'latitude'=>$item['latitude'],
+                    'longitude'=>$item['longitude'],
+                 ]);
+                }
+            }
 
 
 

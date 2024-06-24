@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Api\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use OpenApi\Annotations as OA;
 
 
 class AuthController extends Controller
@@ -19,8 +19,8 @@ class AuthController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"username","name","email","password"},
-     *             @OA\Property(property="name", type="string", example="John Doe"),
      *             @OA\Property(property="username", type="string", example="john"),
+     *             @OA\Property(property="name", type="string", example="John Doe"),
      *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
      *             @OA\Property(property="password", type="string", format="password", example="password")
      *         )

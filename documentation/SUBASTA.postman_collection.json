@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8f535a95-c60c-48cf-898c-93ac0a9599bc",
+		"_postman_id": "2cb6a2cd-b491-459f-ae5b-2843e571fce0",
 		"name": "SUBASTA",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34027780"
 	},
 	"item": [
 		{
@@ -82,10 +83,103 @@
 			]
 		},
 		{
+			"name": "user",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/user",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "country",
+			"item": [
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":1,\r\n    \"limit\": 50,\r\n    \"order\": [\r\n        {\"column\": \"name\",\"direction\": \"asc\"}\r\n    ],\r\n    \"filters\": [\r\n        {\"type\": \"where\", \"column\": \"name\",\"value\": \"Cuba\"},\r\n         {\"type\": \"whereIn\", \"column\": \"id\",\"values\": \"56\"}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/country",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"country"
+							],
+							"query": [
+								{
+									"key": "orders",
+									"value": "]",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/country",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"country"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "assets",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": ""
+				}
 			},
 			"response": []
 		}

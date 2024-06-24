@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Api\State;
 
-use App\Models\ValidationTask;
+use App\Http\Controllers\Controller;
+use App\Models\State;
 use Illuminate\Http\Request;
 
-class ValidationTaskController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ValidationTaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ValidationTask $validationTask)
+    public function show(State $state)
     {
         //
     }
@@ -42,7 +43,7 @@ class ValidationTaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ValidationTask $validationTask)
+    public function edit(State $state)
     {
         //
     }
@@ -50,7 +51,7 @@ class ValidationTaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ValidationTask $validationTask)
+    public function update(Request $request, State $state)
     {
         //
     }
@@ -58,7 +59,7 @@ class ValidationTaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ValidationTask $validationTask)
+    public function destroy(State $state)
     {
         //
     }

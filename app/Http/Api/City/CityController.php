@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Api\City;
 
-use App\Models\Bearing;
+use App\Http\Controllers\Controller;
+use App\Models\City;
 use Illuminate\Http\Request;
 
-class BearingController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class BearingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bearing $bearing)
+    public function show(City $city)
     {
         //
     }
@@ -42,7 +43,7 @@ class BearingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bearing $bearing)
+    public function edit(City $city)
     {
         //
     }
@@ -50,7 +51,7 @@ class BearingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bearing $bearing)
+    public function update(Request $request, City $city)
     {
         //
     }
@@ -58,7 +59,7 @@ class BearingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bearing $bearing)
+    public function destroy(City $city)
     {
         //
     }

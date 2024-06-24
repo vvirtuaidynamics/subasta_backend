@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Api\Carrier;
 
+use App\Http\Controllers\Controller;
 use App\Models\Carrier;
 use Illuminate\Http\Request;
 

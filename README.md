@@ -14,6 +14,7 @@ Descripción de las librerias empleadas:
    https://github.com/Flowframe/laravel-trend
  - "jason-guru/laravel-make-repository": Facilita la implementación del patrón de reppositorios.
    https://github.com/jason-guru/laravel-make-repository
+ - "spatie/permissions": Gestión de roles y permisos.
  - "laravel/sanctum": Se emplea para la autenticación y gestión.
  - "maatwebsite/excel" : Se emplea para importar y exportar datos desde o hacia excel o csv.
  https://docs.laravel-excel.com/3.1/getting-started/installation.html
@@ -27,8 +28,8 @@ Descripción de las librerias empleadas:
 - Desarrollar la lógica en servicios por módulo.
 - Desarrollar la parte de acceso a datos en repositorios por módulos.
 
-
-
+## Implementación de patrón repositorio.
+###  
 
 ## Notas
 - Para crear un Modelo (Model), Controlador (Controller) y Migración (Migration): 
@@ -86,4 +87,7 @@ composer require --dev laravel-lang/common
 php artisan lang:add en
 
 php artisan lang:add es
+
+## Roles y permisos con spatie/permissions
+
 
