@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 abstract class BaseService implements BaseServiceInterface
 {
 
-    public function list(Request $request)
-    {
-        // TODO: Implement list() method.
-    }
-    public function show( $id)
-    {
-        // TODO: Implement show() method.
-    }
-
     public  function successResponse($data, $message = '', $code = 200 )
     {
         return response([
