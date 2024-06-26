@@ -2,6 +2,7 @@
 
 namespace App\Http\Api\Auth;
 
+use App\Http\Api\Auth\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+    protected $authService;
+
+    public function __construct()
+    {
+        $this->authService = new AuthService();
+    }
+
     /**
      * @OA\Post(
      *     path="/api/register",
@@ -57,39 +66,18 @@ class AuthController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"identity","password"},
-     *             @OA\Property(property="identity", type="string", format="email", example="john@example.com"),
-     *             @OA\Property(property="password", type="string", format="password", example="password")
+     *             @OA\Property(property="identity", type="string",  example="john@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password"),
+     *             @OA\Property(property="remember", type="boolean",  example="true")
      *         )
      *     ),
      *     @OA\Response(response=200, description="Logged in successfully"),
      *     @OA\Response(response=401, description="Invalid credentials")
      * )
      */
-    public function login(Request $request): \Illuminate\Http\JsonResponse
+    public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
-        $request->validate([
-            'identity' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json(['user' => [
-            'user' => $user->name,
-            'email' => $user->email,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'token' => $token,
-            'modules' => $this->getModules($user)
-        ],
-        ]);
+        return $this->authService->login($request);
     }
 
     /**
@@ -98,47 +86,19 @@ class AuthController extends Controller
      *     tags={"Auth"},
      *     summary="Log out a user",
      *     security={{"sanctum":{}}},
-     *     @OA\Response(response=200, description="Logged out successfully")
+     *     @OA\Response(response=200, description="Successfully logged out")
      * )
      */
     public function logout(Request $request): \Illuminate\Http\JsonResponse
     {
-        $request->user()->tokens()->delete();
-
-        return response()->json(['message' => 'Loggedout successfully']);
+        return $this->authService->logout($request);
     }
 
-    public function user(Request $request)
+    public function profile(Request $request)
     {
-        return $request->user();
+        return $this->authService->profile($request);
     }
 
-    private function getModules(User $user)
-    {
-        return [
-            [
-                'label' => 'nombre_modulo_1',
-                'ico' => 'imagen',
-                'modules' => [
-                    [
-                        'label' => 'nombre_submodulo_1',
-                        'ico' => 'imagen',
-                        'url' => 'ruta_correspondiente_en_el_front',
-                        'model' => 'modelo_asociado',
-                        'permissions' => [
-                            'has_add' => true,
-                            'has_edit' => true,
-                            'has_delete' => false,
-                            'has_history' => false,
-                            'has_show' => true,
-                            'has_otro_definido' => true,
-                        ],
-                    ],
 
-                ],
-            ],
-
-        ];
-    }
 }
 
