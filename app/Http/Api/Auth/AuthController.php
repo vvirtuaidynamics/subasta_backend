@@ -5,6 +5,7 @@ namespace App\Http\Api\Auth;
 use App\Http\Api\Auth\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -94,7 +95,7 @@ class AuthController extends Controller
         return $this->authService->logout($request);
     }
 
-    public function profile(Request $request)
+    public function profile(Request $request):JsonResponse
     {
         return $this->authService->profile($request);
     }
