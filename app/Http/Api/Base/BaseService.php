@@ -2,29 +2,16 @@
 
 namespace App\Http\Api\Base;
 
+use App\Enums\ApiStatus;
+use App\Enums\ApiResponseMessages;
+use App\Enums\ApiResponseCodes;
 use App\Http\Api\Base\BaseServiceInterface;
+use App\Traits\ApiResponseFormatTrait;
 use Illuminate\Http\Request;
 
-abstract class BaseService implements BaseServiceInterface
+abstract class BaseService
 {
+    use ApiResponseFormatTrait;
 
-    public  function successResponse($data, $message = '', $code = 200 )
-    {
-        return response([
-            'success' => true,
-            'message' => $message,
-            'data' => $data,
-        ], $code);
-    }
-
-    public function errorResponse($message, $code, $data = [])
-    {
-        return response([
-            'success' => false,
-            'message' => $message,
-            'data' => $data
-
-        ], $code);
-    }
 
 }
