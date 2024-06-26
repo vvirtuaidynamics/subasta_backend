@@ -54,6 +54,13 @@ abstract class BaseRepository implements BaseRepositoryInterface
     protected $whereIns = [];
 
     /**
+     * Array of one or more where between clause parameters.
+     *
+     * @var array
+     */
+    protected $whereBetweens = [];
+
+    /**
      * Array of one or more ORDER BY column/value pairs.
      *
      * @var array
@@ -371,6 +378,23 @@ abstract class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Add a simple where between clause to the query.
+     *
+     * @param string $column
+     * @param array  $values [start, end]
+     *
+     * @return $this
+     */
+    public function whereBetween($column, $values)
+    {
+        if(!is_array($values)) return null;
+
+        $this->whereBetweens[] = compact('column', 'values');
+
+        return $this;
+    }
+
+    /**
      * Set Eloquent relationships to eager load.
      *
      * @param $relations
@@ -428,6 +452,9 @@ abstract class BaseRepository implements BaseRepositoryInterface
         foreach ($this->whereIns as $whereIn) {
             $this->query->whereIn($whereIn['column'], $whereIn['values']);
         }
+        foreach ($this->whereBetweens as $whereBetwn) {
+            $this->query->whereBetween($whereBetwn['column'], $whereBetwn['values']);
+        }
 
         foreach ($this->orderBys as $orders) {
             $this->query->orderBy($orders['column'], $orders['direction']);
@@ -463,6 +490,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         $this->wheres = [];
         $this->whereIns = [];
+        $this->whereBetweens = [];
         $this->scopes = [];
         $this->take = null;
 

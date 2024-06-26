@@ -39,7 +39,9 @@ interface BaseRepositoryInterface
 
     public function where($column, $value, $operator = '=');
 
-    public function whereIn($column, $value);
+    public function whereIn($column, $values);
+
+    public function whereBetween($column, $values);
 
     public function with($relations);
 }
