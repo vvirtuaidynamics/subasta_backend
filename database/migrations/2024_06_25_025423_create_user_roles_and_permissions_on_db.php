@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -14,7 +16,7 @@ return new class extends Migration
         /**
          * Roles
          */
-        $admin = \Spatie\Permission\Models\Role::create(['name' => 'super-admin']);
+        $admin = \Spatie\Permission\Models\Role::findOrCreate(config('permission.super_admin_role_name'), 'api');
 
         /**
          * Permissions
@@ -24,7 +26,7 @@ return new class extends Migration
         foreach ($models as $model){
             $model = strtolower($model['name']);
             foreach ($base_permissions as $p){
-                $permission = Spatie\Permission\Models\Permission::create(['name'=>"$model:$p", 'guard_name'=>'api']);
+                $permission = Spatie\Permission\Models\Permission::findOrCreate("$model:$p", 'api');
                 $admin->givePermissionTo($permission);
             }
         }
@@ -32,23 +34,22 @@ return new class extends Migration
         /**
          * Users
          */
-        $success = \Illuminate\Support\Facades\DB::table('users')
-            ->insert([
+        User::create([
+                'uuid'=> Str::uuid(),
                 'username' => "admin",
                 'name' => 'Subasta',
                 'surname' => 'Administrator',
                 'email' => 'admin@subasta.com',
                 'email_verified_at' => \Carbon\Carbon::now(),
-                'password' => \Illuminate\Support\Facades\Hash::make('password'),
-                'avatar'=>'avatar/default.png'
-            ]);
+                'password' => "password",
+                'avatar'=>'avatars/default.png'
+        ]);
 
-        if($success){
-            $user = \App\Models\User::all()->where('username', '=', 'admin')->first();
+            $user = User::where('username', '=', 'admin')->first();
             $user->assignRole('super-admin');
 
 
-        }
+
     }
 
 
