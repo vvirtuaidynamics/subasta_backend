@@ -63,19 +63,6 @@ class User extends Authenticatable
         return $this->roles()->where('name', $role)->exists();
     }
 
-    public function getPermissionByModule($module = null)
-    {
-        $permissions = Permission::join('user_has_permissions', function ($join) {
-            $join->on('permissions.id', '=', 'user_has_permissions.permission_id')
-                ->where('user_has_permissions.user_id', '=', $this->id);
-        });
-        if ($module != null) {
-            $permissions =
-                $permissions->where('permissions.module_id', '=', $module->id);
-        }
-        return $permissions;
-    }
-
     public function permissionsByModule($module)
     {
         if ($this->sa) {
@@ -107,7 +94,7 @@ class User extends Authenticatable
             $ids_model = [];
             foreach ($modules as $mod) {
                 $perms = $this->permissionsByModule($mod);
-                $mod->permissions = $perms;
+                $mod->permissions = collect($perms)->values()->all();
                 if ($perms->count() > 0) {
                     $ids_model[] = $mod->id;
                     $ids_apps[] = $mod->application_id;
@@ -127,21 +114,12 @@ class User extends Authenticatable
         return $app_list;
     }
 
-    public function hasAccess($perm)
+    public function hasPerm($perm)
     {
         $perm = strtolower($perm);
         $permission = Permission::where('code', '=', $perm)->first();
-        if ($permission == null) {
-            return false;
-        }
-        if ($this->sa) {
-            return true;
-        }
-        foreach ($this->getAllPermissions() as $p) {
-            if ($p->code == $perm) {
-                return true;
-            }
-        }
-        return false;
+        if ($permission == null) return false;
+        if ($this->sa) return true;
+        return $this->getAllPermissions()->firstWhere('code', $perm) != null;
     }
 }
