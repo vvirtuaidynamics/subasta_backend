@@ -97,11 +97,9 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function makeModel()
     {
         $model = app()->make($this->model());
-
         if (! $model instanceof Model) {
             throw new GeneralException("Class {$this->model()} must be an instance of ".Model::class);
         }
-
         return $this->model = $model;
     }
 

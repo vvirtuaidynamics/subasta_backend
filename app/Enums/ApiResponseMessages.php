@@ -8,6 +8,7 @@ class ApiResponseMessages
     const CREATED_SUCCESSFULLY = 'Record created successfully';
     const FETCHED_SUCCESSFULLY = 'Record fetched successfully';
     const UPDATED_SUCCESSFULLY = 'Record updated successfully';
+    const DELETED_SUCCESSFULLY = 'Record deleted successfully';
     const TRASHED_SUCCESSFULLY = 'Record trashed successfully';
     const VALIDATION_FAILED = 'Validation failed';
     const NO_QUERY_RESULTS = 'No record found';

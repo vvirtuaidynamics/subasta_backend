@@ -17,17 +17,17 @@ use App\Http\Api\Country\CountryController;
 /**
  * Rutas públicas.
  */
-/**
- * Registro por default model=User, puede ser Client o Carrier
- */
-Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
+if(config('app.debug'))
+    Route::get('/dev', [AuthController::class, 'dev'])->name('dev');
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/dev', [AuthController::class, 'dev'])->name('dev');
+// Registro por default model=User, puede ser Client o Carrier
+Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
+
 /**
  * Probando implementación.
  */
 
-Route::apiResource('/user', \App\Http\Api\User\UserController::class);
 
 /**
  * Rutas protegias
@@ -40,6 +40,10 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * User
      */
+    Route::apiResource('/user', \App\Http\Api\User\UserController::class);
+//    Route::apiResource('/client', \App\Http\Api\Client\UserController::class);
+//    Route::apiResource('/carrier', \App\Http\Api\Carrier\UserController::class);
+
 
 
     /**
