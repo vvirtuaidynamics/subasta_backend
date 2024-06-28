@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Http\Api\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Country extends BaseModel
+class Country extends Model
 {
     use HasFactory;
-    protected $table = 'countries';
 
+    protected $table = 'countries';
 
 
     // Relations
@@ -40,7 +40,6 @@ class Country extends BaseModel
     {
         return asset("/images/flags/$this->iso2.svg");
     }
-
 
 
 }

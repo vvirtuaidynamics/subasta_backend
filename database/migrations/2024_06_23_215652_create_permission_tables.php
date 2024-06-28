@@ -30,11 +30,8 @@ return new class extends Migration
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
             $table->string('guard_name'); // For MyISAM use string('guard_name', 25);
             $table->timestamps();
-
             $table->unique(['name', 'guard_name']);
         });
-
-        $models = \App\Helpers\get_models();
 
 
 
@@ -54,8 +51,6 @@ return new class extends Migration
                 $table->unique(['name', 'guard_name']);
             }
         });
-
-        \Illuminate\Support\Facades\DB::table('roles')->insert(['name'=>'Administrator', 'guard_name'=>'api']);
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotPermission, $teams) {
             $table->unsignedBigInteger($pivotPermission);

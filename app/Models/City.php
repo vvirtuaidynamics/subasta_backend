@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Http\Api\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-class City extends BaseModel
+class City extends Model
 {
     use HasFactory;
+
     protected $table = 'cities';
 
     // Relations

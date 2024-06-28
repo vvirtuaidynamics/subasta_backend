@@ -31,7 +31,7 @@
         content: url('/icons/favicon-96x96.png');
     }
     .topbar-wrapper .link:after {
-        content: 'API - Subasta';
+        content: "{{config('app.name')}}";
     }
 
     </style>

@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
  */
 interface BaseServiceInterface
 {
-    public function list(Request $request);
-
-    public function show($id);
 
     public function successResponse($data, $message = '', $code = 200);
 

@@ -1,8 +1,13 @@
 <?php
 
 return [
-
+    /**
+     * Base permissions
+     */
+    'base_permissions' => array('create', 'read', 'update', 'delete'),
+    'super_admin_role_name'=>'super-admin',
     'models' => [
+
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which

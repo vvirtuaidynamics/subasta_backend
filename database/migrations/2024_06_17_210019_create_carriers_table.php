@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('cover_profile')->nullable();
             $table->date('validated')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

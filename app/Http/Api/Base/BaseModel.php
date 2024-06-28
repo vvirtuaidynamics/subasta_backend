@@ -4,18 +4,16 @@ namespace App\Http\Api\Base;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class BaseModel extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
-    public static $readonly = false;
-    public static $navigationMain = false;
-    public static $navigationParent = '';
-    public static $navigationLabel = '';
-    public static $navigationIcon = '';
-    public static $navigationRoute = '';
-
-
-
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
 }
