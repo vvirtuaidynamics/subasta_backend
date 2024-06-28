@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use App\Models\User;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -21,11 +20,11 @@ return new class extends Migration
         /**
          * Permissions
          */
-        $models = \App\Helpers\get_models();
+        $models = get_models();
         $base_permissions = config('permission.base_permissions');
-        foreach ($models as $model){
+        foreach ($models as $model) {
             $model = strtolower($model['name']);
-            foreach ($base_permissions as $p){
+            foreach ($base_permissions as $p) {
                 $permission = Spatie\Permission\Models\Permission::findOrCreate("$model:$p", 'api');
                 $admin->givePermissionTo($permission);
             }
@@ -35,19 +34,18 @@ return new class extends Migration
          * Users
          */
         User::create([
-                'uuid'=> Str::uuid(),
-                'username' => "admin",
-                'name' => 'Subasta',
-                'surname' => 'Administrator',
-                'email' => 'admin@subasta.com',
-                'email_verified_at' => \Carbon\Carbon::now(),
-                'password' => "password",
-                'avatar'=>'avatars/default.png'
+            'uuid' => Str::uuid(),
+            'username' => "admin",
+            'name' => 'Subasta',
+            'surname' => 'Administrator',
+            'email' => 'admin@subasta.com',
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'password' => "password",
+            'avatar' => 'avatars/default.png'
         ]);
 
-            $user = User::where('username', '=', 'admin')->first();
-            $user->assignRole('super-admin');
-
+        $user = User::where('username', '=', 'admin')->first();
+        $user->assignRole('super-admin');
 
 
     }
@@ -58,7 +56,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-       //
+        //
         \Illuminate\Support\Facades\DB::table('users')->truncate();
         \Illuminate\Support\Facades\DB::table('roles')->truncate();
         \Illuminate\Support\Facades\DB::table('permissions')->truncate();
