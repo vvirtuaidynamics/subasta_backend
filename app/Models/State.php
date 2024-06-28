@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Http\Api\Base\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class State extends BaseModel
+class State extends Model
 {
     use HasFactory;
+
     protected $table = 'states';
 
     public function cities(): HasMany

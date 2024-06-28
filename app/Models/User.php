@@ -10,13 +10,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, InteractsWithUuid;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, InteractsWithUuid, LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +49,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'roles',
+        'permissions'
     ];
 
     /**
@@ -49,7 +58,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = ['is_super_admin', 'full_name', 'permission_names' ];
+    protected $appends = ['is_super_admin', 'full_name', 'role_names', 'permission_names'];
 
     /**
      * The attributes that should be cast.
@@ -71,18 +80,28 @@ class User extends Authenticatable
     }
 
     /**
+     * Define setter for the password field.
+     */
+    public function setUuidAttribute()
+    {
+        $this->attributes['uuid'] = \Illuminate\Support\Str::uuid();
+    }
+
+    /**
      * Get the name for the user.
      *
      * @return string
      */
     public function getFullNameAttribute()
     {
-        return $this->name. ' '. $this->surname;
+        return $this->name . ' ' . $this->surname;
     }
+
     public function getisSuperAdminAttribute()
     {
         return $this->hasRole(config('permission.super_admin_role_name'));
     }
+
     /**
      * Get the permissions of the user.
      *
@@ -94,6 +113,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the permissions of the user.
+     *
+     * @return string
+     */
+    public function getRoleNamesAttribute()
+    {
+        return collect($this->roles)->pluck('name')->toArray();
+    }
+
+    /**
      * Get the avatar for the user.
      *
      * @return string
@@ -101,7 +130,7 @@ class User extends Authenticatable
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => asset('storage/'.$value),
+            get: fn(string $value) => asset('storage/' . $value),
         );
     }
 }
