@@ -17,6 +17,7 @@ class ApiResponseMessages
     const UNAUTHORIZED = 'Unauthorized';
     const LOGGED_OUT_SUCCESSFULLY = 'Successfully logged out';
     const INTERNAL_SERVER_ERROR = "Internal server error";
+    const UNPROCESSABLE_CONTENT = "Unprocessable content";
     const UNAUTHORIZED_DOMAIN_OR_IP = "Unauthorized domain or IP";
     const LOGIN_SUCCESSFUL = "Login successful";
     const RESET_PASSWORD_SUCCESSFUL = "Password reset successfully";
