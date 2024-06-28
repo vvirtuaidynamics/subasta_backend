@@ -1,6 +1,10 @@
 <?php
-
-namespace App\Helpers;
+/**
+ * Add to composer.json file on autoload section:
+ *  "files": [
+ *      "app/Helpers/helpers.php"
+ *  ],
+ */
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
@@ -40,7 +44,7 @@ if (!function_exists('date_format_string')) {
 }
 
 if (!function_exists('get_models')) {
-    function get_models($model_name="")
+    function get_models($model_name = ""): array
     {
         $models = array_map('basename', glob(app_path() . '/Models/*.php'));
         $schemas = [];
@@ -54,13 +58,15 @@ if (!function_exists('get_models')) {
 
             if ($modelClass instanceof \Illuminate\Database\Eloquent\Model) {
                 $model_fields = [];
+                $class_name = class_basename($modelClass);
+                $class_namespace = "App\\Models\\$model";
                 foreach ($columns as $column) {
                     $type = Schema::getColumnType($table, $column);
 
                     $model_fields[] = ["column" => $column, "type" => $type];
                 }
-                $schemas[] = ["name" => $model, "fields" => $model_fields];
-                if($model_name && $model_name==$model){
+                $schemas[] = ["name" => $model, "namespace" => $class_namespace, "fields" => $model_fields];
+                if ($model_name && $model_name == $model) {
                     return ["column" => $column, "type" => $type];
                 }
             }
