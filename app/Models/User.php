@@ -87,6 +87,17 @@ class User extends Authenticatable
         $this->attributes['uuid'] = \Illuminate\Support\Str::uuid();
     }
 
+    public function setAvatarAttribute($value)
+    {
+        if (is_file($value)) {
+            $filename = time() . '.' . $value->getClientOriginalExtension();
+            $value->move(public_path('avatars'), $filename);
+            $this->attributes['avatar'] = $filename;
+        } else {
+            $this->attributes['avatar'] = $value;
+        }
+    }
+
     /**
      * Get the name for the user.
      *
