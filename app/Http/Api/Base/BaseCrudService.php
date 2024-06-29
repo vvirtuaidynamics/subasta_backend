@@ -162,20 +162,18 @@ abstract class BaseCrudService extends BaseService implements BaseCrudServiceInt
         // Authorization check
         $user = auth()->user();
         $require_permission = strtolower($this->getBaseModel()) . ':create';
-
         if (!$user || (!$user->is_super_admin || !in_array($require_permission, $user->permission_names)))
             $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
-
         try {
             $rules = $this->storeRequest->rules();
             $validatedData = $request->validate($rules);
             $result = $this->repository->create($validatedData);
             return $this->sendResponse($result, ApiResponseMessages::CREATED_SUCCESSFULLY);
-        } catch (ValidationException $ex) {
+        } catch (ValidationException $e) {
             return $this->sendError(
                 ApiResponseMessages::UNPROCESSABLE_CONTENT,
                 ApiResponseCodes::HTTP_UNPROCESSABLE_CONTENT,
-                ['errors' => $ex->errors()]
+                ['errors' => $e->errors()]
             );
         }
         return $this->sendError(ApiResponseMessages::BAD_REQUEST);
@@ -257,7 +255,7 @@ abstract class BaseCrudService extends BaseService implements BaseCrudServiceInt
             $data = $this->repository->deleteMultipleById($ids);
             if ($data) {
                 $model = strtolower($this->getBaseModel());
-                
+
                 return $this->sendResponse($data, ApiResponseMessages::DELETED_SUCCESSFULLY);
 
             }
@@ -265,13 +263,5 @@ abstract class BaseCrudService extends BaseService implements BaseCrudServiceInt
         return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
     }
 
-    public function setActivityLog($logMsg, $eventType = 'created')
-    {
-        $causerBy = auth()->user();
-        activity()
-            ->by($causerBy)
-            ->event($eventType)
-            ->log($logMsg);
-    }
 
 }
