@@ -16,4 +16,8 @@ class BaseModel extends Model
         return LogOptions::defaults()
             ->logOnlyDirty();
     }
+
+    protected $logOnlyDirty = true;
+
+    protected $ignoreAttributes = ['updated_at'];
 }
