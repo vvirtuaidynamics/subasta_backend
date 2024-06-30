@@ -3,6 +3,7 @@
 namespace App\Http\Api\Auth;
 
 use App\Http\Api\Auth\Requests\LoginRequest;
+use App\Http\Api\Auth\Requests\RegisterUserRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -19,14 +20,25 @@ class AuthController extends Controller
         $this->authService = new AuthService();
     }
 
-    public function register(Request $request): JsonResponse
+    public function register(Request $request, $model = null): JsonResponse
     {
-        return $this->authService->register($request);
+        $registerRequest = null;
+        if (!$model) {
+            $registerRequest = new RegisterUserRequest($request);
+        }
+        //TODO Add logic to register clients and carriers
+
+        return $this->authService->register($registerRequest);
     }
 
     public function login(LoginRequest $request): JsonResponse
     {
         return $this->authService->login($request);
+    }
+
+    public function refresh(Request $request): JsonResponse
+    {
+        return $this->authService->refresh($request);
     }
 
     public function logout(Request $request): JsonResponse
