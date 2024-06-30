@@ -26,7 +26,9 @@ class AuthService
         $validated = $request->validated();
         $firstCredentialValue = $validated['identity'];
         $firstCredentialValueType = filter_var($firstCredentialValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $user = User::where("$firstCredentialValueType", $validated['identity'])->first();
+        $user = User::where("$firstCredentialValueType", $validated['identity'])
+            ->where("active", true)
+            ->first();
 
         if (!$user || !Hash::check($validated['password'], $user->password)) {
             return $this->sendError(

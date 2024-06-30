@@ -5,21 +5,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Carbon\Carbon;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        /**
-         * Roles
-         */
         $admin = \Spatie\Permission\Models\Role::findOrCreate(config('permission.super_admin_role_name'), 'api');
 
-        /**
-         * Permissions
-         */
         $models = get_models();
         $base_permissions = config('permission.base_permissions');
         foreach ($models as $model) {
@@ -30,16 +23,13 @@ return new class extends Migration {
             }
         }
 
-        /**
-         * Users
-         */
         User::create([
             'uuid' => Str::uuid(),
             'username' => "admin",
             'name' => 'Subasta',
             'surname' => 'Administrator',
             'email' => 'admin@subasta.com',
-            'email_verified_at' => \Carbon\Carbon::now(),
+            'email_verified_at' => Carbon::now()->toDateTimeString(),
             'password' => "password",
             'avatar' => 'avatars/default.png'
         ]);
@@ -50,10 +40,6 @@ return new class extends Migration {
 
     }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         //
