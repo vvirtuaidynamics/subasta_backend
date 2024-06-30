@@ -7,6 +7,7 @@ class ApiResponseMessages
     const RETRIEVED_SUCCESSFULLY = 'Records retrieved successfully';
     const CREATED_SUCCESSFULLY = 'Record created successfully';
     const FETCHED_SUCCESSFULLY = 'Record fetched successfully';
+    const TOKEN_REFRESH_SUCCESSFULLY = 'Token refresh successfully';
     const UPDATED_SUCCESSFULLY = 'Record updated successfully';
     const DELETED_SUCCESSFULLY = 'Record deleted successfully';
     const TRASHED_SUCCESSFULLY = 'Record trashed successfully';
@@ -26,12 +27,12 @@ class ApiResponseMessages
     const INVALID_USER = "Invalid user";
     const INVALID_CREDENTIALS = "Invalid credentials";
     const RESOURCE_NOT_FOUND = "Resource not found";
-    const METHOD_NOT_ALLOWED = "Method not allowed for this endpoint.";
+    const METHOD_NOT_ALLOWED = "Method not allowed for this endpoint";
     const DB_QUERY_ERROR = "Database query error";
-    const NOT_ACCEPTABLE  = "Response format not acceptable";
+    const NOT_ACCEPTABLE = "Response format not acceptable";
     const TOO_MANY_ATTEMPT = "Too many requests";
-    const DUPLICATE_ENTRY = "Duplicate entry - The resource already exists.";
-    const BAD_REQUEST = "Bad request.";
+    const DUPLICATE_ENTRY = "Duplicate entry - The resource already exists";
+    const BAD_REQUEST = "Bad request";
     const UNSUPPORTED_MEDIA_TYPE = "Unsupported media type";
     const SERVICE_UNAVAILABLE = "Service unavailable";
 }
