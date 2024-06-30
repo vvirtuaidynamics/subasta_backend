@@ -7,11 +7,14 @@ use App\Enums\ApiResponseMessages;
 use App\Traits\ApiResponseFormatTrait;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+
 
 class RegisterUserRequest extends FormRequest
 {
     use ApiResponseFormatTrait;
 
+  
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -20,11 +23,7 @@ class RegisterUserRequest extends FormRequest
         return true; //authorize all to access login
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+
     public function rules(): array
     {
         return [

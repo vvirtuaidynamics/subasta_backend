@@ -22,13 +22,9 @@ class AuthController extends Controller
 
     public function register(Request $request, $model = null): JsonResponse
     {
-        $registerRequest = null;
-        if (!$model) {
-            $registerRequest = new RegisterUserRequest($request);
-        }
+        return $this->authService->register($request);
         //TODO Add logic to register clients and carriers
 
-        return $this->authService->register($registerRequest);
     }
 
     public function login(LoginRequest $request): JsonResponse

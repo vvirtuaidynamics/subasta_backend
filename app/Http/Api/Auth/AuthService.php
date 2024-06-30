@@ -53,11 +53,14 @@ class AuthService
 
     }
 
-    public function register(RegisterUserRequest $request)
+    public function register(Request $request, $model = null)
     {
         $user_validated_data = null;
         try {
-            $user_validated_data = $request->validate();
+            $userRequest = new RegisterUserRequest();
+            $validator = validator($request->all(), $userRequest->rules(), $userRequest->messages());
+            $user_validated_data = $validator->validate();
+
         } catch (\Illuminate\Validation\ValidationException $e) {
             return $this->sendError(
                 ApiResponseMessages::UNPROCESSABLE_CONTENT,
