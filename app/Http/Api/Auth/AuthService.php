@@ -26,7 +26,15 @@ class AuthService
         $validated = $request->validated();
         $firstCredentialValue = $validated['identity'];
         $firstCredentialValueType = filter_var($firstCredentialValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $user = User::where("$firstCredentialValueType", $validated['identity'])->first();
+        $user = User::where("$firstCredentialValueType", $validated['identity'])
+            ->first();
+
+        if (!$user->active) {
+            return $this->sendError(
+                ApiResponseMessages::USER_NOT_ACTIVE,
+                ApiResponseCodes::HTTP_UNAUTHORIZED
+            );
+        }
 
         if (!$user || !Hash::check($validated['password'], $user->password)) {
             return $this->sendError(

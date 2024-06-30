@@ -35,4 +35,5 @@ class ApiResponseMessages
     const BAD_REQUEST = "Bad request";
     const UNSUPPORTED_MEDIA_TYPE = "Unsupported media type";
     const SERVICE_UNAVAILABLE = "Service unavailable";
+    const USER_NOT_ACTIVE = "The user is not active";
 }
