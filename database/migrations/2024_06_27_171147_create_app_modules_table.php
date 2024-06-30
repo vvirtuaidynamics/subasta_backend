@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name')->length(50)->unique();
             $table->string('label')->length(50)->nullable()->unique();
             $table->string('title')->nullable();
-            $table->string('url')->length(50)->nullable();
+            $table->string('url')->nullable();
             $table->string('ico')->length(50)->nullable(false);
             $table->string('model_name')->length(50)->nullable(false);
             $table->string('model_namespace')->nullable(false);
