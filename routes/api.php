@@ -4,16 +4,6 @@ use App\Http\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Api\Country\CountryController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
 Route::get('/dev', function (Request $request) {
     $models = get_models();
     dd($models);
@@ -27,17 +17,13 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
 
 /**
- * Probando implementación.
- */
-
-
-/**
  * Rutas protegias
  */
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/refresh', [AuthController::class, 'refresh'])->name('refresh');
 
     /**
      * User

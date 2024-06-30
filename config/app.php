@@ -44,17 +44,13 @@ return [
 
     'debug' => (bool)env('APP_DEBUG', false),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application URL
-    |--------------------------------------------------------------------------
-    |
-    | This URL is used by the console to properly generate URLs when using
-    | the Artisan command line tool. You should set this to the root of
-    | your application so that it is used when running Artisan tasks.
-    |
-    */
-
+    /**
+     * TODO DEFAULT CONFIG
+     * url: Url from is connected the frontend application.
+     * page_default_size: Default page size for the system if dont send from the frontend.
+     * asset_url: Custom URL for the asset.
+     * public_routes: List of public routes, this routes will be used on api routes for exclude auth routes.
+     */
     'url' => env('APP_URL', 'http://localhost'),
     'page_default_size' => env('PAGE_DEFAULT_SIZE', 30),
     'asset_url' => env('ASSET_URL'),
@@ -62,7 +58,7 @@ return [
 
     /*
       |--------------------------------------------------------------------------
-      | Modules definitions
+      | TODO Models definition this permits adding models by seeder.
       |--------------------------------------------------------------------------
       */
     'modules' => [
@@ -101,7 +97,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
