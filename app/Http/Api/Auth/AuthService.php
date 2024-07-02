@@ -65,6 +65,7 @@ class AuthService
     {
         $user_validated_data = null;
         try {
+            $request->merge(['active' => false]);
             $userRequest = new RegisterUserRequest();
             $validator = validator($request->all(), $userRequest->rules(), $userRequest->messages());
             $user_validated_data = $validator->validate();

@@ -10,19 +10,19 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('app_modules', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string('name')->length(50)->unique();
             $table->string('label')->length(50)->nullable()->unique();
             $table->string('title')->nullable();
             $table->string('url')->nullable();
-            $table->string('ico')->length(50)->nullable(false);
+            $table->string('icon')->length(50)->nullable(false);
             $table->string('model_name')->length(50)->nullable(false);
             $table->string('model_namespace')->nullable(false);
+            $table->json('fields')->nullable(false);
             $table->boolean('readonly')->nullable()->default(false);
-            $table->boolean('is_main')->nullable()->default(false);
             $table->smallInteger('order')->nullable(false)->default(1);
-            $table->foreignId('parent_id')->unsigned()->nullable();
+            $table->string('parent_name')->nullable();
 
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_modules');
+        Schema::dropIfExists('modules');
     }
 };

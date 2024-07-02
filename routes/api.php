@@ -4,10 +4,11 @@ use App\Http\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Api\Country\CountryController;
 
-Route::get('/dev', function (Request $request) {
+Route::get('/dev', function (Illuminate\Http\Request $request) {
     $models = get_models();
-    dd($models);
-});
+    $mothers = get_user_models($request->user());
+    dd($mothers);
+})->name('dev');
 
 /**
  * Rutas públicas.
