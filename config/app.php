@@ -54,24 +54,8 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
     'page_default_size' => env('PAGE_DEFAULT_SIZE', 30),
     'asset_url' => env('ASSET_URL'),
-    'public_routes' => ['home', 'register', 'login'],
+    'public_routes' => ['home', 'register', 'login', 'dev'],
 
-    /*
-      |--------------------------------------------------------------------------
-      | TODO Models definition this permits adding models by seeder.
-      |--------------------------------------------------------------------------
-      */
-    'modules' => [
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-        ['name' => 'User', 'label' => 'User', 'icon' => '', 'main' => false, 'order' => 1, 'parent' => 'User'],
-    ],
 
     /*
     |--------------------------------------------------------------------------

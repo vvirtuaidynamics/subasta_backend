@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class AppModule extends Model
+class Module extends Model
 {
     use HasFactory;
 
-    protected $table = "app_modules";
+    protected $table = "modules";
 
     protected $fillable = [
         'name',
@@ -30,12 +30,12 @@ class AppModule extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(AppModule::class, 'parent_id', 'id');
+        return $this->hasMany(Module::class, 'parent_id', 'id');
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(AppModule::class, 'parent_id');
+        return $this->belongsTo(Module::class, 'parent_id');
     }
 
 
