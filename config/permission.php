@@ -4,8 +4,23 @@ return [
     /**
      * Base permissions
      */
-    'base_permissions' => array('create', 'read', 'update', 'delete'),
-    'super_admin_role_name'=>'super-admin',
+    'super_admin_role_name' => 'super-admin',
+    'base_permissions' => ['create', 'view', 'update', 'delete'],
+    'base_roles' => [
+        [
+            'name' => 'admin',
+            'permissions' => []
+        ],
+        [
+            'name' => 'client',
+            'permissions' => []
+        ],
+        [
+            'name' => 'carrier',
+            'permissions' => []
+        ],
+    ],
+
     'models' => [
 
 
