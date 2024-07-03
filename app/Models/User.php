@@ -58,7 +58,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = ['is_super_admin', 'full_name', 'role_names', 'permission_names'];
+    protected $appends = ['super_admin', 'full_name', 'role_names', 'permission_names'];
 
     /**
      * The attributes that should be cast.
@@ -108,7 +108,7 @@ class User extends Authenticatable
         return $this->name . ' ' . $this->surname;
     }
 
-    public function getisSuperAdminAttribute()
+    public function getSuperAdminAttribute()
     {
         return $this->hasRole(config('permission.super_admin_role_name'));
     }

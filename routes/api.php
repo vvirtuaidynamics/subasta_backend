@@ -5,10 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Api\Country\CountryController;
 
 Route::get('/dev', function (Illuminate\Http\Request $request) {
-    $models = get_models();
-    $mothers = get_user_models($request->user());
-    dd($mothers);
+    $models = get_modules();//get_models();
+    //$mothers = get_user_models($request->user());
+//    $models = config('modules.modules_data');
+    dd($models);
 })->name('dev');
+
+
+Route::get('/user', [\App\Http\Api\User\UserController::class, 'list']);
+
 
 /**
  * Rutas públicas.
@@ -29,7 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * User
      */
-    Route::apiResource('/user', \App\Http\Api\User\UserController::class);
+//    Route::apiResource('/user', \App\Http\Api\User\UserController::class);
 //    Route::apiResource('/client', \App\Http\Api\Client\UserController::class);
 //    Route::apiResource('/carrier', \App\Http\Api\Carrier\UserController::class);
 

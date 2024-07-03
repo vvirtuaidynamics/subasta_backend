@@ -21,15 +21,17 @@ class AuthService
 {
     use ApiResponseFormatTrait;
 
+
     public function login(LoginRequest $request): JsonResponse
     {
         $validated = $request->validated();
         $firstCredentialValue = $validated['identity'];
         $firstCredentialValueType = filter_var($firstCredentialValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        //TODO Ver posible ajuste para usar repositorio
         $user = User::where("$firstCredentialValueType", $validated['identity'])
             ->first();
 
-        if (!$user->active) {
+        if (!isset($user) || !$user->active) {
             return $this->sendError(
                 ApiResponseMessages::USER_NOT_ACTIVE,
                 ApiResponseCodes::HTTP_UNAUTHORIZED
@@ -44,13 +46,14 @@ class AuthService
         }
 
         $permissions = $user->hasRole('super-admin') ? ['*'] : collect($user->getAllPermissions())->pluck('name')->toArray();
-
+        $modules = get_user_modules($user);
         $token = $user->createToken(config('app.name', 'Backend'),
             [...$permissions],
         )->plainTextToken;
         $data = array(
             'user' => $user,
             'token' => $token,
+            'modules' => $modules,
             'permissions' => $permissions
         );
         return $this->sendResponse(
