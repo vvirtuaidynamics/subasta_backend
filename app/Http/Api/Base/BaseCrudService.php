@@ -139,13 +139,25 @@ abstract class BaseCrudService extends BaseService implements BaseCrudServiceInt
         return $this->sendResponse($this->resource::collection($data), ApiResponseMessages::FETCHED_SUCCESSFULLY);
     }
 
+    public function getByColumn(Request $request)
+    {
+        if ($request->has('column') && $request->has('value')) {
+            $column = $request->get('column');
+            $value = $request->get('value');
+            return $this->repository->getByColumn($value, $column);
+        } else {
+            return $this->sendError(ApiResponseMessages::UNPROCESSABLE_CONTENT, ApiResponseCodes::HTTP_UNPROCESSABLE_CONTENT);
 
-    public function show($id): JsonResponse
+        }
+    }
+
+
+    public function view($id): JsonResponse
     {
         // Authorization check
         $user = auth()->user();
         $require_permission = strtolower($this->getBaseModel()) . ':show';
-        if (!$user || (!$user->is_super_admin || !in_array($require_permission, $user->permission_names)))
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
             $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
 
         $id = (int)$id;
