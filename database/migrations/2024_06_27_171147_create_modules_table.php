@@ -13,16 +13,16 @@ return new class extends Migration {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string('name')->length(50)->unique();
-            $table->string('label')->length(50)->nullable()->unique();
+            $table->string('label')->length(50)->nullable();
             $table->string('title')->nullable();
             $table->string('url')->nullable();
-            $table->string('icon')->length(50)->nullable(false);
-            $table->string('model_name')->length(50)->nullable(false);
-            $table->string('model_namespace')->nullable(false);
-            $table->json('fields')->nullable(false);
-            $table->boolean('readonly')->nullable()->default(false);
+            $table->string('icon')->length(50)->nullable();
+            $table->string('model')->length(50)->nullable();
+            $table->string('class')->nullable();
             $table->smallInteger('order')->nullable(false)->default(1);
-            $table->string('parent_name')->nullable();
+            $table->string('parent')->nullable();
+            $table->json('fields')->nullable();
+            $table->json('permissions')->nullable();
 
         });
     }
