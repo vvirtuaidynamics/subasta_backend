@@ -2,44 +2,42 @@
 
 namespace App\Http\Api\Client;
 
-use App\Http\Controllers\Controller;
-use App\Models\Client;
+
+use App\Http\Api\Base\BaseController;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ClientController extends BaseController
 {
-    public function index()
+    private ClientService $service;
+
+    public function __construct()
     {
-        //
+        $this->service = new ClientService();
     }
 
-    public function create()
+    public function list(Request $request)
     {
-        //
+        return $this->service->list($request);
+    }
+
+    public function view($id, Request $request)
+    {
+        return $this->service->view($id);
     }
 
     public function store(Request $request)
     {
-        //
+
+        return $this->service->create($request);
     }
 
-    public function show(Client $client)
+    public function update($id, Request $request)
     {
-        //
+        return $this->service->update($id, $request);
     }
 
-    public function edit(Client $client)
+    public function delete($id)
     {
-        //
-    }
-
-    public function update(Request $request, Client $client)
-    {
-        //
-    }
-
-    public function destroy(Client $client)
-    {
-        //
+        return $this->service->delete($id);
     }
 }
