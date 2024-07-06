@@ -71,17 +71,11 @@ class User extends Authenticatable
         'active' => 'boolean'
     ];
 
-    /**
-     * Define setter for the password field.
-     */
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = app('hash')->make($value);
     }
 
-    /**
-     * Define setter for the password field.
-     */
     public function setUuidAttribute()
     {
         $this->attributes['uuid'] = \Illuminate\Support\Str::uuid();
@@ -98,11 +92,16 @@ class User extends Authenticatable
         }
     }
 
-    /**
-     * Get the name for the user.
-     *
-     * @return string
-     */
+    public function getEmailVerifiedAtAttribute($value)
+    {
+        return format_datetime_for_display($value);
+    }
+
+    public function getLastLoginAtAttribute($value)
+    {
+        return format_datetime_for_display($value);
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name . ' ' . $this->surname;
@@ -113,35 +112,25 @@ class User extends Authenticatable
         return $this->hasRole(config('permission.super_admin_role_name'));
     }
 
-    /**
-     * Get the permissions of the user.
-     *
-     * @return string
-     */
     public function getPermissionNamesAttribute()
     {
         return collect($this->getAllPermissions())->pluck('name')->toArray();
     }
 
-    /**
-     * Get the permissions of the user.
-     *
-     * @return string
-     */
     public function getRoleNamesAttribute()
     {
         return collect($this->roles)->pluck('name')->toArray();
     }
 
-    /**
-     * Get the avatar for the user.
-     *
-     * @return string
-     */
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn(string $value) => asset('storage/' . $value),
+            get: function ($value) {
+                if ($value) {
+                    return asset('storage/' . $value);
+                }
+                return asset('storage/avatars/default.png');
+            }
         );
     }
 }
