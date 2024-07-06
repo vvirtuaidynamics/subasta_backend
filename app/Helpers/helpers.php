@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 use App\Models\User;
 
 if (!function_exists('trans_lang_using_default_file')) {
@@ -44,6 +45,42 @@ if (!function_exists('date_format_string')) {
         if ($currentLanguage == "es")
             return 'd-m-Y';
         return 'Y-m-d';
+    }
+}
+
+if (!function_exists('format_datetime_for_database')) {
+
+    function format_datetime_for_database($datetime)
+    {
+        if (!$datetime instanceof Carbon) {
+            $datetime = Carbon::parse($datetime);
+        }
+
+        return $datetime->setTimezone('UTC')->format('Y-m-d H:i:s');
+    }
+}
+
+if (!function_exists('format_datetime_for_display')) {
+
+    function format_datetime_for_display($datetime, $format = null)
+    {
+        if (!$datetime instanceof Carbon) {
+            $datetime = Carbon::parse($datetime);
+        }
+
+        $datetime->setTimezone(config('app.timezone'));
+
+        if ($format) {
+            return $datetime->translatedFormat($format);
+        }
+
+        $locale = App::getLocale();
+        switch ($locale) {
+            case 'es':
+                return $datetime->translatedFormat('d-m-Y H:i:s');
+            default:
+                return $datetime->translatedFormat('Y-m-d H:i:s');
+        }
     }
 }
 
