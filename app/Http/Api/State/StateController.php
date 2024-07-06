@@ -3,29 +3,26 @@
 namespace App\Http\Api\State;
 
 use App\Http\Controllers\Controller;
-use App\Models\State;
 use Illuminate\Http\Request;
 
 class StateController extends Controller
 {
+    private $service;
 
-    public function index()
+    public function __construct()
     {
+        $this->service = new StateService();
     }
 
-    public function store(Request $request)
+    public function list(Request $request)
     {
+        return $this->service->list($request);
     }
 
-    public function edit(State $state)
+    public function view($id)
     {
+        return $this->service->view($id);
     }
 
-    public function update(Request $request, State $state)
-    {
-    }
 
-    public function destroy(State $state)
-    {
-    }
 }
