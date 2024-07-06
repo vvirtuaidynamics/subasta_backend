@@ -3,6 +3,7 @@
 namespace App\Http\Api\User;
 
 use App\Http\Api\Base\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 //use Your Model
@@ -16,8 +17,8 @@ class UserRepository extends BaseRepository
      * @return string
      *  Return the model
      */
-    public function model() : User
+    public function model(): string
     {
-       return User::class;
+        return User::class;
     }
 }
