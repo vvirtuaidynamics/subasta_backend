@@ -2,46 +2,35 @@
 
 namespace App\Http\Api\User;
 
-use App\Http\Api\Base\BaseCrudService;
-use App\Http\Api\User\Requests\UserStoreRequest;
-use App\Http\Api\User\Requests\UserUpdateRequest;
+use App\Http\Api\Base\BaseService;
 use App\Models\User;
-
-//use Your Model
 
 /**
  * Class UserRepository.
  */
-class UserService extends BaseCrudService
+class UserService extends BaseService
 {
-    /**
-     * @return string
-     *  Return the model
-     */
-    public function model(): User
+    public function model(): string
     {
         return User::class;
     }
 
-    public function repository()
+    public function repository(): string
     {
         return UserRepository::class;
     }
 
-    public function resource()
+    public function rules(): array
     {
-        return UserResource::class;
-    }
-
-    public function storeRequest()
-    {
-        return UserStoreRequest::class;
-    }
-
-    public function updateRequest()
-    {
-        return UserUpdateRequest::class;
-
+        return [
+            'username' => 'required|string|max:50|unique:users',
+            'name' => 'required|string|max:50',
+            'surname' => 'nullable|string|max:50',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed', // 'have to receive password_confirmation'
+            'active' => 'boolean|nullable',
+            'avatar' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048'
+        ];
     }
 
 

@@ -10,8 +10,23 @@ use Illuminate\Http\Request;
 interface BaseServiceInterface
 {
 
-    public function successResponse($data, $message = '', $code = 200);
+    public function repository();
 
-    public function errorResponse($message, $code, $data = []);
+    public function model();
+
+    public function rules();
+
+    public function list(Request $request);
+
+    public function getByColumn(Request $request); //$request=> ['column'=> 'column_name', 'value'=> 'value to search']
+
+    public function view($id);
+
+    public function create(Request $request);
+
+    public function update($id, Request $request);
+
+    public function delete($id);
+
 
 }

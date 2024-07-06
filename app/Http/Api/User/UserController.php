@@ -3,89 +3,41 @@
 namespace App\Http\Api\User;
 
 
-use App\Helpers\ApiResponseHelper;
 use App\Http\Api\Base\BaseController;
-use App\Http\Api\User\Requests\StoreUserRequest;
-use App\Http\Api\User\Requests\UserStoreRequest;
-use App\Http\Api\User\Requests\UserUpdateRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends BaseController
 {
-    private UserRepository $repository;
+    private UserService $service;
 
-    public function  __constructor()
+    public function __construct()
     {
-        $this->repository = new UserRepository();
+        $this->service = new UserService();
     }
 
-    public function index()
+    public function list(Request $request)
     {
-        $data = $this->repository->all();
-        return $this->successResponse(UserResource::collection($data));
-
+        return $this->service->list($request);
     }
 
-    public function show($id)
+    public function view($id, Request $request)
     {
-        //
-        $user = $this->repository->getById($id);
-
-        return ApiResponseHelper::sendRespose(new UserResource($user));
-
+        return $this->service->view($id);
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
-        $data=[
-            'username' => $request->name,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'password' => $request->password,
-            'active' => false,
-            'avatar' => $request->avatar,
-        ];
-        DB::beginTransaction();
-        try {
-            $user = $this->repository->create($data);
-            DB::commit();
-            return $this->successResponse(new UserResource($user), 'User created success!', 201 );
-        }catch (\Exception $ex){
-            DB::rollBack();
-            return  $this->errorResponse('Failed created user!', 500, $ex);
-        }
+
+        return $this->service->create($request);
     }
 
-
-
-    public function update(UserUpdateRequest $request, $id)
+    public function update($id, Request $request)
     {
-        $data=[
-            'username' => $request->name,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'password' => $request->password,
-            'active' => false,
-            'avatar' => $request->avatar,
-        ];
-        DB::beginTransaction();
-        try {
-            $user = $this->repository->updateById($id, $data);
-            DB::commit();
-            return $this->successResponse(new UserResource($user), 'User created success!', 201 );
-        }catch (\Exception $ex){
-            DB::rollBack();
-            return  $this->errorResponse('Failed created user!', 500, $ex);
-        }
+        return $this->service->update($id, $request);
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        $this->repository->deleteById($id);
-        return $this->successResponse(null,'User deleted success!');
+        return $this->service->delete($id);
     }
 }

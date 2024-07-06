@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Api\Country;
+namespace App\Http\Api\City;
 
-use App\Models\Country;
 use App\Http\Api\Base\BaseRepository;
+use App\Models\City;
 
+//use Your Model
 
 /**
  * Class UserRepository.
  */
-class CountryRepository extends BaseRepository
+class CityRepository extends BaseRepository
 {
     /**
      * @return string
+     *  Return the model
      */
     public function model(): string
     {
-        return Country::class;
+        return City::class;
     }
-
 }

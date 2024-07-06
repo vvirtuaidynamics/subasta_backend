@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Api\User;
+namespace App\Http\Api\Carrier;
 
 use App\Http\Api\Base\BaseRepository;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Carrier;
 
 //use Your Model
 
 /**
  * Class UserRepository.
  */
-class UserRepository extends BaseRepository
+class CarrierRepository extends BaseRepository
 {
     /**
      * @return string
@@ -19,6 +18,6 @@ class UserRepository extends BaseRepository
      */
     public function model(): string
     {
-        return User::class;
+        return Carrier::class;
     }
 }

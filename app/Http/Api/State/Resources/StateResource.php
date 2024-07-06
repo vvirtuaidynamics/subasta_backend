@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Api\State;
+namespace App\Http\Api\State\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class State extends ResourceCollection
+class StateResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

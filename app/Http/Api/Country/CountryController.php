@@ -3,8 +3,6 @@
 namespace App\Http\Api\Country;
 
 use App\Http\Api\Base\BaseController;
-use App\Http\Controllers\Controller;
-use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CountryController extends BaseController
@@ -16,14 +14,14 @@ class CountryController extends BaseController
         $this->service = new CountryService();
     }
 
-    public function index(Request $request)
+    public function list(Request $request)
     {
         return $this->service->list($request);
     }
 
-    public function show($id)
+    public function view($id)
     {
-        return $this->service->show($id);
+        return $this->service->view($id);
     }
 
 

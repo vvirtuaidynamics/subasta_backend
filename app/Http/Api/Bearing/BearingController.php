@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Api\Client;
+namespace App\Http\Api\Bearing;
 
 
 use App\Http\Api\Base\BaseController;
 use Illuminate\Http\Request;
 
-class ClientController extends BaseController
+class BearingController extends BaseController
 {
-    private ClientService $service;
+    private BearingService $service;
 
     public function __construct()
     {
-        $this->service = new ClientService();
+        $this->service = new BearingService();
     }
 
     public function list(Request $request)
