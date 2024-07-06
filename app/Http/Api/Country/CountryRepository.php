@@ -12,11 +12,11 @@ use App\Http\Api\Base\BaseRepository;
 class CountryRepository extends BaseRepository
 {
     /**
-     * @return Country
+     * @return string
      */
-    public function model()
+    public function model(): string
     {
-       return Country::class;
+        return Country::class;
     }
 
 }
