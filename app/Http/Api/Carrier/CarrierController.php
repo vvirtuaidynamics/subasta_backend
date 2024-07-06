@@ -2,35 +2,42 @@
 
 namespace App\Http\Api\Carrier;
 
-use App\Http\Controllers\Controller;
-use App\Models\Carrier;
+
+use App\Http\Api\Base\BaseController;
 use Illuminate\Http\Request;
 
-class CarrierController extends Controller
+class CarrierController extends BaseController
 {
+    private CarrierService $service;
 
-    public function index()
+    public function __construct()
     {
-        //
+        $this->service = new CarrierService();
+    }
+
+    public function list(Request $request)
+    {
+        return $this->service->list($request);
+    }
+
+    public function view($id, Request $request)
+    {
+        return $this->service->view($id);
     }
 
     public function store(Request $request)
     {
-        //
+
+        return $this->service->create($request);
     }
 
-    public function edit(Carrier $carrier)
+    public function update($id, Request $request)
     {
-        //
+        return $this->service->update($id, $request);
     }
 
-    public function update(Request $request, Carrier $carrier)
+    public function delete($id)
     {
-        //
-    }
-
-    public function destroy(Carrier $carrier)
-    {
-        //
+        return $this->service->delete($id);
     }
 }
