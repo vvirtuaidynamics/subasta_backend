@@ -2215,21 +2215,9 @@
 			"item": [
 				{
 					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"page\":1,\r\n    \"limit\": 50,\r\n    \"order\": [\r\n        {\"column\": \"name\",\"direction\": \"asc\"}\r\n    ],\r\n    \"filters\": [\r\n        {\"type\": \"where\", \"column\": \"name\",\"value\": \"Cuba\"},\r\n         {\"type\": \"whereIn\", \"column\": \"id\",\"values\": \"56\"}\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{api_url}}/state",
 							"host": [
