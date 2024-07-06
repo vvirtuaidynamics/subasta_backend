@@ -27,7 +27,7 @@ class AuthService
         $validated = $request->validated();
         $firstCredentialValue = $validated['identity'];
         $firstCredentialValueType = filter_var($firstCredentialValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        //TODO Ver posible ajuste para usar repositorio
+        
         $user = User::where("$firstCredentialValueType", $validated['identity'])
             ->first();
 
@@ -38,6 +38,7 @@ class AuthService
             );
         }
 
+
         if (!$user || !Hash::check($validated['password'], $user->password)) {
             return $this->sendError(
                 ApiResponseMessages::INVALID_CREDENTIALS,
@@ -46,12 +47,17 @@ class AuthService
         }
 
         $permissions = $user->hasRole('super-admin') ? ['*'] : collect($user->getAllPermissions())->pluck('name')->toArray();
-        $modules = get_user_modules($user);
-        $token = $user->createToken(config('app.name', 'Backend'),
+        $user_to_return = $user;
+        $user->last_login_at = now();
+        $user->save();
+
+        $modules = get_user_modules($user_to_return);
+        $token = $user_to_return->createToken(config('app.name', 'Backend'),
             [...$permissions],
         )->plainTextToken;
+
         $data = array(
-            'user' => $user,
+            'user' => $user_to_return,
             'token' => $token,
             'modules' => $modules,
             'permissions' => $permissions
@@ -61,8 +67,8 @@ class AuthService
             ApiResponseMessages::LOGIN_SUCCESSFUL,
             ApiResponseCodes::HTTP_SUCCESS
         );
-
     }
+
 
     public function register(Request $request, $model = null)
     {
