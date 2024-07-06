@@ -21,7 +21,8 @@
                 "tags": [
                     "Auth"
                 ],
-                "summary": "Log in a user",
+                "summary": "Log in a user on the system.",
+                "description": "The login request require identity that can be email or username and password.",
                 "operationId": "a3b306d14572d1f4bd82164b3233e001",
                 "requestBody": {
                     "required": true,
@@ -35,7 +36,7 @@
                                 "properties": {
                                     "identity": {
                                         "type": "string",
-                                        "format": "email",
+                                        "format": "email | username",
                                         "example": "john@example.com"
                                     },
                                     "password": {
@@ -51,7 +52,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Logged in successfully"
+                        "description": "Login successful"
                     },
                     "401": {
                         "description": "Invalid credentials"
@@ -65,7 +66,8 @@
                     "Auth"
                 ],
                 "summary": "Register a new user",
-                "operationId": "8a56853624e025573120a09a4c75d468",
+                "description": "Register a new user on the system.",
+                "operationId": "a3b306d14572d1f4bd82164b3233e002",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -74,13 +76,18 @@
                                 "required": [
                                     "username",
                                     "name",
+                                    "surname",
                                     "email",
                                     "password"
                                 ],
                                 "properties": {
                                     "name": {
                                         "type": "string",
-                                        "example": "John Doe"
+                                        "example": "John"
+                                    },
+                                    "surname": {
+                                        "type": "string",
+                                        "example": "Doe Martin"
                                     },
                                     "username": {
                                         "type": "string",
@@ -92,11 +99,6 @@
                                         "example": "john@example.com"
                                     },
                                     "password": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "password"
-                                    },
-                                    "surname": {
                                         "type": "string",
                                         "format": "password",
                                         "example": "password"
@@ -117,17 +119,36 @@
                 }
             }
         },
-
+        "/api/profile": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get logged in user profile",
+                "operationId": "a3b306d14572d1f4bd82164b3233e003",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/logout": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Log out a user",
-                "operationId": "fe8f3429cd6979b3b4517e186505f9f9",
+                "description": "Permit logout of system.",
+                "operationId": "a3b306d14572d1f4bd82164b3233e004",
                 "responses": {
                     "200": {
-                        "description": "Logged out successfully"
+                        "description": "Successfully logged out"
                     }
                 },
                 "security": [
