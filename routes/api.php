@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Api\Country\CountryController;
 use App\Http\Api\State\StateController;
 use App\Http\Api\City\CityController;
-
+use App\Http\Api\ValidationTask\ValidationTaskController;
 
 Route::get('/dev', function (Illuminate\Http\Request $request) {
-    $models = get_modules();//get_models();
+    $models = get_modules();
+    //get_models();
     //$mothers = get_user_models($request->user());
-//    $models = config('modules.modules_data');
+    //$models = config('modules.modules_data');
     dd($models);
 })->name('dev');
 
@@ -59,6 +60,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/carrier', [CarrierController::class, 'store'])->name('carrier_store');
     Route::patch('/carrier/{id}', [CarrierController::class, 'update'])->name('carrier_update');
     Route::delete('/carrier/{id}', [CarrierController::class, 'delete'])->name('carrier_delete');
+
+    /**
+     * ValidationTask
+     */
+    Route::get('/validation-task', [ValidationTaskController::class, 'list'])->name('validation_task_list');
+    Route::get('/validation-task/{id}', [ValidationTaskController::class, 'view'])->name('validation_task_view');
+    Route::post('/validation-task', [ValidationTaskController::class, 'store'])->name('validation_task_store');
+    Route::patch('/validation-task/{id}', [ValidationTaskController::class, 'update'])->name('validation_task_update');
+    Route::delete('/validation-task/{id}', [ValidationTaskController::class, 'delete'])->name('validation_task_delete');
 
     /**
      * Country Routes
