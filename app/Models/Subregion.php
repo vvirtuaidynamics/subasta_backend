@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Http\Api\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Subregion extends Model
+class Subregion extends BaseModel
 {
     use HasFactory;
 

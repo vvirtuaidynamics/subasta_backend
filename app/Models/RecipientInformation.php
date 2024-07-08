@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Http\Api\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class RecipientInformation extends Model
+class RecipientInformation extends BaseModel
 {
     use HasFactory;
 }
