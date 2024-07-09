@@ -44,7 +44,7 @@ class Client extends BaseModel
 
     public function getStatusAttribute()
     {
-        return $this->user()->get('status');
+        return $this->user()->get('active');
     }
 
     public function getFullNameAttribute()
