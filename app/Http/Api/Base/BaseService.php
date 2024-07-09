@@ -87,6 +87,27 @@ abstract class BaseService implements BaseServiceInterface
         return class_basename($this->model);
     }
 
+    public function findById($id)
+    {
+        // Authorization check
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':list';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            return null;
+        return $this->repository->getById($id);
+    }
+
+    public function findByColumn($value, $column = 'id')
+    {
+        // Authorization check
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':list';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+        if (!isset($value)) return null;
+        return $this->repository->getByColumn($value, $column);
+    }
+
     public function list(Request $request)
     {
         // Authorization check
@@ -142,7 +163,7 @@ abstract class BaseService implements BaseServiceInterface
         }
     }
 
-    public function view($id)
+    public function view($id, $getModel = false)
     {
         // Authorization check
         $user = auth()->user();
@@ -150,15 +171,17 @@ abstract class BaseService implements BaseServiceInterface
         if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
             $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
 
-        if ($id) {
-            $data = $this->repository->getById($id);
-            if ($data)
-                return $this->sendResponse($data, ApiResponseMessages::FETCHED_SUCCESSFULLY);
+
+        $data = $this->repository->getById($id);
+        if ($data) {
+            if ($getModel) return $data;
+            return $this->sendResponse($data, ApiResponseMessages::FETCHED_SUCCESSFULLY);
+
         }
         return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $getModel = false)
     {
         // Authorization check
         $user = auth()->user();
@@ -171,6 +194,8 @@ abstract class BaseService implements BaseServiceInterface
             $validator = $this->makeValidator($request->all());
             $validatedData = $validator->validate();
             $result = $this->repository->create($validatedData);
+            if ($getModel) return $result;
+
             return $this->sendResponse($result, ApiResponseMessages::CREATED_SUCCESSFULLY);
         } catch (ValidationException $e) {
             return $this->sendError(
@@ -182,7 +207,7 @@ abstract class BaseService implements BaseServiceInterface
 
     }
 
-    public function update($id, Request $request)
+    public function update($id, Request $request, $getModel = false)
     {
         $user = auth()->user();
         $require_permission = strtolower($this->getBaseModel()) . ':update';
@@ -197,6 +222,7 @@ abstract class BaseService implements BaseServiceInterface
             $validatedData = $validator->validate();
 
             $result = $this->repository->updateById($id, $validatedData);
+            if ($getModel) return $result;
             return $this->sendResponse(
                 $result,
                 ApiResponseMessages::UPDATED_SUCCESSFULLY

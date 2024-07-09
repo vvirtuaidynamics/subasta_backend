@@ -455,8 +455,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
         foreach ($this->whereIns as $whereIn) {
             $this->query->whereIn($whereIn['column'], $whereIn['values']);
         }
-        foreach ($this->whereBetweens as $whereBetwn) {
-            $this->query->whereBetween($whereBetwn['column'], $whereBetwn['values']);
+        foreach ($this->whereBetweens as $whereBetween) {
+            $this->query->whereBetween($whereBetween['column'], $whereBetween['values']);
         }
 
         foreach ($this->orderBys as $orders) {
