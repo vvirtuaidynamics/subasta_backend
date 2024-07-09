@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->text('notes')->nullable();
             $table->text('validation_data')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

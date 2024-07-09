@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ValidationStatus;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -12,7 +13,7 @@ use App\Http\Api\Base\BaseModel;
 
 class Client extends BaseModel
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
     protected $with = ['user'];
