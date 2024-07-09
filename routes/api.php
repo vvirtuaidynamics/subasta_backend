@@ -1,29 +1,42 @@
 <?php
 
 use App\Http\Api\Auth\AuthController;
-use App\Http\Api\User\UserController;
-use App\Http\Api\Client\ClientController;
 use App\Http\Api\Carrier\CarrierController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Api\City\CityController;
+use App\Http\Api\Client\ClientController;
 use App\Http\Api\Country\CountryController;
 use App\Http\Api\State\StateController;
-use App\Http\Api\City\CityController;
+use App\Http\Api\User\UserController;
 use App\Http\Api\ValidationTask\ValidationTaskController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/dev', function (Illuminate\Http\Request $request) {
     $models = get_modules();
+    $userService = new \App\Http\Api\User\UserService();
+    $user = $userService->findByColumn(1);
+    $locale = new \App\Http\Api\Locale\LocaleService();
+
     //get_models();
     //$mothers = get_user_models($request->user());
     //$models = config('modules.modules_data');
-    dd($models);
+    return $locale->getAvailableLocales();
 })->name('dev');
 
 /**
  * Rutas públicas.
  */
+// Login
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 // Registro por default model=User, puede ser Client o Carrier
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
+
+/**
+ *  Locales (Gestión del idioma desde el backend)
+ */
+Route::get('/lang', [\App\Http\Api\Locale\LocaleController::class, 'list'])->name('lang_list');
+Route::get('/lang/{locale}', [\App\Http\Api\Locale\LocaleController::class, 'lang'])->name('lang_locale');
+Route::get('/lang/locales', [\App\Http\Api\Locale\LocaleController::class, 'locales'])->name('lang_locales');
+
 
 /**
  * Rutas protegias
