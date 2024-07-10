@@ -42,6 +42,20 @@ return [
             'permissions' => ['create', 'view', 'update', 'delete']
         ],
         [
+            'name' => 'permission',
+            'table' => 'permissions',
+            'model' => 'Permission',
+            'class' => 'Spatie\\Permission\\Models\\Permission',
+            'label' => 'Permissions',
+            'title' => 'Permissions',
+            'url' => 'permission',
+            'icon' => 'mdi-key',
+            'fields' => '[]',
+            'order' => 1,
+            'parent' => 'administration',
+            'permissions' => ['create', 'view', 'update', 'delete']
+        ],
+        [
             'name' => 'user',
             'table' => 'users',
             'model' => 'User',
@@ -188,7 +202,7 @@ return [
             'order' => 3,
             'parent' => 'encoder',
             'permissions' => ['view']],
-        
+
     ]
 
 ];
