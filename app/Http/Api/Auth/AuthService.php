@@ -4,6 +4,7 @@ namespace App\Http\Api\Auth;
 
 use App\Enums\ApiResponseMessages;
 use App\Enums\ApiResponseCodes;
+use App\Enums\ApiStatus;
 use App\Enums\ValidationStatus;
 use App\Http\Api\Auth\Requests\LoginRequest;
 use App\Http\Api\Auth\Requests\RegisterCarrierRequest;
@@ -11,6 +12,7 @@ use App\Http\Api\Auth\Requests\RegisterClientRequest;
 use App\Http\Api\Auth\Requests\RegisterUserRequest;
 use App\Http\Api\DocumentCarrier\DocumentCarrierRepository;
 use App\Http\Api\Client\ClientRepository;
+use App\Http\Api\State\Resources\StateResource;
 use App\Http\Api\User\UserRepository;
 use App\Http\Api\ValidationTask\ValidationTaskRepository;
 use App\Models\Client;
@@ -186,22 +188,12 @@ class AuthService
             $userRequest = new RegisterUserRequest();
             $validator = validator($request->all(), $userRequest->rules(), $userRequest->messages());
             $user_validated_data = $validator->validate();
-
-//            if ($request->has('model') && $request->input('model') === "client") {
-//                $clientRequest = new RegisterUserRequest();
-//                $validator = validator($request->all(), $clientRequest->rules(), $clientRequest->messages());
-//                $client_validated_data = $validator->validate();
-//                $client = $this->clientRepository->create($client_validated_data);
-//
-//            }
-
             $user = $this->userRepository->create($user_validated_data);
 
 
             if (!$request->has('model')) {
             }
             $permissions = $user->hasRole('super-admin') ? ['*'] : collect($user->getAllPermissions())->pluck('name')->toArray();
-
 
             $token = $user->createToken(config('app.name', 'Backend'),
                 [...$permissions],
@@ -254,5 +246,26 @@ class AuthService
     public function profile(Request $request): JsonResponse
     {
         return $this->sendResponse($request->user(), ApiResponseMessages::FETCHED_SUCCESSFULLY);
+    }
+
+    public function setUserConfig(Request $request): JsonResponse
+    {
+        $user = auth()->user();
+        $request->validate([
+            'configuration' => 'required|string',
+        ]);
+        $configuration = $request->input('configuration');
+        $user->configuration->create([
+            'configuration' => $configuration
+        ]);
+        return $this->sendResponse(['success' => true, 'result' => $user->configuration], ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiStatus::SUCCESS);
+    }
+
+    public function getUserConfig(Request $request): JsonResponse
+    {
+        $user = auth()->user();
+        $configuration = $user->configuration;
+        return $this->sendResponse(['success' => true, 'result' => $configuration], ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiStatus::SUCCESS);
+
     }
 }
