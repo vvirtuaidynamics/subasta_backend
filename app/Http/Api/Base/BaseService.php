@@ -189,11 +189,11 @@ abstract class BaseService implements BaseServiceInterface
         if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
             $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
         try {
-            if (!$request->has('active'))
-                $request = $request->merge(['active' => 0]);
+            $request = $this->mergeCreateRequestBefore($request); // Add request default parameters before insert
             $validator = $this->makeValidator($request->all());
             $validatedData = $validator->validate();
             $result = $this->repository->create($validatedData);
+
             if ($getModel) return $result;
 
             return $this->sendResponse($result, ApiResponseMessages::CREATED_SUCCESSFULLY);
@@ -217,10 +217,9 @@ abstract class BaseService implements BaseServiceInterface
                 ApiResponseCodes::HTTP_FORBIDDEN
             );
         try {
+            $request = $this->mergeUpdateRequestBefore($request); // Add request default parameters before insert
             $validator = $this->makeValidator($request->all(), $id);
-
             $validatedData = $validator->validate();
-
             $result = $this->repository->updateById($id, $validatedData);
             if ($getModel) return $result;
             return $this->sendResponse(
@@ -254,5 +253,14 @@ abstract class BaseService implements BaseServiceInterface
         return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
     }
 
+    public function mergeCreateRequestBefore(Request $request)
+    {
+        return $request;
+    }
+
+    public function mergeUpdateRequestBefore(Request $request)
+    {
+        return $request;
+    }
 
 }
