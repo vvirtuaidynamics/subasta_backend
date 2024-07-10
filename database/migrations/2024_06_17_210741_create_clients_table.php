@@ -22,7 +22,6 @@ return new class extends Migration {
             $table->text('notes')->nullable();
             $table->text('about_me')->nullable();
             $table->string('photo')->nullable();
-            $table->string('cover_profile')->nullable();
             $table->date('validated')->nullable();
             $table->timestamps();
             $table->softDeletes();

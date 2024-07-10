@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('validationable_type')->comment('module to validate');
             $table->unsignedBigInteger('validationable_id')->comment('module object to validate');
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
-            $table->enum('status', ValidationStatus::values())->default(ValidationStatus::PENDING);
+            $table->enum('status', ValidationStatus::values())->default(ValidationStatus::PENDING->value);
             $table->date('validated_at')->nullable();
             $table->unsignedBigInteger('who_validated')->nullable();
             $table->text('notes')->nullable();
