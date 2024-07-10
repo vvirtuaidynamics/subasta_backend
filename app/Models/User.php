@@ -26,11 +26,6 @@ class User extends Authenticatable
             ->logOnlyDirty();
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'username',
         'name',
@@ -42,11 +37,6 @@ class User extends Authenticatable
         'last_login_at'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -54,18 +44,8 @@ class User extends Authenticatable
         'permissions'
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = ['super_admin', 'full_name', 'role_names', 'permission_names'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
