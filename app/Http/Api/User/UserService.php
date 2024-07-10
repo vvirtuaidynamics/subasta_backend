@@ -4,6 +4,7 @@ namespace App\Http\Api\User;
 
 use App\Http\Api\Base\BaseService;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 /**
  * Class UserRepository.
@@ -33,5 +34,11 @@ class UserService extends BaseService
         ];
     }
 
+    public function mergeRequestBefore(Request $request): Request
+    {
+        if (!$request->has('active'))
+            $request = $request->merge(['active' => 0]);
+        return $request;
+    }
 
 }
