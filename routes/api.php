@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Api\Auth\AuthController;
-use App\Http\Api\Carrier\CarrierController;
+use App\Http\Api\DocumentCarrier\DocumentCarrierController;
 use App\Http\Api\City\CityController;
+use App\Http\Api\Carrier\CarrierController;
 use App\Http\Api\Client\ClientController;
 use App\Http\Api\Country\CountryController;
 use App\Http\Api\State\StateController;
@@ -68,11 +69,11 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * Carrier
      */
-    Route::get('/carrier', [CarrierController::class, 'list'])->name('carrier_list');
-    Route::get('/carrier/{id}', [CarrierController::class, 'view'])->name('carrier_view');
-    Route::post('/carrier', [CarrierController::class, 'store'])->name('carrier_store');
-    Route::patch('/carrier/{id}', [CarrierController::class, 'update'])->name('carrier_update');
-    Route::delete('/carrier/{id}', [CarrierController::class, 'delete'])->name('carrier_delete');
+    Route::get('/carrier', [DocumentCarrierController::class, 'list'])->name('carrier_list');
+    Route::get('/carrier/{id}', [DocumentCarrierController::class, 'view'])->name('carrier_view');
+    Route::post('/carrier', [DocumentCarrierController::class, 'store'])->name('carrier_store');
+    Route::patch('/carrier/{id}', [DocumentCarrierController::class, 'update'])->name('carrier_update');
+    Route::delete('/carrier/{id}', [DocumentCarrierController::class, 'delete'])->name('carrier_delete');
 
     /**
      * ValidationTask
