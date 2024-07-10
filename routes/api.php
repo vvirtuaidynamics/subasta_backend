@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Api\Locale\LocaleController;
 use App\Http\Api\Auth\AuthController;
 use App\Http\Api\DocumentCarrier\DocumentCarrierController;
 use App\Http\Api\City\CityController;
 use App\Http\Api\Carrier\CarrierController;
+
 use App\Http\Api\Client\ClientController;
 use App\Http\Api\Country\CountryController;
 use App\Http\Api\State\StateController;
@@ -20,24 +22,21 @@ Route::get('/dev', function (Illuminate\Http\Request $request) {
     //get_models();
     //$mothers = get_user_models($request->user());
     //$models = config('modules.modules_data');
-    return $locale->getAvailableLocales();
+    return get_modules();
 })->name('dev');
 
 /**
  * Rutas públicas.
  */
-// Login
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-// Registro por default model=User, puede ser Client o Carrier
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
 
 /**
  *  Locales (Gestión del idioma desde el backend)
  */
-Route::get('/lang', [\App\Http\Api\Locale\LocaleController::class, 'list'])->name('lang_list');
-Route::get('/lang/{locale}', [\App\Http\Api\Locale\LocaleController::class, 'lang'])->name('lang_locale');
-Route::get('/lang/locales', [\App\Http\Api\Locale\LocaleController::class, 'locales'])->name('lang_locales');
-
+Route::get('/lang', [LocaleController::class, 'list'])->name('lang_list');
+Route::get('/lang/{locale}', [LocaleController::class, 'lang'])->name('lang_locale');
+Route::get('/lang/locales', [LocaleController::class, 'locales'])->name('lang_locales');
 
 /**
  * Rutas protegias

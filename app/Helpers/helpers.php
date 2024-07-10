@@ -125,9 +125,10 @@ if (!function_exists('get_models')) {
 
                     $model_fields[] = ["column" => $column, "type" => $type];
                 }
-                $schemas[] = ["name" => $model, "class" => $class_namespace, "fields" => $model_fields];
+                $model_schema = ["name" => $model, "class" => $class_namespace, "fields" => $model_fields];
+                $schemas[] = $model_schema;
                 if ($model_name && $model_name == $model) {
-                    return ["column" => $column, "type" => $type];
+                    return $model_schema;
                 }
             }
         }

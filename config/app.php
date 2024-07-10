@@ -54,7 +54,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
     'page_default_size' => env('PAGE_DEFAULT_SIZE', 30),
     'asset_url' => env('ASSET_URL'),
-    'public_routes' => ['home', 'register', 'login', 'dev'],
+    'public_routes' => ['home', 'register', 'login', 'lang_locale', 'lang_locales', 'lang_list', 'dev'],
     'google_api_key' => env('GOOGLE_API_KEY'),
 
     /*
