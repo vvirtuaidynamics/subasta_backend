@@ -55,7 +55,7 @@ return [
     'page_default_size' => env('PAGE_DEFAULT_SIZE', 30),
     'asset_url' => env('ASSET_URL'),
     'public_routes' => ['home', 'register', 'login', 'dev'],
-
+    'google_api_key' => env('GOOGLE_API_KEY', 'AIzaSyA0kI-4h_yjbdMQeiMDgC1h2vELdtKvGv8'),
 
     /*
     |--------------------------------------------------------------------------
