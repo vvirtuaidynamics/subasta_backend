@@ -39,7 +39,7 @@ class ClientService extends BaseService
             "user_id" => "nullable|numeric",
             "about_me" => "nullable|string",
             "photo" => "nullable|string",
-            "gender" => "required|in:'unknown,male,female'",
+            "gender" => "required|in:unknown,male,female",
         ];
     }
 
