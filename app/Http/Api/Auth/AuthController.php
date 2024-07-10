@@ -10,7 +10,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class AuthController extends Controller
 {
     protected $authService;
@@ -20,11 +19,13 @@ class AuthController extends Controller
         $this->authService = new AuthService();
     }
 
-    public function register(Request $request, $model = null): JsonResponse
+    public function register(Request $request): JsonResponse
     {
+        if ($request->has('model') && $request->input('model') == "client")
+            return $this->authService->registerClient($request);
+        if ($request->has('model') && $request->input('model') == "carrier")
+            return $this->authService->registerCarrier($request);
         return $this->authService->register($request);
-        //TODO Add logic to register clients and carriers
-
     }
 
     public function login(LoginRequest $request): JsonResponse
