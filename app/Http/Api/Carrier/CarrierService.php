@@ -2,8 +2,14 @@
 
 namespace App\Http\Api\Carrier;
 
+use App\Enums\ApiResponseCodes;
+use App\Enums\ApiResponseMessages;
 use App\Http\Api\Base\BaseService;
 use App\Models\Carrier;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class UserRepository.
@@ -39,7 +45,7 @@ class CarrierService extends BaseService
             "user_id" => "nullable|numeric",
             "about_me" => "nullable|string",
             "photo" => "nullable|string",
-            "gender" => "required|in:'unknown,male,female'",
+            "gender" => "required|in:unknown,male,female",
             "transportation_card" => "nullable|file|max:10240",
             "merchandise_insurance" => "nullable|file|max:10240",
             "high_social_security" => "nullable|file|max:10240",
@@ -53,6 +59,32 @@ class CarrierService extends BaseService
             "end_date_vehicle_insurance" => "nullable|date",
             "end_date_itv" => "nullable|date",
         ];
+    }
+
+    public function create(Request $request, $getModel = false)
+    {
+        // Authorization check
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':create';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+        try {
+            $request = $this->mergeRequestBefore($request); // Add request default parameters before insert
+            $validator = $this->makeValidator($request->all());
+            $validatedData = $validator->validate();
+            $result = $this->repository->create($validatedData);
+
+            if ($getModel) return $result;
+
+            return $this->sendResponse($result, ApiResponseMessages::CREATED_SUCCESSFULLY);
+        } catch (ValidationException $e) {
+            return $this->sendError(
+                ApiResponseMessages::UNPROCESSABLE_CONTENT,
+                ApiResponseCodes::HTTP_UNPROCESSABLE_CONTENT,
+                ['errors' => $e->errors()]
+            );
+        }
+
     }
 
 
