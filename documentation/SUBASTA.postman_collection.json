@@ -251,6 +251,78 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"uuid\": \"ded3c84a-28fd-4703-ad84-c65371b7af62\",\n            \"username\": \"admin\",\n            \"name\": \"Subasta\",\n            \"surname\": \"Administrator\",\n            \"email\": \"admin@subasta.com\",\n            \"email_verified_at\": \"2024-07-03T06:27:55.000000Z\",\n            \"active\": true,\n            \"avatar\": \"http://localhost:8000/storage/avatars/default.png\",\n            \"last_login_at\": null,\n            \"created_at\": \"2024-07-03T06:27:55.000000Z\",\n            \"updated_at\": \"2024-07-03T06:27:55.000000Z\",\n            \"deleted_at\": null,\n            \"super_admin\": true,\n            \"full_name\": \"Subasta Administrator\",\n            \"role_names\": [\n                \"super-admin\"\n            ],\n            \"permission_names\": [\n                \"administration:view\",\n                \"role:create\",\n                \"role:view\",\n                \"role:update\",\n                \"role:delete\",\n                \"user:create\",\n                \"user:view\",\n                \"user:update\",\n                \"user:delete\",\n                \"activity:create\",\n                \"activity:view\",\n                \"activity:update\",\n                \"activity:delete\",\n                \"person:view\",\n                \"carrier:create\",\n                \"carrier:view\",\n                \"carrier:update\",\n                \"carrier:delete\",\n                \"client:create\",\n                \"client:view\",\n                \"client:update\",\n                \"client:delete\",\n                \"bearing:create\",\n                \"bearing:view\",\n                \"bearing:update\",\n                \"bearing:delete\",\n                \"validationtask:create\",\n                \"validationtask:view\",\n                \"validationtask:update\",\n                \"validationtask:delete\",\n                \"encoder:view\",\n                \"country:view\",\n                \"state:view\",\n                \"city:view\"\n            ]\n        },\n        \"token\": \"1|PffOzcrrwTQM4Y1RXgmyxU6EvFtlerOnQ1mMLDxb7366493d\",\n        \"modules\": [\n            {\n                \"name\": \"administration\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Administration\",\n                \"title\": \"Subasta system management\",\n                \"url\": \"\",\n                \"icon\": \"mdi-account-cog-outline\",\n                \"order\": 1,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"administration:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"role\",\n                \"model\": \"Role\",\n                \"class\": \"Spatie\\\\Permission\\\\Models\\\\Role\",\n                \"label\": \"Roles\",\n                \"title\": \"Roles\",\n                \"url\": \"role\",\n                \"icon\": \"mdi-account-multiple-outline\",\n                \"order\": 1,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"guard_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"role:create\": true\n                    },\n                    {\n                        \"role:view\": true\n                    },\n                    {\n                        \"role:update\": true\n                    },\n                    {\n                        \"role:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"user\",\n                \"model\": \"User\",\n                \"class\": \"App\\\\Models\\\\User\",\n                \"label\": \"Users\",\n                \"title\": \"Users\",\n                \"url\": \"user\",\n                \"icon\": \"mdi-account-outline\",\n                \"order\": 2,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"uuid\\\",\\\"type\\\":\\\"char\\\"},{\\\"column\\\":\\\"username\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"surname\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"email\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"email_verified_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"password\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"active\\\",\\\"type\\\":\\\"int\\\"},{\\\"column\\\":\\\"avatar\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"last_login_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"remember_token\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"user:create\": true\n                    },\n                    {\n                        \"user:view\": true\n                    },\n                    {\n                        \"user:update\": true\n                    },\n                    {\n                        \"user:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"activity\",\n                \"model\": \"Activity\",\n                \"class\": \"App\\\\Models\\\\Activity\",\n                \"label\": \"Activity\",\n                \"title\": \"Activity\",\n                \"url\": \"activity\",\n                \"icon\": \"mdi-account-clock-outline\",\n                \"order\": 3,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"log_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"description\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"subject_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"event\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"subject_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"causer_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"causer_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"properties\\\",\\\"type\\\":\\\"json\\\"},{\\\"column\\\":\\\"batch_uuid\\\",\\\"type\\\":\\\"char\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"activity:create\": true\n                    },\n                    {\n                        \"activity:view\": true\n                    },\n                    {\n                        \"activity:update\": true\n                    },\n                    {\n                        \"activity:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"person\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Persons\",\n                \"title\": \"Persons\",\n                \"url\": \"\",\n                \"icon\": \"mdi-account-multiple-outline\",\n                \"order\": 2,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"person:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"carrier\",\n                \"model\": \"Carrier\",\n                \"class\": \"App\\\\Models\\\\Carrier\",\n                \"label\": \"Carriers\",\n                \"title\": \"Carriers\",\n                \"url\": \"carrier\",\n                \"icon\": \"mdi-human-male\",\n                \"order\": 1,\n                \"parent\": \"person\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"user_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"address\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"date_of_birth\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"gender\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"company_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"industry\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"notes\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"about_me\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"photo\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"cover_profile\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"validated\\\",\\\"type\\\":\\\"date\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"carrier:create\": true\n                    },\n                    {\n                        \"carrier:view\": true\n                    },\n                    {\n                        \"carrier:update\": true\n                    },\n                    {\n                        \"carrier:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"client\",\n                \"model\": \"Client\",\n                \"class\": \"App\\\\Models\\\\Client\",\n                \"label\": \"Clients\",\n                \"title\": \"Clients\",\n                \"url\": \"client\",\n                \"icon\": \"mdi-briefcase-variant-outline\",\n                \"order\": 2,\n                \"parent\": \"person\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"user_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"address\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"date_of_birth\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"gender\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"company_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"industry\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"notes\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"about_me\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"photo\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"cover_profile\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"validated\\\",\\\"type\\\":\\\"date\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"client:create\": true\n                    },\n                    {\n                        \"client:view\": true\n                    },\n                    {\n                        \"client:update\": true\n                    },\n                    {\n                        \"client:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"bearing\",\n                \"model\": \"Bearing\",\n                \"class\": \"App\\\\Models\\\\Bearing\",\n                \"label\": \"Bearings\",\n                \"title\": \"Bearings\",\n                \"url\": \"bearing\",\n                \"icon\": \"mdi-cube-outline\",\n                \"order\": 3,\n                \"parent\": \"\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"bearing:create\": true\n                    },\n                    {\n                        \"bearing:view\": true\n                    },\n                    {\n                        \"bearing:update\": true\n                    },\n                    {\n                        \"bearing:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"validationtask\",\n                \"model\": \"ValidationTask\",\n                \"class\": \"App\\\\Models\\\\ValidationTask\",\n                \"label\": \"Validation Tasks\",\n                \"title\": \"Validation Tasks\",\n                \"url\": \"validation-task\",\n                \"icon\": \"mdi-calendar-multiple-check\",\n                \"order\": 4,\n                \"parent\": \"\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"validationtask:create\": true\n                    },\n                    {\n                        \"validationtask:view\": true\n                    },\n                    {\n                        \"validationtask:update\": true\n                    },\n                    {\n                        \"validationtask:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"encoder\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Encoders\",\n                \"title\": \"Encoders\",\n                \"url\": \"\",\n                \"icon\": \"mdi-codepen\",\n                \"order\": 5,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"encoder:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"country\",\n                \"model\": \"Country\",\n                \"class\": \"App\\\\Models\\\\Country\",\n                \"label\": \"Countries\",\n                \"title\": \"Countries\",\n                \"url\": \"country\",\n                \"icon\": \"map-marker-multiple-outline\",\n                \"order\": 1,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"region_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"subregion_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"iso3\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"iso2\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"numeric_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"capital\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency_symbol\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"tld\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"native\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"region\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"subregion\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"nationality\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"timezones\\\",\\\"type\\\":\\\"json\\\"},{\\\"column\\\":\\\"translations\\\",\\\"type\\\":\\\"json\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"country:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"state\",\n                \"model\": \"State\",\n                \"class\": \"App\\\\Models\\\\State\",\n                \"label\": \"States\",\n                \"title\": \"States\",\n                \"url\": \"state\",\n                \"icon\": \"map-marker-outline\",\n                \"order\": 2,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"country_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"state:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"city\",\n                \"model\": \"City\",\n                \"class\": \"App\\\\Models\\\\City\",\n                \"label\": \"Cities\",\n                \"title\": \"Cities\",\n                \"url\": \"city\",\n                \"icon\": \"map-marker-radius-outline\",\n                \"order\": 3,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"state_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"country_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"city:view\": true\n                    }\n                ]\n            }\n        ],\n        \"permissions\": [\n            \"*\"\n        ]\n    },\n    \"message\": \"Login successful\",\n    \"timestamp\": \"2024-07-03T06:28:55.950321Z\"\n}"
+						},
+						{
+							"name": "login_by_email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identity\":\"admin@subasta.com\", \r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Jul 2024 05:01:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Jul 2024 05:01:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"uuid\": \"ad693396-023c-4ec4-9a97-b032db1de8ee\",\n            \"username\": \"admin\",\n            \"name\": \"Subasta\",\n            \"surname\": \"Administrator\",\n            \"email\": \"admin@subasta.com\",\n            \"email_verified_at\": \"2024-07-09 02:01:25\",\n            \"active\": true,\n            \"avatar\": \"http://localhost:8000/storage/avatars/default.png\",\n            \"last_login_at\": \"2024-07-09 05:01:40\",\n            \"created_at\": \"2024-07-09T02:01:25.000000Z\",\n            \"updated_at\": \"2024-07-09T05:01:40.000000Z\",\n            \"deleted_at\": null,\n            \"super_admin\": true,\n            \"full_name\": \"Subasta Administrator\",\n            \"role_names\": [\n                \"super-admin\"\n            ],\n            \"permission_names\": [\n                \"administration:view\",\n                \"role:create\",\n                \"role:view\",\n                \"role:update\",\n                \"role:delete\",\n                \"user:create\",\n                \"user:view\",\n                \"user:update\",\n                \"user:delete\",\n                \"activity:create\",\n                \"activity:view\",\n                \"activity:update\",\n                \"activity:delete\",\n                \"person:view\",\n                \"carrier:create\",\n                \"carrier:view\",\n                \"carrier:update\",\n                \"carrier:delete\",\n                \"client:create\",\n                \"client:view\",\n                \"client:update\",\n                \"client:delete\",\n                \"bearing:create\",\n                \"bearing:view\",\n                \"bearing:update\",\n                \"bearing:delete\",\n                \"validationtask:create\",\n                \"validationtask:view\",\n                \"validationtask:update\",\n                \"validationtask:delete\",\n                \"encoder:view\",\n                \"country:view\",\n                \"state:view\",\n                \"city:view\"\n            ]\n        },\n        \"token\": \"4|bumUkYXDQSB88UlSgUoiKTBz172hiJre5RgLQcF613cad758\",\n        \"modules\": [\n            {\n                \"name\": \"administration\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Administration\",\n                \"title\": \"Subasta system management\",\n                \"url\": \"\",\n                \"icon\": \"mdi-account-cog-outline\",\n                \"order\": 1,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"administration:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"role\",\n                \"model\": \"Role\",\n                \"class\": \"Spatie\\\\Permission\\\\Models\\\\Role\",\n                \"label\": \"Roles\",\n                \"title\": \"Roles\",\n                \"url\": \"role\",\n                \"icon\": \"mdi-account-multiple-outline\",\n                \"order\": 1,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"guard_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"role:create\": true\n                    },\n                    {\n                        \"role:view\": true\n                    },\n                    {\n                        \"role:update\": true\n                    },\n                    {\n                        \"role:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"user\",\n                \"model\": \"User\",\n                \"class\": \"App\\\\Models\\\\User\",\n                \"label\": \"Users\",\n                \"title\": \"Users\",\n                \"url\": \"user\",\n                \"icon\": \"mdi-account-outline\",\n                \"order\": 2,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"uuid\\\",\\\"type\\\":\\\"char\\\"},{\\\"column\\\":\\\"username\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"surname\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"email\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"email_verified_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"password\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"active\\\",\\\"type\\\":\\\"int\\\"},{\\\"column\\\":\\\"avatar\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"last_login_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"remember_token\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"user:create\": true\n                    },\n                    {\n                        \"user:view\": true\n                    },\n                    {\n                        \"user:update\": true\n                    },\n                    {\n                        \"user:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"activity\",\n                \"model\": \"Activity\",\n                \"class\": \"App\\\\Models\\\\Activity\",\n                \"label\": \"Activity\",\n                \"title\": \"Activity\",\n                \"url\": \"activity\",\n                \"icon\": \"mdi-account-clock-outline\",\n                \"order\": 3,\n                \"parent\": \"administration\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"log_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"description\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"subject_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"event\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"subject_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"causer_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"causer_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"properties\\\",\\\"type\\\":\\\"json\\\"},{\\\"column\\\":\\\"batch_uuid\\\",\\\"type\\\":\\\"char\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"activity:create\": true\n                    },\n                    {\n                        \"activity:view\": true\n                    },\n                    {\n                        \"activity:update\": true\n                    },\n                    {\n                        \"activity:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"person\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Persons\",\n                \"title\": \"Persons\",\n                \"url\": \"\",\n                \"icon\": \"mdi-account-multiple-outline\",\n                \"order\": 2,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"person:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"carrier\",\n                \"model\": \"Carrier\",\n                \"class\": \"App\\\\Models\\\\Carrier\",\n                \"label\": \"Carriers\",\n                \"title\": \"Carriers\",\n                \"url\": \"carrier\",\n                \"icon\": \"mdi-human-male\",\n                \"order\": 1,\n                \"parent\": \"person\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"user_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"address\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"date_of_birth\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"gender\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"company_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"industry\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"notes\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"about_me\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"photo\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"cover_profile\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"validated\\\",\\\"type\\\":\\\"date\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"carrier:create\": true\n                    },\n                    {\n                        \"carrier:view\": true\n                    },\n                    {\n                        \"carrier:update\": true\n                    },\n                    {\n                        \"carrier:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"client\",\n                \"model\": \"Client\",\n                \"class\": \"App\\\\Models\\\\Client\",\n                \"label\": \"Clients\",\n                \"title\": \"Clients\",\n                \"url\": \"client\",\n                \"icon\": \"mdi-briefcase-variant-outline\",\n                \"order\": 2,\n                \"parent\": \"person\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"user_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"address\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"date_of_birth\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"gender\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"company_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"industry\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"notes\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"about_me\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"photo\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"cover_profile\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"validated\\\",\\\"type\\\":\\\"date\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"client:create\": true\n                    },\n                    {\n                        \"client:view\": true\n                    },\n                    {\n                        \"client:update\": true\n                    },\n                    {\n                        \"client:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"bearing\",\n                \"model\": \"Bearing\",\n                \"class\": \"App\\\\Models\\\\Bearing\",\n                \"label\": \"Bearings\",\n                \"title\": \"Bearings\",\n                \"url\": \"bearing\",\n                \"icon\": \"mdi-cube-outline\",\n                \"order\": 3,\n                \"parent\": \"\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"weight\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"wide\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"long\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"height\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"total_packages\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"content_description\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"declared_value\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"service_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"shipping_insurance\\\",\\\"type\\\":\\\"tinyint\\\"},{\\\"column\\\":\\\"weekend_delivery\\\",\\\"type\\\":\\\"tinyint\\\"},{\\\"column\\\":\\\"home_pickup\\\",\\\"type\\\":\\\"tinyint\\\"},{\\\"column\\\":\\\"observations\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"status\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"bearing:create\": true\n                    },\n                    {\n                        \"bearing:view\": true\n                    },\n                    {\n                        \"bearing:update\": true\n                    },\n                    {\n                        \"bearing:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"validationtask\",\n                \"model\": \"ValidationTask\",\n                \"class\": \"App\\\\Models\\\\ValidationTask\",\n                \"label\": \"Validation Tasks\",\n                \"title\": \"Validation Tasks\",\n                \"url\": \"validation-task\",\n                \"icon\": \"mdi-calendar-multiple-check\",\n                \"order\": 4,\n                \"parent\": \"\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"validationable_type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"validationable_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"user_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"status\\\",\\\"type\\\":\\\"enum\\\"},{\\\"column\\\":\\\"validated_at\\\",\\\"type\\\":\\\"date\\\"},{\\\"column\\\":\\\"who_validated\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"notes\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"validation_data\\\",\\\"type\\\":\\\"text\\\"},{\\\"column\\\":\\\"created_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"updated_at\\\",\\\"type\\\":\\\"timestamp\\\"},{\\\"column\\\":\\\"deleted_at\\\",\\\"type\\\":\\\"timestamp\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"validationtask:create\": true\n                    },\n                    {\n                        \"validationtask:view\": true\n                    },\n                    {\n                        \"validationtask:update\": true\n                    },\n                    {\n                        \"validationtask:delete\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"encoder\",\n                \"model\": \"\",\n                \"class\": \"\",\n                \"label\": \"Encoders\",\n                \"title\": \"Encoders\",\n                \"url\": \"\",\n                \"icon\": \"mdi-codepen\",\n                \"order\": 5,\n                \"parent\": \"\",\n                \"fields\": \"[]\",\n                \"permissions\": [\n                    {\n                        \"encoder:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"country\",\n                \"model\": \"Country\",\n                \"class\": \"App\\\\Models\\\\Country\",\n                \"label\": \"Countries\",\n                \"title\": \"Countries\",\n                \"url\": \"country\",\n                \"icon\": \"map-marker-multiple-outline\",\n                \"order\": 1,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"region_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"subregion_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"iso3\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"iso2\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"numeric_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"phone_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"capital\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"currency_symbol\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"tld\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"native\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"region\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"subregion\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"nationality\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"timezones\\\",\\\"type\\\":\\\"json\\\"},{\\\"column\\\":\\\"translations\\\",\\\"type\\\":\\\"json\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"country:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"state\",\n                \"model\": \"State\",\n                \"class\": \"App\\\\Models\\\\State\",\n                \"label\": \"States\",\n                \"title\": \"States\",\n                \"url\": \"state\",\n                \"icon\": \"map-marker-outline\",\n                \"order\": 2,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"country_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"type\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"state:view\": true\n                    }\n                ]\n            },\n            {\n                \"name\": \"city\",\n                \"model\": \"City\",\n                \"class\": \"App\\\\Models\\\\City\",\n                \"label\": \"Cities\",\n                \"title\": \"Cities\",\n                \"url\": \"city\",\n                \"icon\": \"map-marker-radius-outline\",\n                \"order\": 3,\n                \"parent\": \"encoder\",\n                \"fields\": \"[{\\\"column\\\":\\\"id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"state_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"country_id\\\",\\\"type\\\":\\\"bigint\\\"},{\\\"column\\\":\\\"name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"state_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_code\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"country_name\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"latitude\\\",\\\"type\\\":\\\"varchar\\\"},{\\\"column\\\":\\\"longitude\\\",\\\"type\\\":\\\"varchar\\\"}]\",\n                \"permissions\": [\n                    {\n                        \"city:view\": true\n                    }\n                ]\n            }\n        ],\n        \"permissions\": [\n            \"*\"\n        ]\n    },\n    \"message\": \"Login successful\",\n    \"timestamp\": \"2024-07-09T05:01:41.589920Z\"\n}"
 						}
 					]
 				},
@@ -616,6 +688,95 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "csrf_token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|W3r6B1deYjdQCxfOrsNw2dcmKhj9zCIzIBRBRIz0b635bf58",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/sanctum/csrf-cookie",
+							"path": [
+								"sanctum",
+								"csrf-cookie"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "profile_success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/profile",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 06:26:45 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 06:26:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"7b1d0eec-27a2-4f6f-be94-8b3e64af07d4\",\n        \"username\": \"admin\",\n        \"name\": \"Subasta\",\n        \"surname\": \"Administrator\",\n        \"email\": \"admin@subasta.com\",\n        \"email_verified_at\": null,\n        \"active\": true,\n        \"avatar\": \"http://localhost:8000/storage/avatars/default.png\",\n        \"last_login_at\": null,\n        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n        \"deleted_at\": null,\n        \"is_super_admin\": true,\n        \"full_name\": \"Subasta Administrator\",\n        \"permission_names\": [\n            \"bearing:create\",\n            \"bearing:read\",\n            \"bearing:update\",\n            \"bearing:delete\",\n            \"carrier:create\",\n            \"carrier:read\",\n            \"carrier:update\",\n            \"carrier:delete\",\n            \"city:create\",\n            \"city:read\",\n            \"city:update\",\n            \"city:delete\",\n            \"client:create\",\n            \"client:read\",\n            \"client:update\",\n            \"client:delete\",\n            \"country:create\",\n            \"country:read\",\n            \"country:update\",\n            \"country:delete\",\n            \"region:create\",\n            \"region:read\",\n            \"region:update\",\n            \"region:delete\",\n            \"state:create\",\n            \"state:read\",\n            \"state:update\",\n            \"state:delete\",\n            \"subregion:create\",\n            \"subregion:read\",\n            \"subregion:update\",\n            \"subregion:delete\",\n            \"user:create\",\n            \"user:read\",\n            \"user:update\",\n            \"user:delete\",\n            \"validationtask:create\",\n            \"validationtask:read\",\n            \"validationtask:update\",\n            \"validationtask:delete\"\n        ],\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"super-admin\",\n                \"guard_name\": \"api\",\n                \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                \"pivot\": {\n                    \"model_type\": \"App\\\\Models\\\\User\",\n                    \"model_id\": 1,\n                    \"role_id\": 1\n                },\n                \"permissions\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"bearing:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"bearing:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 2\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"bearing:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"bearing:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 4\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"carrier:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 5\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"carrier:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 6\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"carrier:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 7\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"carrier:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 8\n                        }\n                    },\n                    {\n                        \"id\": 9,\n                        \"name\": \"city:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"name\": \"city:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 10\n                        }\n                    },\n                    {\n                        \"id\": 11,\n                        \"name\": \"city:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 11\n                        }\n                    },\n                    {\n                        \"id\": 12,\n                        \"name\": \"city:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 12\n                        }\n                    },\n                    {\n                        \"id\": 13,\n                        \"name\": \"client:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 13\n                        }\n                    },\n                    {\n                        \"id\": 14,\n                        \"name\": \"client:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 14\n                        }\n                    },\n                    {\n                        \"id\": 15,\n                        \"name\": \"client:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 15\n                        }\n                    },\n                    {\n                        \"id\": 16,\n                        \"name\": \"client:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 16\n                        }\n                    },\n                    {\n                        \"id\": 17,\n                        \"name\": \"country:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 17\n                        }\n                    },\n                    {\n                        \"id\": 18,\n                        \"name\": \"country:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 18\n                        }\n                    },\n                    {\n                        \"id\": 19,\n                        \"name\": \"country:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 19\n                        }\n                    },\n                    {\n                        \"id\": 20,\n                        \"name\": \"country:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 20\n                        }\n                    },\n                    {\n                        \"id\": 21,\n                        \"name\": \"region:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 21\n                        }\n                    },\n                    {\n                        \"id\": 22,\n                        \"name\": \"region:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 22\n                        }\n                    },\n                    {\n                        \"id\": 23,\n                        \"name\": \"region:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 23\n                        }\n                    },\n                    {\n                        \"id\": 24,\n                        \"name\": \"region:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 24\n                        }\n                    },\n                    {\n                        \"id\": 25,\n                        \"name\": \"state:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 25\n                        }\n                    },\n                    {\n                        \"id\": 26,\n                        \"name\": \"state:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:03.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 26\n                        }\n                    },\n                    {\n                        \"id\": 27,\n                        \"name\": \"state:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 27\n                        }\n                    },\n                    {\n                        \"id\": 28,\n                        \"name\": \"state:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 28\n                        }\n                    },\n                    {\n                        \"id\": 29,\n                        \"name\": \"subregion:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 29\n                        }\n                    },\n                    {\n                        \"id\": 30,\n                        \"name\": \"subregion:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 30\n                        }\n                    },\n                    {\n                        \"id\": 31,\n                        \"name\": \"subregion:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 31\n                        }\n                    },\n                    {\n                        \"id\": 32,\n                        \"name\": \"subregion:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 32\n                        }\n                    },\n                    {\n                        \"id\": 33,\n                        \"name\": \"user:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 33\n                        }\n                    },\n                    {\n                        \"id\": 34,\n                        \"name\": \"user:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 34\n                        }\n                    },\n                    {\n                        \"id\": 35,\n                        \"name\": \"user:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 35\n                        }\n                    },\n                    {\n                        \"id\": 36,\n                        \"name\": \"user:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 36\n                        }\n                    },\n                    {\n                        \"id\": 37,\n                        \"name\": \"validationtask:create\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 37\n                        }\n                    },\n                    {\n                        \"id\": 38,\n                        \"name\": \"validationtask:read\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 38\n                        }\n                    },\n                    {\n                        \"id\": 39,\n                        \"name\": \"validationtask:update\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 39\n                        }\n                    },\n                    {\n                        \"id\": 40,\n                        \"name\": \"validationtask:delete\",\n                        \"guard_name\": \"api\",\n                        \"created_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"updated_at\": \"2024-06-26T02:14:04.000000Z\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 40\n                        }\n                    }\n                ]\n            }\n        ],\n        \"permissions\": []\n    },\n    \"message\": \"Record fetched successfully\",\n    \"timestamp\": \"2024-06-26T06:26:45.497116Z\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -897,21 +1058,9 @@
 				},
 				{
 					"name": "view",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"username\": \"viki\",\r\n        \"name\": \"Victoria\",\r\n        \"surname\": \"Tamayo Gómez\",\r\n        \"email\": \"viki@gmail.com\",      \r\n        \"active\": true\r\n \r\n\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{api_url}}/user/7",
 							"host": [
@@ -1296,7 +1445,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"viki\",\r\n    \"name\": \"Victoria\",\r\n    \"surname\": \"Tamayo Gómez\",\r\n    \"email\": \"viki@gmail.com\",\r\n    \"active\": true\r\n}\r\n",
+							"raw": "{\r\n    \"username\": \"viki\",\r\n    \"name\": \"Victoria\",\r\n    \"surname\": \"Tamayo Loba\",\r\n    \"email\": \"viki@gmail.com\",\r\n    \"active\": true\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1464,7 +1613,7 @@
 				{
 					"name": "delete",
 					"request": {
-						"method": "PATCH",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -1794,13 +1943,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_url}}/user/7",
+							"raw": "{{api_url}}/client/1",
 							"host": [
 								"{{api_url}}"
 							],
 							"path": [
-								"user",
-								"7"
+								"client",
+								"1"
 							]
 						}
 					},
@@ -2211,6 +2360,259 @@
 			]
 		},
 		{
+			"name": "validation-task",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validation-task?page=1&limit=10",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task"
+							],
+							"query": [
+								{
+									"key": "columns",
+									"value": "id,uuid,username,name",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/client?page=1&limit=10",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"client"
+									],
+									"query": [
+										{
+											"key": "columns",
+											"value": "id,uuid,username,name",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Jul 2024 07:36:08 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Jul 2024 07:36:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"rows\": [],\n        \"pagination\": {\n            \"total\": 0,\n            \"currentPage\": 1,\n            \"perPage\": 10,\n            \"lastPage\": 1,\n            \"from\": null,\n            \"to\": null\n        }\n    },\n    \"message\": \"Record fetched successfully\",\n    \"timestamp\": \"2024-07-06T07:36:08.109597Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "list_paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/validation-task?page=1&limit=1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"username\": \"viki\",\r\n        \"name\": \"Victoria\",\r\n        \"surname\": \"Tamayo Gómez\",\r\n        \"email\": \"viki@gmail.com\",      \r\n        \"active\": true\r\n \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/validation-task/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"kevin\", \r\n    \"name\": \"Kevin\", \r\n    \"surname\": \"Tamayo Sosa\",\r\n    \"email\": \"kevin@gmail.com\", \r\n    \"password\": \"viki123\",\r\n    \"password_confirmation\": \"viki123\" \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/validation-task",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"viki\",\r\n    \"name\": \"Victoria\",\r\n    \"surname\": \"Tamayo Gómez\",\r\n    \"email\": \"viki@gmail.com\",\r\n    \"active\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/validation-task/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"viki\",\r\n    \"name\": \"Victoria\",\r\n    \"surname\": \"Tamayo Gómez\",\r\n    \"email\": \"viki@gmail.com\",\r\n    \"active\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/validation-task/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"validation-task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "state",
 			"item": [
 				{
@@ -2272,21 +2674,9 @@
 			"item": [
 				{
 					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"page\":1,\r\n    \"limit\": 50,\r\n    \"order\": [\r\n        {\"column\": \"name\",\"direction\": \"asc\"}\r\n    ],\r\n    \"filters\": [\r\n        {\"type\": \"where\", \"column\": \"name\",\"value\": \"Cuba\"},\r\n         {\"type\": \"whereIn\", \"column\": \"id\",\"values\": \"56\"}\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{api_url}}/city",
 							"host": [
@@ -2322,17 +2712,370 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_url}}/city/1",
+							"raw": "{{api_url}}/city/11",
 							"host": [
 								"{{api_url}}"
 							],
 							"path": [
 								"city",
-								"1"
+								"11"
 							]
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "locale",
+			"item": [
+				{
+					"name": "lang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/city",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"city"
+							],
+							"query": [
+								{
+									"key": "orders",
+									"value": "]",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "locales",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/lang",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"lang"
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": "]",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:41:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:41:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": {\n        \"locales\": [\n            \"en\",\n            \"es\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "locale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/lang/en",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"lang",
+								"en"
+							],
+							"query": [
+								{
+									"key": "orders",
+									"value": "]",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "locale",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/lang/en",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"lang",
+										"en"
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": "]",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:47:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:47:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"messages\": {\n        \"(and :count more error)\": \"(and :count more error)\",\n        \"(and :count more errors)\": \"(and :count more errors)\",\n        \"A Timeout Occurred\": \"A Timeout Occurred\",\n        \"Accept\": \"Accept\",\n        \"Accepted\": \"Accepted\",\n        \"Action\": \"Action\",\n        \"Actions\": \"Actions\",\n        \"Activity\": \"Activity\",\n        \"Add\": \"Add\",\n        \"Add :name\": \"Add :name\",\n        \"Admin\": \"Admin\",\n        \"Administration\": \"Administration\",\n        \"Agree\": \"Agree\",\n        \"All rights reserved.\": \"All rights reserved.\",\n        \"Already Reported\": \"Already Reported\",\n        \"Archive\": \"Archive\",\n        \"Assign\": \"Assign\",\n        \"Associate\": \"Associate\",\n        \"Attach\": \"Attach\",\n        \"Bad Gateway\": \"Bad Gateway\",\n        \"Bad Request\": \"Bad Request\",\n        \"Bad request\": \"Bad request\",\n        \"Bandwidth Limit Exceeded\": \"Bandwidth Limit Exceeded\",\n        \"Bearing\": \"Bearing\",\n        \"Browse\": \"Browse\",\n        \"Cancel\": \"Cancel\",\n        \"Carrier\": \"Carrier\",\n        \"Carriers\": \"Carriers\",\n        \"Choose\": \"Choose\",\n        \"Choose :name\": \"Choose :name\",\n        \"Choose File\": \"Choose File\",\n        \"Choose Image\": \"Choose Image\",\n        \"Click to copy\": \"Click to copy\",\n        \"Client\": \"Client\",\n        \"Client Closed Request\": \"Client Closed Request\",\n        \"Clients\": \"Clients\",\n        \"Close\": \"Close\",\n        \"Collapse\": \"Collapse\",\n        \"Collapse All\": \"Collapse All\",\n        \"Comment\": \"Comment\",\n        \"Confirm\": \"Confirm\",\n        \"Conflict\": \"Conflict\",\n        \"Connect\": \"Connect\",\n        \"Connection Closed Without Response\": \"Connection Closed Without Response\",\n        \"Connection Timed Out\": \"Connection Timed Out\",\n        \"Continue\": \"Continue\",\n        \"Create\": \"Create\",\n        \"Create :name\": \"Create :name\",\n        \"Created\": \"Created\",\n        \"Database query error\": \"Database query error\",\n        \"Delete\": \"Delete\",\n        \"Delete :name\": \"Delete :name\",\n        \"Detach\": \"Detach\",\n        \"Details\": \"Details\",\n        \"Disable\": \"Disable\",\n        \"Discard\": \"Discard\",\n        \"Done\": \"Done\",\n        \"Down\": \"Down\",\n        \"Duplicate\": \"Duplicate\",\n        \"Duplicate :name\": \"Duplicate :name\",\n        \"Duplicate entry - The resource already exists\": \"Duplicate entry - The resource already exists\",\n        \"Edit\": \"Edit\",\n        \"Edit :name\": \"Edit :name\",\n        \"Enable\": \"Enable\",\n        \"Expand\": \"Expand\",\n        \"Expand All\": \"Expand All\",\n        \"Expectation Failed\": \"Expectation Failed\",\n        \"Explanation\": \"Explanation\",\n        \"Export\": \"Export\",\n        \"Export :name\": \"Export :name\",\n        \"Failed Dependency\": \"Failed Dependency\",\n        \"File\": \"File\",\n        \"Files\": \"Files\",\n        \"Forbidden\": \"Forbidden\",\n        \"Forbidden | Insufficient rights to access this resource\": \"Forbidden | Insufficient rights to access this resource\",\n        \"Found\": \"Found\",\n        \"Gateway Timeout\": \"Gateway Timeout\",\n        \"Go Home\": \"Go Home\",\n        \"Go to page :page\": \"Go to page :page\",\n        \"Gone\": \"Gone\",\n        \"HTTP Version Not Supported\": \"HTTP Version Not Supported\",\n        \"Hello!\": \"Hello!\",\n        \"Hide\": \"Hide\",\n        \"Hide :name\": \"Hide :name\",\n        \"Home\": \"Home\",\n        \"I'm a teapot\": \"I'm a teapot\",\n        \"IM Used\": \"IM Used\",\n        \"If you did not create an account, no further action is required.\": \"If you did not create an account, no further action is required.\",\n        \"If you did not request a password reset, no further action is required.\": \"If you did not request a password reset, no further action is required.\",\n        \"If you're having trouble clicking the \\\":actionText\\\" button, copy and paste the URL below\\ninto your web browser:\": \"If you're having trouble clicking the \\\":actionText\\\" button, copy and paste the URL below\\ninto your web browser:\",\n        \"Image\": \"Image\",\n        \"Impersonate\": \"Impersonate\",\n        \"Impersonation\": \"Impersonation\",\n        \"Import\": \"Import\",\n        \"Import :name\": \"Import :name\",\n        \"Insufficient Storage\": \"Insufficient Storage\",\n        \"Internal Server Error\": \"Internal Server Error\",\n        \"Internal server error\": \"Internal server error\",\n        \"Introduction\": \"Introduction\",\n        \"Invalid JSON was returned from the route.\": \"Invalid JSON was returned from the route.\",\n        \"Invalid SSL Certificate\": \"Invalid SSL Certificate\",\n        \"Invalid credentials\": \"Invalid credentials\",\n        \"Invalid user\": \"Invalid user\",\n        \"Length Required\": \"Length Required\",\n        \"Like\": \"Like\",\n        \"Load\": \"Load\",\n        \"Localize\": \"Localize\",\n        \"Location\": \"Location\",\n        \"Locked\": \"Locked\",\n        \"Log In\": \"Log In\",\n        \"Log Out\": \"Log Out\",\n        \"Login\": \"Login\",\n        \"Login successful\": \"Login successful\",\n        \"Logout\": \"Logout\",\n        \"Loop Detected\": \"Loop Detected\",\n        \"Maintenance Mode\": \"Maintenance Mode\",\n        \"Method Not Allowed\": \"Method Not Allowed\",\n        \"Method not allowed for this endpoint\": \"Method not allowed for this endpoint\",\n        \"Misdirected Request\": \"Misdirected Request\",\n        \"Moved Permanently\": \"Moved Permanently\",\n        \"Multi-Status\": \"Multi-Status\",\n        \"Multiple Choices\": \"Multiple Choices\",\n        \"Network Authentication Required\": \"Network Authentication Required\",\n        \"Network Connect Timeout Error\": \"Network Connect Timeout Error\",\n        \"Network Read Timeout Error\": \"Network Read Timeout Error\",\n        \"New\": \"New\",\n        \"New :name\": \"New :name\",\n        \"No\": \"No\",\n        \"No Content\": \"No Content\",\n        \"No record found\": \"No record found\",\n        \"Non-Authoritative Information\": \"Non-Authoritative Information\",\n        \"Not Acceptable\": \"Not Acceptable\",\n        \"Not Extended\": \"Not Extended\",\n        \"Not Found\": \"Not Found\",\n        \"Not Implemented\": \"Not Implemented\",\n        \"Not Modified\": \"Not Modified\",\n        \"OK\": \"OK\",\n        \"Open\": \"Open\",\n        \"Open in a current window\": \"Open in a current window\",\n        \"Open in a new window\": \"Open in a new window\",\n        \"Open in a parent frame\": \"Open in a parent frame\",\n        \"Open in the topmost frame\": \"Open in the topmost frame\",\n        \"Open on the website\": \"Open on the website\",\n        \"Origin Is Unreachable\": \"Origin Is Unreachable\",\n        \"Page Expired\": \"Page Expired\",\n        \"Pagination Navigation\": \"Pagination Navigation\",\n        \"Partial Content\": \"Partial Content\",\n        \"Password reset successfully\": \"Password reset successfully\",\n        \"Payload Too Large\": \"Payload Too Large\",\n        \"Payment Required\": \"Payment Required\",\n        \"Permanent Redirect\": \"Permanent Redirect\",\n        \"Persons\": \"Persons\",\n        \"Please click the button below to verify your email address.\": \"Please click the button below to verify your email address.\",\n        \"Precondition Failed\": \"Precondition Failed\",\n        \"Precondition Required\": \"Precondition Required\",\n        \"Preview\": \"Preview\",\n        \"Price\": \"Price\",\n        \"Processing\": \"Processing\",\n        \"Provided id is not numeric\": \"Provided id is not numeric\",\n        \"Proxy Authentication Required\": \"Proxy Authentication Required\",\n        \"Railgun Error\": \"Railgun Error\",\n        \"Range Not Satisfiable\": \"Range Not Satisfiable\",\n        \"Record\": \"Record\",\n        \"Record created successfully\": \"Record created successfully\",\n        \"Record deleted successfully\": \"Record deleted successfully\",\n        \"Record fetched successfully\": \"Record fetched successfully\",\n        \"Record trashed successfully\": \"Record trashed successfully\",\n        \"Record updated successfully\": \"Record updated successfully\",\n        \"Records retrieved successfully\": \"Records retrieved successfully\",\n        \"Regards\": \"Regards\",\n        \"Register\": \"Register\",\n        \"Request Header Fields Too Large\": \"Request Header Fields Too Large\",\n        \"Request Timeout\": \"Request Timeout\",\n        \"Reset Content\": \"Reset Content\",\n        \"Reset Password\": \"Reset Password\",\n        \"Reset Password Notification\": \"Reset Password Notification\",\n        \"Resource not found\": \"Resource not found\",\n        \"Response format not acceptable\": \"Response format not acceptable\",\n        \"Restore\": \"Restore\",\n        \"Restore :name\": \"Restore :name\",\n        \"Retry With\": \"Retry With\",\n        \"Roles\": \"Roles\",\n        \"SSL Handshake Failed\": \"SSL Handshake Failed\",\n        \"Save\": \"Save\",\n        \"Save & Close\": \"Save & Close\",\n        \"Save & Return\": \"Save & Return\",\n        \"Save :name\": \"Save :name\",\n        \"Search\": \"Search\",\n        \"Search :name\": \"Search :name\",\n        \"See Other\": \"See Other\",\n        \"Select\": \"Select\",\n        \"Select All\": \"Select All\",\n        \"Send\": \"Send\",\n        \"Server Error\": \"Server Error\",\n        \"Service Unavailable\": \"Service Unavailable\",\n        \"Service unavailable\": \"Service unavailable\",\n        \"Session Has Expired\": \"Session Has Expired\",\n        \"Settings\": \"Settings\",\n        \"Show\": \"Show\",\n        \"Show :name\": \"Show :name\",\n        \"Show All\": \"Show All\",\n        \"Showing\": \"Showing\",\n        \"Sign In\": \"Sign In\",\n        \"Solve\": \"Solve\",\n        \"Start\": \"Start\",\n        \"Stop\": \"Stop\",\n        \"Submit\": \"Submit\",\n        \"Subscribe\": \"Subscribe\",\n        \"Successfully logged out\": \"Successfully logged out\",\n        \"Switch\": \"Switch\",\n        \"Switch To Role\": \"Switch To Role\",\n        \"Switching Protocols\": \"Switching Protocols\",\n        \"Tag\": \"Tag\",\n        \"Tags\": \"Tags\",\n        \"Temporary Redirect\": \"Temporary Redirect\",\n        \"The given data was invalid.\": \"The given data was invalid.\",\n        \"The response is not a streamed response.\": \"The response is not a streamed response.\",\n        \"The response is not a view.\": \"The response is not a view.\",\n        \"The user is not active\": \"The user is not active\",\n        \"This action is unauthorized.\": \"This action is unauthorized.\",\n        \"This password reset link will expire in :count minutes.\": \"This password reset link will expire in :count minutes.\",\n        \"Toggle navigation\": \"Toggle navigation\",\n        \"Token refresh successfully\": \"Token refresh successfully\",\n        \"Too Early\": \"Too Early\",\n        \"Too Many Requests\": \"Too Many Requests\",\n        \"Too many requests\": \"Too many requests\",\n        \"Translate\": \"Translate\",\n        \"Translate It\": \"Translate It\",\n        \"URI Too Long\": \"URI Too Long\",\n        \"Unauthorized\": \"Unauthorized\",\n        \"Unauthorized domain or IP\": \"Unauthorized domain or IP\",\n        \"Unavailable For Legal Reasons\": \"Unavailable For Legal Reasons\",\n        \"Unknown Error\": \"Unknown Error\",\n        \"Unpack\": \"Unpack\",\n        \"Unprocessable Entity\": \"Unprocessable Entity\",\n        \"Unprocessable content\": \"Unprocessable content\",\n        \"Unsubscribe\": \"Unsubscribe\",\n        \"Unsupported Media Type\": \"Unsupported Media Type\",\n        \"Unsupported media type\": \"Unsupported media type\",\n        \"Up\": \"Up\",\n        \"Update\": \"Update\",\n        \"Update :name\": \"Update :name\",\n        \"Upgrade Required\": \"Upgrade Required\",\n        \"Use Proxy\": \"Use Proxy\",\n        \"User\": \"User\",\n        \"Users\": \"Users\",\n        \"Validation Task\": \"Validation Task\",\n        \"Validation Task (2)\": \"Validation Task\",\n        \"Validation failed\": \"Validation failed\",\n        \"Variant Also Negotiates\": \"Variant Also Negotiates\",\n        \"Verify Email Address\": \"Verify Email Address\",\n        \"View\": \"View\",\n        \"View :name\": \"View :name\",\n        \"Web Server is Down\": \"Web Server is Down\",\n        \"Whoops!\": \"Whoops!\",\n        \"Yes\": \"Yes\",\n        \"You are receiving this email because we received a password reset request for your account.\": \"You are receiving this email because we received a password reset request for your account.\",\n        \"errors\": \"errors\",\n        \"of\": \"of\",\n        \"results\": \"results\",\n        \"to\": \"to\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "locales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/lang/locales",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"lang",
+								"locales"
+							],
+							"query": [
+								{
+									"key": "orders",
+									"value": "]",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "locales",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/locales",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"locales"
+									],
+									"query": [
+										{
+											"key": "orders",
+											"value": "]",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:49:20 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Jul 2024 01:49:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"locale\": \"en-US\",\n        \"messages\": {\n            \"(and :count more error)\": \"(and :count more error)\",\n            \"(and :count more errors)\": \"(and :count more errors)\",\n            \"A Timeout Occurred\": \"A Timeout Occurred\",\n            \"Accept\": \"Accept\",\n            \"Accepted\": \"Accepted\",\n            \"Action\": \"Action\",\n            \"Actions\": \"Actions\",\n            \"Activity\": \"Activity\",\n            \"Add\": \"Add\",\n            \"Add :name\": \"Add :name\",\n            \"Admin\": \"Admin\",\n            \"Administration\": \"Administration\",\n            \"Agree\": \"Agree\",\n            \"All rights reserved.\": \"All rights reserved.\",\n            \"Already Reported\": \"Already Reported\",\n            \"Archive\": \"Archive\",\n            \"Assign\": \"Assign\",\n            \"Associate\": \"Associate\",\n            \"Attach\": \"Attach\",\n            \"Bad Gateway\": \"Bad Gateway\",\n            \"Bad Request\": \"Bad Request\",\n            \"Bad request\": \"Bad request\",\n            \"Bandwidth Limit Exceeded\": \"Bandwidth Limit Exceeded\",\n            \"Bearing\": \"Bearing\",\n            \"Browse\": \"Browse\",\n            \"Cancel\": \"Cancel\",\n            \"Carrier\": \"Carrier\",\n            \"Carriers\": \"Carriers\",\n            \"Choose\": \"Choose\",\n            \"Choose :name\": \"Choose :name\",\n            \"Choose File\": \"Choose File\",\n            \"Choose Image\": \"Choose Image\",\n            \"Click to copy\": \"Click to copy\",\n            \"Client\": \"Client\",\n            \"Client Closed Request\": \"Client Closed Request\",\n            \"Clients\": \"Clients\",\n            \"Close\": \"Close\",\n            \"Collapse\": \"Collapse\",\n            \"Collapse All\": \"Collapse All\",\n            \"Comment\": \"Comment\",\n            \"Confirm\": \"Confirm\",\n            \"Conflict\": \"Conflict\",\n            \"Connect\": \"Connect\",\n            \"Connection Closed Without Response\": \"Connection Closed Without Response\",\n            \"Connection Timed Out\": \"Connection Timed Out\",\n            \"Continue\": \"Continue\",\n            \"Create\": \"Create\",\n            \"Create :name\": \"Create :name\",\n            \"Created\": \"Created\",\n            \"Database query error\": \"Database query error\",\n            \"Delete\": \"Delete\",\n            \"Delete :name\": \"Delete :name\",\n            \"Detach\": \"Detach\",\n            \"Details\": \"Details\",\n            \"Disable\": \"Disable\",\n            \"Discard\": \"Discard\",\n            \"Done\": \"Done\",\n            \"Down\": \"Down\",\n            \"Duplicate\": \"Duplicate\",\n            \"Duplicate :name\": \"Duplicate :name\",\n            \"Duplicate entry - The resource already exists\": \"Duplicate entry - The resource already exists\",\n            \"Edit\": \"Edit\",\n            \"Edit :name\": \"Edit :name\",\n            \"Enable\": \"Enable\",\n            \"Expand\": \"Expand\",\n            \"Expand All\": \"Expand All\",\n            \"Expectation Failed\": \"Expectation Failed\",\n            \"Explanation\": \"Explanation\",\n            \"Export\": \"Export\",\n            \"Export :name\": \"Export :name\",\n            \"Failed Dependency\": \"Failed Dependency\",\n            \"File\": \"File\",\n            \"Files\": \"Files\",\n            \"Forbidden\": \"Forbidden\",\n            \"Forbidden | Insufficient rights to access this resource\": \"Forbidden | Insufficient rights to access this resource\",\n            \"Found\": \"Found\",\n            \"Gateway Timeout\": \"Gateway Timeout\",\n            \"Go Home\": \"Go Home\",\n            \"Go to page :page\": \"Go to page :page\",\n            \"Gone\": \"Gone\",\n            \"HTTP Version Not Supported\": \"HTTP Version Not Supported\",\n            \"Hello!\": \"Hello!\",\n            \"Hide\": \"Hide\",\n            \"Hide :name\": \"Hide :name\",\n            \"Home\": \"Home\",\n            \"I'm a teapot\": \"I'm a teapot\",\n            \"IM Used\": \"IM Used\",\n            \"If you did not create an account, no further action is required.\": \"If you did not create an account, no further action is required.\",\n            \"If you did not request a password reset, no further action is required.\": \"If you did not request a password reset, no further action is required.\",\n            \"If you're having trouble clicking the \\\":actionText\\\" button, copy and paste the URL below\\ninto your web browser:\": \"If you're having trouble clicking the \\\":actionText\\\" button, copy and paste the URL below\\ninto your web browser:\",\n            \"Image\": \"Image\",\n            \"Impersonate\": \"Impersonate\",\n            \"Impersonation\": \"Impersonation\",\n            \"Import\": \"Import\",\n            \"Import :name\": \"Import :name\",\n            \"Insufficient Storage\": \"Insufficient Storage\",\n            \"Internal Server Error\": \"Internal Server Error\",\n            \"Internal server error\": \"Internal server error\",\n            \"Introduction\": \"Introduction\",\n            \"Invalid JSON was returned from the route.\": \"Invalid JSON was returned from the route.\",\n            \"Invalid SSL Certificate\": \"Invalid SSL Certificate\",\n            \"Invalid credentials\": \"Invalid credentials\",\n            \"Invalid user\": \"Invalid user\",\n            \"Length Required\": \"Length Required\",\n            \"Like\": \"Like\",\n            \"Load\": \"Load\",\n            \"Localize\": \"Localize\",\n            \"Location\": \"Location\",\n            \"Locked\": \"Locked\",\n            \"Log In\": \"Log In\",\n            \"Log Out\": \"Log Out\",\n            \"Login\": \"Login\",\n            \"Login successful\": \"Login successful\",\n            \"Logout\": \"Logout\",\n            \"Loop Detected\": \"Loop Detected\",\n            \"Maintenance Mode\": \"Maintenance Mode\",\n            \"Method Not Allowed\": \"Method Not Allowed\",\n            \"Method not allowed for this endpoint\": \"Method not allowed for this endpoint\",\n            \"Misdirected Request\": \"Misdirected Request\",\n            \"Moved Permanently\": \"Moved Permanently\",\n            \"Multi-Status\": \"Multi-Status\",\n            \"Multiple Choices\": \"Multiple Choices\",\n            \"Network Authentication Required\": \"Network Authentication Required\",\n            \"Network Connect Timeout Error\": \"Network Connect Timeout Error\",\n            \"Network Read Timeout Error\": \"Network Read Timeout Error\",\n            \"New\": \"New\",\n            \"New :name\": \"New :name\",\n            \"No\": \"No\",\n            \"No Content\": \"No Content\",\n            \"No record found\": \"No record found\",\n            \"Non-Authoritative Information\": \"Non-Authoritative Information\",\n            \"Not Acceptable\": \"Not Acceptable\",\n            \"Not Extended\": \"Not Extended\",\n            \"Not Found\": \"Not Found\",\n            \"Not Implemented\": \"Not Implemented\",\n            \"Not Modified\": \"Not Modified\",\n            \"OK\": \"OK\",\n            \"Open\": \"Open\",\n            \"Open in a current window\": \"Open in a current window\",\n            \"Open in a new window\": \"Open in a new window\",\n            \"Open in a parent frame\": \"Open in a parent frame\",\n            \"Open in the topmost frame\": \"Open in the topmost frame\",\n            \"Open on the website\": \"Open on the website\",\n            \"Origin Is Unreachable\": \"Origin Is Unreachable\",\n            \"Page Expired\": \"Page Expired\",\n            \"Pagination Navigation\": \"Pagination Navigation\",\n            \"Partial Content\": \"Partial Content\",\n            \"Password reset successfully\": \"Password reset successfully\",\n            \"Payload Too Large\": \"Payload Too Large\",\n            \"Payment Required\": \"Payment Required\",\n            \"Permanent Redirect\": \"Permanent Redirect\",\n            \"Persons\": \"Persons\",\n            \"Please click the button below to verify your email address.\": \"Please click the button below to verify your email address.\",\n            \"Precondition Failed\": \"Precondition Failed\",\n            \"Precondition Required\": \"Precondition Required\",\n            \"Preview\": \"Preview\",\n            \"Price\": \"Price\",\n            \"Processing\": \"Processing\",\n            \"Provided id is not numeric\": \"Provided id is not numeric\",\n            \"Proxy Authentication Required\": \"Proxy Authentication Required\",\n            \"Railgun Error\": \"Railgun Error\",\n            \"Range Not Satisfiable\": \"Range Not Satisfiable\",\n            \"Record\": \"Record\",\n            \"Record created successfully\": \"Record created successfully\",\n            \"Record deleted successfully\": \"Record deleted successfully\",\n            \"Record fetched successfully\": \"Record fetched successfully\",\n            \"Record trashed successfully\": \"Record trashed successfully\",\n            \"Record updated successfully\": \"Record updated successfully\",\n            \"Records retrieved successfully\": \"Records retrieved successfully\",\n            \"Regards\": \"Regards\",\n            \"Register\": \"Register\",\n            \"Request Header Fields Too Large\": \"Request Header Fields Too Large\",\n            \"Request Timeout\": \"Request Timeout\",\n            \"Reset Content\": \"Reset Content\",\n            \"Reset Password\": \"Reset Password\",\n            \"Reset Password Notification\": \"Reset Password Notification\",\n            \"Resource not found\": \"Resource not found\",\n            \"Response format not acceptable\": \"Response format not acceptable\",\n            \"Restore\": \"Restore\",\n            \"Restore :name\": \"Restore :name\",\n            \"Retry With\": \"Retry With\",\n            \"Roles\": \"Roles\",\n            \"SSL Handshake Failed\": \"SSL Handshake Failed\",\n            \"Save\": \"Save\",\n            \"Save & Close\": \"Save & Close\",\n            \"Save & Return\": \"Save & Return\",\n            \"Save :name\": \"Save :name\",\n            \"Search\": \"Search\",\n            \"Search :name\": \"Search :name\",\n            \"See Other\": \"See Other\",\n            \"Select\": \"Select\",\n            \"Select All\": \"Select All\",\n            \"Send\": \"Send\",\n            \"Server Error\": \"Server Error\",\n            \"Service Unavailable\": \"Service Unavailable\",\n            \"Service unavailable\": \"Service unavailable\",\n            \"Session Has Expired\": \"Session Has Expired\",\n            \"Settings\": \"Settings\",\n            \"Show\": \"Show\",\n            \"Show :name\": \"Show :name\",\n            \"Show All\": \"Show All\",\n            \"Showing\": \"Showing\",\n            \"Sign In\": \"Sign In\",\n            \"Solve\": \"Solve\",\n            \"Start\": \"Start\",\n            \"Stop\": \"Stop\",\n            \"Submit\": \"Submit\",\n            \"Subscribe\": \"Subscribe\",\n            \"Successfully logged out\": \"Successfully logged out\",\n            \"Switch\": \"Switch\",\n            \"Switch To Role\": \"Switch To Role\",\n            \"Switching Protocols\": \"Switching Protocols\",\n            \"Tag\": \"Tag\",\n            \"Tags\": \"Tags\",\n            \"Temporary Redirect\": \"Temporary Redirect\",\n            \"The given data was invalid.\": \"The given data was invalid.\",\n            \"The response is not a streamed response.\": \"The response is not a streamed response.\",\n            \"The response is not a view.\": \"The response is not a view.\",\n            \"The user is not active\": \"The user is not active\",\n            \"This action is unauthorized.\": \"This action is unauthorized.\",\n            \"This password reset link will expire in :count minutes.\": \"This password reset link will expire in :count minutes.\",\n            \"Toggle navigation\": \"Toggle navigation\",\n            \"Token refresh successfully\": \"Token refresh successfully\",\n            \"Too Early\": \"Too Early\",\n            \"Too Many Requests\": \"Too Many Requests\",\n            \"Too many requests\": \"Too many requests\",\n            \"Translate\": \"Translate\",\n            \"Translate It\": \"Translate It\",\n            \"URI Too Long\": \"URI Too Long\",\n            \"Unauthorized\": \"Unauthorized\",\n            \"Unauthorized domain or IP\": \"Unauthorized domain or IP\",\n            \"Unavailable For Legal Reasons\": \"Unavailable For Legal Reasons\",\n            \"Unknown Error\": \"Unknown Error\",\n            \"Unpack\": \"Unpack\",\n            \"Unprocessable Entity\": \"Unprocessable Entity\",\n            \"Unprocessable content\": \"Unprocessable content\",\n            \"Unsubscribe\": \"Unsubscribe\",\n            \"Unsupported Media Type\": \"Unsupported Media Type\",\n            \"Unsupported media type\": \"Unsupported media type\",\n            \"Up\": \"Up\",\n            \"Update\": \"Update\",\n            \"Update :name\": \"Update :name\",\n            \"Upgrade Required\": \"Upgrade Required\",\n            \"Use Proxy\": \"Use Proxy\",\n            \"User\": \"User\",\n            \"Users\": \"Users\",\n            \"Validation Task\": \"Validation Task\",\n            \"Validation Task (2)\": \"Validation Task\",\n            \"Validation failed\": \"Validation failed\",\n            \"Variant Also Negotiates\": \"Variant Also Negotiates\",\n            \"Verify Email Address\": \"Verify Email Address\",\n            \"View\": \"View\",\n            \"View :name\": \"View :name\",\n            \"Web Server is Down\": \"Web Server is Down\",\n            \"Whoops!\": \"Whoops!\",\n            \"Yes\": \"Yes\",\n            \"You are receiving this email because we received a password reset request for your account.\": \"You are receiving this email because we received a password reset request for your account.\",\n            \"errors\": \"errors\",\n            \"of\": \"of\",\n            \"results\": \"results\",\n            \"to\": \"to\"\n        }\n    },\n    {\n        \"locale\": \"es\",\n        \"messages\": {\n            \"(and :count more error)\": \"(y :count error más)\",\n            \"(and :count more errors)\": \"(y :count errores más)\",\n            \"A Timeout Occurred\": \"Se produjo un tiempo de espera\",\n            \"Accept\": \"Aceptar\",\n            \"Accepted\": \"Aceptado\",\n            \"Action\": \"Acción\",\n            \"Actions\": \"Acciones\",\n            \"Activity\": \"Actividad\",\n            \"Add\": \"Añadir\",\n            \"Add :name\": \"Agregar :name\",\n            \"Admin\": \"Administrar\",\n            \"Administration\": \"Administración\",\n            \"Agree\": \"Aceptar\",\n            \"All rights reserved.\": \"Todos los derechos reservados.\",\n            \"Already Reported\": \"Ya Reportado\",\n            \"Archive\": \"Archivar\",\n            \"Assign\": \"Asignar\",\n            \"Associate\": \"Asociar\",\n            \"Attach\": \"Adjuntar\",\n            \"Bad Gateway\": \"Mala puerta de enlace\",\n            \"Bad Request\": \"Solicitud incorrecta\",\n            \"Bad request\": \"Petición invalida\",\n            \"Bandwidth Limit Exceeded\": \"Límite de ancho de banda excedido\",\n            \"Bearing\": \"Portes\",\n            \"Browse\": \"Navegar\",\n            \"Cancel\": \"Cancelar\",\n            \"Carrier\": \"Transportista\",\n            \"Carriers\": \"Transportistass\",\n            \"Choose\": \"Elija\",\n            \"Choose :name\": \"Elegir :name\",\n            \"Choose File\": \"Elija archivo\",\n            \"Choose Image\": \"Elegir Imagen\",\n            \"Click to copy\": \"Haga clic para copiar\",\n            \"Client\": \"Cliente\",\n            \"Client Closed Request\": \"Solicitud cerrada del cliente\",\n            \"Clients\": \"Clientes\",\n            \"Close\": \"Cerrar\",\n            \"Collapse\": \"Colapsar\",\n            \"Collapse All\": \"Colapsar todo\",\n            \"Comment\": \"Comentar\",\n            \"Confirm\": \"Confirmar\",\n            \"Conflict\": \"Conflicto\",\n            \"Connect\": \"Conectar\",\n            \"Connection Closed Without Response\": \"Conexión cerrada sin respuesta\",\n            \"Connection Timed Out\": \"Tiempo de conexión agotado\",\n            \"Continue\": \"Continuar\",\n            \"Create\": \"Crear\",\n            \"Create :name\": \"Crear :name\",\n            \"Created\": \"Creado\",\n            \"Database query error\": \"Error consultando la base de datos\",\n            \"Delete\": \"Eliminar\",\n            \"Delete :name\": \"Eliminar :name\",\n            \"Detach\": \"Desvincular\",\n            \"Details\": \"Detalles\",\n            \"Disable\": \"Deshabilitar\",\n            \"Discard\": \"Descartar\",\n            \"Done\": \"Hecho\",\n            \"Down\": \"Abajo\",\n            \"Duplicate\": \"Duplicar\",\n            \"Duplicate :name\": \"Duplicar :name\",\n            \"Duplicate entry - The resource already exists\": \"Registro duplicado - El recurso ya existe\",\n            \"Edit\": \"Editar\",\n            \"Edit :name\": \"Editar :name\",\n            \"Enable\": \"Habilitar\",\n            \"Expand\": \"Expandir\",\n            \"Expand All\": \"Expandir todo\",\n            \"Expectation Failed\": \"Expectativa fallida\",\n            \"Explanation\": \"Explicación\",\n            \"Export\": \"Exportar\",\n            \"Export :name\": \"Exportar :name\",\n            \"Failed Dependency\": \"Dependencia fallida\",\n            \"File\": \"Archivo\",\n            \"Files\": \"Archivos\",\n            \"Forbidden\": \"Prohibido\",\n            \"Forbidden | Insufficient rights to access this resource\": \"Acceso denegado | Privilegios insuficientes para acceder al recurso solicitado\",\n            \"Found\": \"Encontrado\",\n            \"Gateway Timeout\": \"Tiempo de espera de puerta de enlace\",\n            \"Go Home\": \"Ir a inicio\",\n            \"Go to page :page\": \"Ir a la página :page\",\n            \"Gone\": \"Recurso no disponible\",\n            \"HTTP Version Not Supported\": \"Versión HTTP no compatible\",\n            \"Hello!\": \"¡Hola!\",\n            \"Hide\": \"Ocultar\",\n            \"Hide :name\": \"Ocultar :name\",\n            \"Home\": \"Inicio\",\n            \"I'm a teapot\": \"Soy una tetera\",\n            \"IM Used\": \"Estoy usado\",\n            \"If you did not create an account, no further action is required.\": \"Si no ha creado una cuenta, no se requiere ninguna acción adicional.\",\n            \"If you did not request a password reset, no further action is required.\": \"Si no ha solicitado el restablecimiento de contraseña, omita este mensaje de correo electrónico.\",\n            \"If you're having trouble clicking the \\\":actionText\\\" button, copy and paste the URL below\\ninto your web browser:\": \"Si está teniendo problemas al hacer clic en el botón \\\":actionText\\\", copie y pegue la URL de abajo\\nen su navegador web:\",\n            \"Image\": \"Imagen\",\n            \"Impersonate\": \"Personificar\",\n            \"Impersonation\": \"Suplantación\",\n            \"Import\": \"Importar\",\n            \"Import :name\": \"Importar :name\",\n            \"Insufficient Storage\": \"Espacio insuficiente\",\n            \"Internal Server Error\": \"Error interno del servidor\",\n            \"Internal server error\": \"Error interno del servidor\",\n            \"Introduction\": \"Introducción\",\n            \"Invalid JSON was returned from the route.\": \"Se devolvió un JSON no válido desde la ruta.\",\n            \"Invalid SSL Certificate\": \"Certificado SSL no válido\",\n            \"Invalid credentials\": \"Credenciales invalidas\",\n            \"Invalid user\": \"Usuario invalido\",\n            \"Length Required\": \"Longitud requerida\",\n            \"Like\": \"Me gusta\",\n            \"Load\": \"Cargar\",\n            \"Localize\": \"Localizar\",\n            \"Location\": \"Ubicación\",\n            \"Locked\": \"Bloqueado\",\n            \"Log In\": \"Iniciar sesión\",\n            \"Log Out\": \"Finalizar sesión\",\n            \"Login\": \"Iniciar sesión\",\n            \"Login successful\": \"Sesión iniciada correctamente\",\n            \"Logout\": \"Finalizar sesión\",\n            \"Loop Detected\": \"Bucle detectado\",\n            \"Maintenance Mode\": \"Modo de mantenimiento\",\n            \"Method Not Allowed\": \"Método no permitido\",\n            \"Method not allowed for this endpoint\": \"Método HTTP no permitido para la ruta solicitada \",\n            \"Misdirected Request\": \"Solicitud mal dirigida\",\n            \"Moved Permanently\": \"Movido permanentemente\",\n            \"Multi-Status\": \"Multiestado\",\n            \"Multiple Choices\": \"Múltiples opciones\",\n            \"Network Authentication Required\": \"Se requiere autenticación de red\",\n            \"Network Connect Timeout Error\": \"Error de tiempo de espera de conexión de red\",\n            \"Network Read Timeout Error\": \"Error de tiempo de espera de lectura de red\",\n            \"New\": \"Nuevo\",\n            \"New :name\": \"Nuevo :name\",\n            \"No\": \"No\",\n            \"No Content\": \"Sin contenido\",\n            \"No record found\": \"No se encontraron registros\",\n            \"Non-Authoritative Information\": \"Información no autorizada\",\n            \"Not Acceptable\": \"Inaceptable\",\n            \"Not Extended\": \"no extendido\",\n            \"Not Found\": \"No encontrado\",\n            \"Not Implemented\": \"No se ha implementado\",\n            \"Not Modified\": \"No modificado\",\n            \"OK\": \"DE ACUERDO\",\n            \"Open\": \"Abrir\",\n            \"Open in a current window\": \"Abrir en una ventana actual\",\n            \"Open in a new window\": \"Abrir en una ventana nueva\",\n            \"Open in a parent frame\": \"Abrir en un marco principal\",\n            \"Open in the topmost frame\": \"Abrir en el marco superior\",\n            \"Open on the website\": \"Abrir en el sitio web\",\n            \"Origin Is Unreachable\": \"El origen es inalcanzable\",\n            \"Page Expired\": \"Página expirada\",\n            \"Pagination Navigation\": \"Navegación por los enlaces de paginación\",\n            \"Partial Content\": \"Contenido parcial\",\n            \"Password reset successfully\": \"Contraseña cambiada correctamente\",\n            \"Payload Too Large\": \"Solicitud demasiado grande\",\n            \"Payment Required\": \"Pago requerido\",\n            \"Permanent Redirect\": \"Redirección permanente\",\n            \"Persons\": \"Personas\",\n            \"Please click the button below to verify your email address.\": \"Por favor, haga clic en el botón de abajo para verificar su dirección de correo electrónico.\",\n            \"Precondition Failed\": \"Error de condición previa\",\n            \"Precondition Required\": \"Precondición requerida\",\n            \"Preview\": \"Previsualizar\",\n            \"Price\": \"Precio\",\n            \"Processing\": \"Procesando\",\n            \"Provided id is not numeric\": \"El id proporcionado no es un número válido\",\n            \"Proxy Authentication Required\": \"Se requiere autenticación proxy\",\n            \"Railgun Error\": \"Error de cañón de riel\",\n            \"Range Not Satisfiable\": \"Rango no satisfactorio\",\n            \"Record\": \"Registro\",\n            \"Record created successfully\": \"Registro creado correctamente.\",\n            \"Record deleted successfully\": \"Registro eliminado correctamente\",\n            \"Record fetched successfully\": \"Registro obtenido correctamente\",\n            \"Record trashed successfully\": \"Registro purgado correctamente\",\n            \"Record updated successfully\": \"Registro actualizado correctamente\",\n            \"Records retrieved successfully\": \"Se recibieron correctamente los registros.\",\n            \"Regards\": \"Saludos\",\n            \"Register\": \"Registrarse\",\n            \"Request Header Fields Too Large\": \"Campos de encabezado de solicitud demasiado grandes\",\n            \"Request Timeout\": \"Solicitud de tiempo de espera\",\n            \"Reset Content\": \"Restablecer contenido\",\n            \"Reset Password\": \"Restablecer contraseña\",\n            \"Reset Password Notification\": \"Notificación de restablecimiento de contraseña\",\n            \"Resource not found\": \"Recurso no encontrado\",\n            \"Response format not acceptable\": \"Formato de la respuesta incorrecto\",\n            \"Restore\": \"Restaurar\",\n            \"Restore :name\": \"Restaurar :name\",\n            \"Retry With\": \"Reintentar con\",\n            \"Roles\": \"Roles\",\n            \"SSL Handshake Failed\": \"Protocolo de enlace SSL fallido\",\n            \"Save\": \"Guardar\",\n            \"Save & Close\": \"Guardar y cerrar\",\n            \"Save & Return\": \"Guardar y volver\",\n            \"Save :name\": \"Guardar :name\",\n            \"Search\": \"Buscar\",\n            \"Search :name\": \"Buscar :name\",\n            \"See Other\": \"Ver otros\",\n            \"Select\": \"Seleccione\",\n            \"Select All\": \"Seleccionar todo\",\n            \"Send\": \"Enviar\",\n            \"Server Error\": \"Error del servidor\",\n            \"Service Unavailable\": \"Servicio no disponible\",\n            \"Service unavailable\": \"Servicio inaccesible\",\n            \"Session Has Expired\": \"La sesión ha expirado\",\n            \"Settings\": \"Ajustes\",\n            \"Show\": \"Mostrar\",\n            \"Show :name\": \"Mostrar :name\",\n            \"Show All\": \"Mostrar todo\",\n            \"Showing\": \"Mostrando\",\n            \"Sign In\": \"Iniciar sesión\",\n            \"Solve\": \"Resolver\",\n            \"Start\": \"Comenzar\",\n            \"Stop\": \"Detener\",\n            \"Submit\": \"Enviar\",\n            \"Subscribe\": \"Suscriba\",\n            \"Successfully logged out\": \"Sesión cerrada correctamente\",\n            \"Switch\": \"Cambiar\",\n            \"Switch To Role\": \"Cambiar de rol\",\n            \"Switching Protocols\": \"Protocolos de conmutación\",\n            \"Tag\": \"Etiqueta\",\n            \"Tags\": \"Etiquetas\",\n            \"Temporary Redirect\": \"Redirección temporal\",\n            \"The given data was invalid.\": \"Los datos proporcionados no son válidos.\",\n            \"The response is not a streamed response.\": \"La respuesta no es una respuesta transmitida.\",\n            \"The response is not a view.\": \"La respuesta no es una vista.\",\n            \"The user is not active\": \"El usuario esta desactivado\",\n            \"This action is unauthorized.\": \"Esta acción no está autorizada.\",\n            \"This password reset link will expire in :count minutes.\": \"Este enlace de restablecimiento de contraseña expirará en :count minutos.\",\n            \"Toggle navigation\": \"Alternar navegación\",\n            \"Token refresh successfully\": \"Token actualizado correctamente.\",\n            \"Too Early\": \"Demasiado temprano\",\n            \"Too Many Requests\": \"Demasiadas peticiones\",\n            \"Too many requests\": \"Demasiadas peticiones\",\n            \"Translate\": \"Traducir\",\n            \"Translate It\": \"Traducirlo\",\n            \"URI Too Long\": \"URI demasiado largo\",\n            \"Unauthorized\": \"No autorizado\",\n            \"Unauthorized domain or IP\": \"El dominio o IP no tienen acceso al recurso solicitado\",\n            \"Unavailable For Legal Reasons\": \"No disponible por razones legales\",\n            \"Unknown Error\": \"Error desconocido\",\n            \"Unpack\": \"Desglosar\",\n            \"Unprocessable Entity\": \"Entidad no procesable\",\n            \"Unprocessable content\": \"Error en la petición realizada\",\n            \"Unsubscribe\": \"Darse de baja\",\n            \"Unsupported Media Type\": \"Tipo de medio no admitido\",\n            \"Unsupported media type\": \"Archivo no soportado\",\n            \"Up\": \"Arriba\",\n            \"Update\": \"Actualizar\",\n            \"Update :name\": \"Actualizar :name\",\n            \"Upgrade Required\": \"Se requiere actualización\",\n            \"Use Proxy\": \"Usa proxy\",\n            \"User\": \"Usuario\",\n            \"Users\": \"Usuarios\",\n            \"Validation Task\": \"Tareas de válidación\",\n            \"Validation Task (2)\": \"Tareas de validación\",\n            \"Validation failed\": \"Validación fallida\",\n            \"Variant Also Negotiates\": \"Variante También Negocia\",\n            \"Verify Email Address\": \"Confirme su correo electrónico\",\n            \"View\": \"Ver\",\n            \"View :name\": \"Ver :name\",\n            \"Web Server is Down\": \"El servidor web está caído\",\n            \"Whoops!\": \"¡Ups!\",\n            \"Yes\": \"Sí\",\n            \"You are receiving this email because we received a password reset request for your account.\": \"Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.\",\n            \"errors\": \"errores\",\n            \"of\": \"de\",\n            \"results\": \"resultados\",\n            \"to\": \"al\"\n        }\n    }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -2403,7 +3146,7 @@
 		},
 		{
 			"key": "token",
-			"value": "1|toV0CmYhCO5ngYNl83q1Xl9adJihk2ubjhbsOvePdf82ebaa",
+			"value": "10|sZCDq4Soheu3Vmpjbh4W8fADhZDn5dgk4tiLL1AMfe954129",
 			"type": "default"
 		}
 	]
