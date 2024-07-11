@@ -31,7 +31,7 @@ class LocaleService
             if (File::exists($path)) {
                 $contents = File::get($path);
                 $data = json_decode($contents, true);
-                $locales_data[] = ["locale" => pathinfo($locale, PATHINFO_FILENAME) === "en" ? "en-US" : pathinfo($locale, PATHINFO_FILENAME), "messages" => $data];
+                $locales_data[] = [pathinfo($locale, PATHINFO_FILENAME) === "en" ? "en-US" : pathinfo($locale, PATHINFO_FILENAME) => $data];
             }
         }
         if (count($locales_data))
