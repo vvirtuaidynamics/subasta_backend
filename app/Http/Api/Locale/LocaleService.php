@@ -31,11 +31,11 @@ class LocaleService
             if (File::exists($path)) {
                 $contents = File::get($path);
                 $data = json_decode($contents, true);
-                $locales_data[] = ["locale" => pathinfo($locale, PATHINFO_FILENAME), "data" => $data];
+                $locales_data[] = ["locale" => pathinfo($locale, PATHINFO_FILENAME) === "en" ? "en-US" : pathinfo($locale, PATHINFO_FILENAME), "messages" => $data];
             }
         }
         if (count($locales_data))
-            return response()->json(["success" => true, "result" => $locales_data]);
+            return response()->json($locales_data);
 
         return response(["success" => false, "message" => ApiResponseMessages::RESOURCE_NOT_FOUND], 404);
     }
@@ -47,7 +47,7 @@ class LocaleService
         if (File::exists($path)) {
             $contents = File::get($path);
             $data = json_decode($contents, true);
-            return response()->json(["success" => true, "result" => $data]);
+            return response()->json(["success" => true, "messages" => $data]);
         }
         return response(["success" => false, "message" => ApiResponseMessages::RESOURCE_NOT_FOUND], 404);
     }

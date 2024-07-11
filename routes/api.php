@@ -22,7 +22,7 @@ Route::get('/dev', function (Illuminate\Http\Request $request) {
     //get_models();
     //$mothers = get_user_models($request->user());
     //$models = config('modules.modules_data');
-    return get_modules();
+    return $locale->getLocales();
 })->name('dev');
 
 /**
@@ -35,8 +35,8 @@ Route::post('/register/{model?}', [AuthController::class, 'register'])->name('re
  *  Locales (Gestión del idioma desde el backend)
  */
 Route::get('/lang', [LocaleController::class, 'list'])->name('lang_list');
+Route::get('/locales', [LocaleController::class, 'locales'])->name('lang_locales');
 Route::get('/lang/{locale}', [LocaleController::class, 'lang'])->name('lang_locale');
-Route::get('/lang/locales', [LocaleController::class, 'locales'])->name('lang_locales');
 
 /**
  * Rutas protegias

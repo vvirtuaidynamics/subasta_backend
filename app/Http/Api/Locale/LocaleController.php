@@ -9,17 +9,17 @@ use Illuminate\Http\Request;
 class LocaleController extends Controller
 {
 
-    public function list(): JsonResponse
+    public function list()
     {
         return LocaleService::getAvailableLocales();
     }
 
-    public function lang($locale): JsonResponse
+    public function lang($locale)
     {
-        return LocaleService::getLocales($locale);
+        return LocaleService::getLocale($locale);
     }
 
-    public function locales(): JsonResponse
+    public function locales()
     {
         return LocaleService::getLocales();
     }
