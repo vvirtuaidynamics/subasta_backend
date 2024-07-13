@@ -65,7 +65,8 @@ class AuthService
         $user->last_login_at = now();
         $user->save();
 
-        $modules = get_user_modules($user_to_return);
+
+        $modules = [get_user_modules($user_to_return)];
         $token = $user_to_return->createToken(config('app.name', 'Backend'),
             [...$permissions],
         )->plainTextToken;
@@ -73,8 +74,7 @@ class AuthService
         $data = array(
             'user' => $user_to_return,
             'token' => $token,
-            'modules' => $modules,
-            'permissions' => $permissions
+            'modules' => $modules
         );
         return $this->sendResponse(
             $data,
