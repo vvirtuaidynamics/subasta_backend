@@ -16,6 +16,7 @@ use App\Http\Api\State\Resources\StateResource;
 use App\Http\Api\User\UserRepository;
 use App\Http\Api\ValidationTask\ValidationTaskRepository;
 use App\Models\Client;
+use App\Models\Configuration;
 use App\Models\User;
 use App\Traits\ApiResponseFormatTrait;
 use Illuminate\Http\Request;
@@ -255,9 +256,8 @@ class AuthService
             'configuration' => 'required|string',
         ]);
         $configuration = $request->input('configuration');
-        $user->configuration->create([
-            'configuration' => $configuration
-        ]);
+        $data = ['configurationable_type' => User::class, 'configurationable_id' => $user->id, 'configuration' => $configuration];
+        $user->configuration()->updateOrCreate($data);
         return $this->sendResponse(['success' => true, 'result' => $user->configuration], ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiStatus::SUCCESS);
     }
 
@@ -268,4 +268,6 @@ class AuthService
         return $this->sendResponse(['success' => true, 'result' => $configuration], ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiStatus::SUCCESS);
 
     }
+
+
 }
