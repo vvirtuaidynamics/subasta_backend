@@ -30,6 +30,7 @@ class UserService extends BaseService
             'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed', // 'have to receive password_confirmation'
             'active' => 'boolean|nullable',
+            'configuration' => 'text|nullable',
             'avatar' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }

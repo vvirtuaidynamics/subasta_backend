@@ -48,6 +48,16 @@ class AuthController extends Controller
         return $this->authService->profile($request);
     }
 
+    public function setConfig(Request $request): JsonResponse
+    {
+        return $this->authService->setUserConfig($request);
+    }
+
+    public function getConfig(Request $request): JsonResponse
+    {
+        return $this->authService->getUserConfig($request);
+    }
+
 
 }
 

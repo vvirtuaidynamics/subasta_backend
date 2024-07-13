@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('email', length: 255)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('configuration')->nullable();
             $table->integer('active', false, true)->default(1);
             $table->text('avatar')->nullable();
             $table->timestamp('last_login_at')->nullable();

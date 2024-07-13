@@ -6,9 +6,6 @@ namespace App\Models;
 use App\Models\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -34,6 +31,7 @@ class User extends Authenticatable
         'surname',
         'email',
         'password',
+        'configuration',
         'active',
         'avatar',
         'last_login_at'
@@ -75,6 +73,18 @@ class User extends Authenticatable
         }
     }
 
+    public function setConfigurationAttribute($value)
+    {
+        if (!isset($value) || $value === null || $value === '') $this->attributes['configuration'] = "{}";
+        $this->attributes['configuration'] = json_encode($value);
+    }
+
+    public function getConfigurationAttribute($value)
+    {
+        if (!isset($value) || $value === null || $value === '') $value = "{}";
+        return json_decode($value);
+    }
+
     public function getEmailVerifiedAtAttribute($value)
     {
         return format_datetime_for_display($value);
@@ -83,12 +93,6 @@ class User extends Authenticatable
     public function getLastLoginAtAttribute($value)
     {
         return format_datetime_for_display($value);
-    }
-
-
-    public function configuration(): MorphOne
-    {
-        return $this->morphOne(Configuration::class, 'configurationable');
     }
 
     public function getFullNameAttribute()
@@ -100,7 +104,6 @@ class User extends Authenticatable
     {
         return $this->hasRole(config('permission.super_admin_role_name'));
     }
-
 
     public function getPermissionNamesAttribute()
     {

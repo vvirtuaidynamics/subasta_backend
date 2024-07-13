@@ -66,6 +66,7 @@ class AuthService
         $user->last_login_at = now();
         $user->save();
 
+        $modules = get_user_modules($user);
 
         $modules = [get_user_modules($user_to_return)];
         $token = $user_to_return->createToken(config('app.name', 'Backend'),
@@ -251,21 +252,22 @@ class AuthService
 
     public function setUserConfig(Request $request): JsonResponse
     {
-        $user = auth()->user();
+        $user = $this->userRepository->getById(auth()->user()->getAuthIdentifier());
         $request->validate([
             'configuration' => 'required|string',
         ]);
         $configuration = $request->input('configuration');
         $data = ['configurationable_type' => User::class, 'configurationable_id' => $user->id, 'configuration' => $configuration];
-        $user->configuration()->updateOrCreate($data);
-        return $this->sendResponse(['success' => true, 'result' => $user->configuration], ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiStatus::SUCCESS);
+        $user_config = $user->configuration()->updateOrCreate([], $data);
+        return $this->sendResponse($user_config, ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
     }
 
     public function getUserConfig(Request $request): JsonResponse
     {
-        $user = auth()->user();
-        $configuration = $user->configuration;
-        return $this->sendResponse(['success' => true, 'result' => $configuration], ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiStatus::SUCCESS);
+        $user = $request->user();
+        dd($user);
+        $configuration = $user->configuration();
+        return $this->sendResponse($configuration, ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
 
     }
 

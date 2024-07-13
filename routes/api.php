@@ -13,16 +13,14 @@ use App\Http\Api\User\UserController;
 use App\Http\Api\ValidationTask\ValidationTaskController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/dev', function (Illuminate\Http\Request $request) {
     $models = get_modules();
     $userService = new \App\Http\Api\User\UserService();
     $user = $userService->findByColumn(1);
     $locale = new \App\Http\Api\Locale\LocaleService();
+    return get_user_modules($user);
 
-    //get_models();
-    //$mothers = get_user_models($request->user());
-    //$models = config('modules.modules_data');
-    return $locale->getLocales();
 })->name('dev');
 
 /**
