@@ -14,10 +14,9 @@ return [
     | and production domains which access your API via a frontend SPA.
     |
     */
-
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
-        'localhost,localhost:9000, 127.0.0.1:9000,127.0.0.1,127.0.0.1:8000,::1',
+        'localhost,localhost:9000,127.0.0.1:9000,127.0.0.1,127.0.0.1:8000,::1',
         Sanctum::currentApplicationUrlWithPort()
     ))),
 
@@ -46,7 +45,7 @@ return [
     |
     */
 
-    'expiration' => null,
+    'expiration' => 240,
 
     /*
     |--------------------------------------------------------------------------

@@ -39,9 +39,34 @@ composer dump-autoload
 php artisan optimize:clear
 ```
 
+## Configuración del tiempo de vida del token de sanctum y tiempo de vida del tocken csrf.
+
+Para configurar Sanctum y los CSRF tokens para que tengan el mismo tiempo de vida, puedes seguir estos pasos:
+Configura el tiempo de vida de los tokens de Sanctum:
+
+En el archivo config/sanctum.php, ajusta el valor de expiration:
+
+```php
+'expiration' => 120, // Tiempo en minutos
+```
+
+Configura el tiempo de vida de los CSRF tokens:
+En el archivo config/session.php, ajusta el valor de lifetime:
+
+```php
+'lifetime' => 120, // Tiempo en minutos
+```
+
+Asegúrate de que la configuración de cookies sea consistente:
+En config/session.php, verifica que same_site esté configurado correctamente:
+
+```php
+'same_site' => 'lax',
+```
+
 ## Implementación de patrón repositorio.
 
-###     
+###           
 
 ## Notas
 
