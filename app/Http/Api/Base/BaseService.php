@@ -204,7 +204,6 @@ abstract class BaseService implements BaseServiceInterface
                 ['errors' => $e->errors()]
             );
         }
-
     }
 
     public function update($id, Request $request, $getModel = false)

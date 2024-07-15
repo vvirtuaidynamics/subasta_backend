@@ -68,7 +68,6 @@ class AuthService
 
         $modules = get_user_modules($user);
 
-        $modules = [get_user_modules($user_to_return)];
         $token = $user_to_return->createToken(config('app.name', 'Backend'),
             [...$permissions],
         )->plainTextToken;
@@ -265,10 +264,15 @@ class AuthService
     public function getUserConfig(Request $request): JsonResponse
     {
         $user = $request->user();
-        dd($user);
         $configuration = $user->configuration();
         return $this->sendResponse($configuration, ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
 
+    }
+
+    public function validateToken(Request $request): JsonResponse
+    {
+        $data = $request->user();
+        return $this->sendResponse($data, ApiResponseMessages::TOKEN_IS_VALID);
     }
 
 

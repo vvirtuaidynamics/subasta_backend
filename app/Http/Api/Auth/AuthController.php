@@ -58,6 +58,9 @@ class AuthController extends Controller
         return $this->authService->getUserConfig($request);
     }
 
-
+    public function validateToken(Request $request): JsonResponse
+    {
+        return $this->authService->validateToken($request);
+    }
 }
 

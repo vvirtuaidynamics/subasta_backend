@@ -40,6 +40,7 @@ Route::get('/lang/{locale}', [LocaleController::class, 'lang'])->name('lang_loca
  * Rutas protegias
  */
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/token', [AuthController::class, 'validateToken'])->name('token');
 
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
