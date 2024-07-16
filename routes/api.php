@@ -26,6 +26,7 @@ Route::get('/dev', function (Illuminate\Http\Request $request) {
 /**
  * Rutas públicas.
  */
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
 

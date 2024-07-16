@@ -215,7 +215,6 @@ class AuthService
                 $e->errors()
             );
         }
-
     }
 
     public function logout(Request $request): JsonResponse
