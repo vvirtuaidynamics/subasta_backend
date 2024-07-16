@@ -99,6 +99,7 @@
 	"Invalid JSON was returned from the route.": "Invalid JSON was returned from the route.",
 	"Invalid SSL Certificate": "Invalid SSL Certificate",
 	"Invalid credentials": "Invalid credentials",
+	"Invalid or expired token": "Invalid or expired token",
 	"Invalid user": "Invalid user",
 	"Laravel": "Laravel en version :version",
 	"Length Required": "Length Required",
