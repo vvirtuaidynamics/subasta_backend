@@ -249,30 +249,43 @@ class AuthService
         return $this->sendResponse($request->user(), ApiResponseMessages::FETCHED_SUCCESSFULLY);
     }
 
-    public function setUserConfig(Request $request): JsonResponse
+    public function setUserConfig(Request $request, $ids = []): JsonResponse
     {
-        $user = $this->userRepository->getById(auth()->user()->getAuthIdentifier());
-        $request->validate([
-            'configuration' => 'required|string',
-        ]);
-        $configuration = $request->input('configuration');
-        $data = ['configurationable_type' => User::class, 'configurationable_id' => $user->id, 'configuration' => $configuration];
-        $user_config = $user->configuration()->updateOrCreate([], $data);
-        return $this->sendResponse($user_config, ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
-    }
-
-    public function getUserConfig(Request $request): JsonResponse
-    {
-        $user = $request->user();
-        $configuration = $user->configuration();
-        return $this->sendResponse($configuration, ApiResponseMessages::FETCHED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
-
+        try {
+            $request->validate([
+                'configuration' => 'required|text',
+            ]);
+            $configuration = $request->input('configuration');
+            $user = $request->user();
+            $updatedUsers = [];
+            if ($user && !$user->super_admin && count($ids) > 0) {
+                foreach ($ids as $id) {
+                    $updatedUsers[] = $this->userRepository->updateById($id, ['configuration' => $configuration]);
+                }
+            }
+            if ($user) {
+                $updatedUsers[] = $this->userRepository->updateById($user->id, ['configuration' => $configuration]);
+            }
+            return $this->sendResponse($updatedUsers, ApiResponseMessages::UPDATED_SUCCESSFULLY, ApiResponseCodes::HTTP_SUCCESS);
+        } catch (\Exception $e) {
+            return $this->sendError(
+                $e->getMessage(),
+                $e->getCode()
+            );
+        }
     }
 
     public function validateToken(Request $request): JsonResponse
     {
-        $data = $request->user();
-        return $this->sendResponse($data, ApiResponseMessages::TOKEN_IS_VALID);
+        try {
+            $data = $request->user();
+            return $this->sendResponse($data, ApiResponseMessages::TOKEN_IS_VALID);
+        } catch (\Exception $e) {
+            return $this->sendError(
+                ApiResponseMessages::TOKEN_INVALID,
+                $e->getCode(),
+            );
+        }
     }
 
 
