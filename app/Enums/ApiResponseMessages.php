@@ -8,6 +8,7 @@ class ApiResponseMessages
     const CREATED_SUCCESSFULLY = 'Record created successfully';
     const FETCHED_SUCCESSFULLY = 'Record fetched successfully';
     const TOKEN_IS_VALID = 'Token is valid';
+    const TOKEN_INVALID = 'Invalid or expired token';
     const TOKEN_REFRESH_SUCCESSFULLY = 'Token refresh successfully';
     const UPDATED_SUCCESSFULLY = 'Record updated successfully';
     const DELETED_SUCCESSFULLY = 'Record deleted successfully';
