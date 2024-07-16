@@ -56,6 +56,12 @@ return [
     'asset_url' => env('ASSET_URL'),
     'public_routes' => ['home', 'register', 'login', 'lang_locale', 'lang_locales', 'lang_list', 'dev'],
     'google_api_key' => env('GOOGLE_API_KEY'),
+    'user_default_configuration' => [
+        "dark" => false,
+        "theme" => "default",
+        "notification_position" => "bottom"
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
