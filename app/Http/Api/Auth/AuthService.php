@@ -190,8 +190,6 @@ class AuthService
             $validator = validator($request->all(), $userRequest->rules(), $userRequest->messages());
             $user_validated_data = $validator->validate();
             $user = $this->userRepository->create($user_validated_data);
-
-
             if (!$request->has('model')) {
             }
             $permissions = $user->hasRole('super-admin') ? ['*'] : collect($user->getAllPermissions())->pluck('name')->toArray();
@@ -228,7 +226,6 @@ class AuthService
         $request->user()->currentAccessToken()->delete();
         $user = auth()->user();
         $permissions = $user->hasRole('super-admin') ? ['*'] : collect($user->getAllPermissions())->pluck('name')->toArray();
-
         $token = $user->createToken(config('app.name', 'Backend'),
             [...$permissions],
         )->plainTextToken;
