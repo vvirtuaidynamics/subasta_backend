@@ -51,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
      * User
      */
     Route::get('/user', [UserController::class, 'list'])->name('user_list');
+    Route::post('/user/config', [AuthController::class, 'setConfig'])->name('user_config');
     Route::get('/user/{id}', [UserController::class, 'view'])->name('user_view');
     Route::post('/user', [UserController::class, 'store'])->name('user_store');
     Route::patch('/user/{id}', [UserController::class, 'update'])->name('user_update');

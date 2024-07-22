@@ -59,7 +59,8 @@ return [
     'user_default_configuration' => [
         "dark" => false,
         "theme" => "default",
-        "notification_position" => "bottom"
+        "notification_position" => "bottom",
+        "locale" => "es"
     ],
 
 
