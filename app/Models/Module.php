@@ -23,19 +23,19 @@ class Module extends BaseModel
         'readonly',
         'is_main',
         'order',
-        'parent_id'
+        'parent'
     ];
 
     protected $appends = [];
 
     public function children(): HasMany
     {
-        return $this->hasMany(Module::class, 'parent_id', 'id');
+        return $this->hasMany(Module::class, 'parent', 'name');
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Module::class, 'parent_id');
+        return $this->belongsTo(Module::class, 'parent', 'name');
     }
 
 
