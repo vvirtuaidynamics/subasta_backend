@@ -15,20 +15,13 @@ class EnsureTokenIsValid
 {
     use ApiResponseFormatTrait;
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         $routeName = $request->route()->getName();
-
-        $isPublic = in_array($routeName, config('app.public_routes', ['home', 'login', 'register', 'dev']));
+        $isPublic = in_array($routeName, config('app.public_routes'));
         if (!$isPublic && Auth::guard('sanctum')->guest()) {
             return $this->sendError(ApiResponseMessages::UNAUTHORIZED, ApiResponseCodes::HTTP_UNAUTHORIZED);
         }
-
         return $next($request);
     }
 }
