@@ -14,6 +14,36 @@ use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
 use App\Models\User;
 
+/**
+ * replace non alphabetical letters with hyphen and convert to lower case
+ * @method string slugify
+ * @param string $text
+ * @return string
+ */
+if (!function_exists('slugify')) {
+    function slugify($text): string
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+        return $text;
+    }
+}
+
 if (!function_exists('trans_lang_using_default_file')) {
     function trans_lang_using_default_file($key): \Illuminate\Foundation\Application|array|string|\Illuminate\Contracts\Translation\Translator|\Illuminate\Contracts\Foundation\Application|null
     {
