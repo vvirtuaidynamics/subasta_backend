@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Api\Form\FormController;
 use App\Http\Api\Locale\LocaleController;
 use App\Http\Api\Auth\AuthController;
 use App\Http\Api\DocumentCarrier\DocumentCarrierController;
@@ -11,24 +12,27 @@ use App\Http\Api\Country\CountryController;
 use App\Http\Api\State\StateController;
 use App\Http\Api\User\UserController;
 use App\Http\Api\ValidationTask\ValidationTaskController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dev', function (Illuminate\Http\Request $request) {
     $models = get_modules();
-    $userService = new \App\Http\Api\User\UserService();
-    $user = $userService->findByColumn(1);
-    $locale = new \App\Http\Api\Locale\LocaleService();
-    return get_user_modules($user);
-
+    return get_modules();
 })->name('dev');
+
 
 /**
  * Rutas públicas.
  */
-
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register/{model?}', [AuthController::class, 'register'])->name('register');
+
+/**
+ * Obtener formulario por nombre
+ */
+Route::get('/form/{name}', [FormController::class, 'getFormByName'])->name('get_form_by_name');
 
 /**
  *  Locales (Gestión del idioma desde el backend)
@@ -101,6 +105,7 @@ Route::middleware('auth:sanctum')->group(function () {
      */
     Route::get('/city', [CityController::class, 'list'])->name('city_list');
     Route::get('/city/{id}', [CityController::class, 'view'])->name('city_view');
+
 
 });
 
