@@ -118,7 +118,8 @@ if (!function_exists('get_models')) {
     function get_models($model_name = ""): array
     {
         $models = array_map('basename', glob(app_path() . '/Models/*.php'));
-
+        $searchables = config('modules.searchable_types');
+        $filterables = config('modules.filterable_types');
         //Add spatie models
         $spatie_permission = ['Permission', 'Role'];
         $spatie_activity = ['Activity'];
@@ -152,9 +153,22 @@ if (!function_exists('get_models')) {
 
                 foreach ($columns as $column) {
                     $type = Schema::getColumnType($table, $column);
+                    $is_searchable = false;
+                    $is_filterable = false;
+                    if ($searchables['types'] && $searchables['column_exceptions']) {
+                        if (in_array($type, $searchables['types']) && !in_array($column, $searchables['column_exceptions'])) {
+                            $is_searchable = true;
+                        }
+                    }
 
-                    $model_fields[] = ["column" => $column, "type" => $type];
+                    if ($filterables['types'] && $filterables['column_exceptions']) {
+                        if (in_array($type, $filterables['types']) && !in_array($column, $filterables['column_exceptions'])) {
+                            $is_filterable = true;
+                        }
+                    }
+                    $model_fields[] = ["column" => $column, "type" => $type, "searchable" => $is_searchable, "filterable" => $is_filterable];
                 }
+
                 $model_schema = ["name" => $model, "class" => $class_namespace, "fields" => $model_fields];
                 $schemas[] = $model_schema;
                 if ($model_name && $model_name == $model) {
@@ -165,6 +179,54 @@ if (!function_exists('get_models')) {
         return $schemas;
     }
 }
+
+if (!function_exists('get_forms_data')) {
+    function get_forms_data(): array
+    {
+        $fields = config('fields.default');
+        $forms = config('forms.default');
+        $forms_data = [];
+        foreach ($forms as $form) {
+            $form_item = [
+                'name' => $form['name'],
+                'module' => $form['module'],
+                'label' => $form['label'],
+                'position' => $form['position'],
+                'route' => $form['route'],
+                'options' => $form['options'],
+                'default_value' => $form['default_value'] ?? '{}',
+                'class' => $form['class'],
+            ];
+            $fields_of_form = $form['fields'];
+            $fields_data = [];
+            foreach ($fields_of_form as $field) {
+                $field_name = $field['name'];
+                $filter_field = array_filter($fields, function ($v) use ($field_name) {
+                    return $v['name'] == $field_name;
+                }, ARRAY_FILTER_USE_BOTH);
+                $item = count($filter_field) > 0 ? [...$filter_field][0] : [];
+                foreach (['options', 'default_value', 'class', 'rules'] as $key) {
+                    if (array_key_exists($key, $field)) {
+                        $item[$key] = $field[$key];
+                    }
+                }
+                $item_data = [];
+                foreach (['options', 'rules', 'step', 'group', 'order'] as $key) {
+                    if (array_key_exists($key, $field)) {
+                        $item_data[$key] = $field[$key];
+                    }
+                }
+                $fields_data[] = ['field' => $item, 'data' => $item_data];
+            }
+            $forms_data[] = ["form" => $form_item, "fields" => $fields_data];
+
+        }
+        return $forms_data;
+
+
+    }
+}
+
 if (!function_exists('get_modules')) {
     function get_modules(): array
     {
@@ -210,6 +272,7 @@ if (!function_exists('get_modules')) {
         return $modules;
     }
 }
+
 
 if (!function_exists('permissions_sync')) {
     function permissions_sync(): array
