@@ -42,4 +42,20 @@ class Form extends BaseModel
             return json_decode($value);
     }
 
+    public function setDefaultValueAttribute($value)
+    {
+        if (!isset($value) || $value === '')
+            $this->attributes['options'] = "{}";
+        else
+            $this->attributes['options'] = json_encode($value);
+    }
+
+    public function getDefaultValueAttribute($value)
+    {
+        if (!isset($value) || $value === '')
+            return $value = "{}";
+        else
+            return json_decode($value);
+    }
+
 }
