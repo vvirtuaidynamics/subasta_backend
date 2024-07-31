@@ -23,10 +23,5 @@ class FieldsSeeder extends Seeder
 
     }
 
-    /**
-     * getModules:
-     * @return array de modelos a insertar
-     */
-
 
 }
