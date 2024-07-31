@@ -31,7 +31,7 @@ class CarrierService extends BaseService
         return [
             'username' => 'required|string|max:50|unique:users',
             'name' => 'required|string|max:50',
-            'surname' => 'nullable|string|max:50',
+            'surname' => 'required|string|max:50',
             'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed', // 'have to receive password_confirmation'
             'active' => 'boolean|nullable',
