@@ -28,6 +28,20 @@ return [
             'permissions' => ['view']
         ],
         [
+            'name' => 'form',
+            'table' => 'forms',
+            'model' => 'Form',
+            'class' => 'App\\Models\\Form',
+            'label' => 'Forms',
+            'title' => 'Forms',
+            'url' => 'forms',
+            'icon' => 'mdi-form-select',
+            'fields' => '[]',
+            'order' => 0,
+            'parent' => 'administration',
+            'permissions' => ['create', 'view', 'update']
+        ],
+        [
             'name' => 'role',
             'table' => 'roles',
             'model' => 'Role',
@@ -51,10 +65,11 @@ return [
             'url' => 'permissions',
             'icon' => 'mdi-key',
             'fields' => '[]',
-            'order' => 1,
+            'order' => 2,
             'parent' => 'administration',
             'permissions' => ['create', 'view', 'update', 'delete']
         ],
+
         [
             'name' => 'user',
             'table' => 'users',
@@ -65,7 +80,7 @@ return [
             'url' => 'users',
             'icon' => 'mdi-account-outline',
             'fields' => '[]',
-            'order' => 2,
+            'order' => 3,
             'parent' => 'administration',
             'permissions' => ['create', 'view', 'update', 'delete']],
         [
@@ -78,7 +93,7 @@ return [
             'url' => 'activities',
             'icon' => 'mdi-account-clock-outline',
             'fields' => '[]',
-            'order' => 3,
+            'order' => 4,
             'parent' => 'administration',
             'permissions' => ['create', 'view', 'update', 'delete']],
         //Persons
@@ -202,6 +217,15 @@ return [
             'order' => 3,
             'parent' => 'encoder',
             'permissions' => ['view']],
-    ]
+    ],
+    'searchable_types' => [
+        'types' => ['char', 'varchar', 'text'],
+        'column_exceptions' => ['photo', 'image', 'avatar', 'file']
+    ],
+    'filterable_types' => [
+        'types' => ['int', 'bigint', 'timestamp'],
+        'column_exceptions' => ['id', 'created_at', 'updated_at', 'deleted_at'],
+    ],
+
 
 ];
