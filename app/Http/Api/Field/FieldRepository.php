@@ -12,7 +12,7 @@ class FieldRepository extends BaseRepository
         return Field::class;
     }
 
-    public function getFieldByName(string $name): Field
+    public function getFieldByName(string $name)
     {
         return $this->getByColumn($name, 'name');
     }
