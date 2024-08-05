@@ -4,6 +4,7 @@ namespace App\Http\Api\Form;
 
 use App\Http\Api\Base\BaseRepository;
 use App\Models\Form;
+use Exception;
 
 class FormRepository extends BaseRepository
 {
@@ -12,24 +13,45 @@ class FormRepository extends BaseRepository
         return Form::class;
     }
 
-    public function addFormField($fieldId, $data = [])
+    public function addField($formId, $fieldId, $data = [])
     {
-        $this->model->fields()->attach($fieldId, $data);
+        try {
+            $form = $this->getById($formId) || $this->getByColumn($formId, 'name');
+            return $form->fields()->attach($fieldId, $data);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage);
+        }
+
     }
 
-    public function removeFormField($fieldId)
+    public function removeField($formId, $fieldId)
     {
-        $this->model->fields()->detach($fieldId);
+        try {
+            $form = $this->getById($formId);
+            return $form->fields()->detach($fieldId);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage);
+        }
     }
 
-    public function syncFormField($data)
+    public function syncFields($formId, $data)
     {
-        $this->model->fields()->sync($data);
+        try {
+            $form = $this->getById($formId);
+            $form->fields()->sync($data);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage);
+        }
     }
 
-    public function updateFormField($fieldId, $data = [])
+    public function updateField($formId, $fieldId, $data = [])
     {
-        $this->model->fields()->updateExistingPivot($fieldId, $data);
+        try {
+            $form = $this->getById($formId);
+            $form->fields()->updateExistingPivot($fieldId, $data);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage);
+        }
     }
 
 }
