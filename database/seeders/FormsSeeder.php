@@ -25,7 +25,6 @@ class FormsSeeder extends Seeder
         $forms_data = get_forms_data();
         // Each form has ['form'=>[name,module,label,position,route,options,default_value,class], 'fields'=>array]
         foreach ($forms_data as $f) {
-            var_dump($f);
             try {
                 $module = $moduleRepository->getByColumn($f['form']['module'], 'name');
                 $fdata = array_filter($f['form'], function ($k) {
@@ -36,14 +35,13 @@ class FormsSeeder extends Seeder
                     if ($attr['field'] && array_key_exists('name', $attr['field'])) {
                         $field = $fieldRepository->getByColumn($attr['field']['name'], 'name');
                         if ($field) {
-
                             $data = ['options' => '{}'];
                             $append = ['created_at' => format_datetime_for_database(now()), 'updated_at' => format_datetime_for_database(now())];
                             $data = [...$data, ...$attr['data'], ...$append];
-                            var_dump(["form_id" => $form->id, "field_id" => $field->id, $data]);
 //                            $field_form_item = ["form_id" => $form->id, "field_id" => $field->id, ...$data];
 //                            DB::table(config('form.field_form_tablename', 'field_form'))->insert([...$field_form_item]);
-//TODO FIX                    $formRepository->addField($form->id, $field->id, $data);
+                            $formRepository->addField($form->id, $field->id, $data);
+                            $this->command->info('Field ' . $field->name . ' related successfully with form ' . $form->name);
                         } else {
                             warning('no field');
 
