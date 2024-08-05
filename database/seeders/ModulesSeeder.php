@@ -23,11 +23,4 @@ class ModulesSeeder extends Seeder
         ]);
 
     }
-
-    /**
-     * getModules:
-     * @return array de modelos a insertar
-     */
-
-
 }
