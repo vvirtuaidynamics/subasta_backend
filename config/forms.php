@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'field_form_tablename' => 'field_form',
     /**
      * Forms initialization by module
      */
@@ -8,7 +9,7 @@ return [
         // Register carrier
         [
             'name' => 'carrier_register',
-            'module' => 'Carrier',
+            'module' => 'carrier',
             'label' => 'Register new carrier',
             'position' => '',
             'route' => 'register/carrier',
@@ -19,8 +20,6 @@ return [
                 [
                     'name' => 'avatar',
                     'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048',
-//                    'options' => '',
-//                    'default_value' => '',
                     'order' => 1,
                     'step' => 1
                 ],
@@ -119,27 +118,13 @@ return [
                     'rules' => 'nullable|date',
                     'order' => 4,
                     'step' => 3
-                ],
-                [
-                    'name' => 'merchandise_insurance',
-                    'rules' => 'nullable|file|max:10240',
-                    'order' => 5,
-                    'step' => 2
-                ],
-                [
-                    'name' => 'end_date_merchandise_insurance',
-                    'rules' => 'nullable|date',
-                    'order' => 6,
-                    'step' => 3
-                ],
-
-
+                ]
             ]
         ],
         // Register Client
         [
             'name' => 'client_register',
-            'module' => 'Client',
+            'module' => 'client',
             'label' => 'Register new client',
             'position' => '',
             'route' => 'register/client',
@@ -150,7 +135,6 @@ return [
                 [
                     'name' => 'avatar',
                     'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048',
-
                     'order' => 1,
                     'step' => 1
                 ],
@@ -225,11 +209,8 @@ return [
                     'rules' => 'required|in:unknown,male,female',
                     'order' => 7,
                     'step' => 2
-                ],
-
+                ]
             ]
         ],
-
-
     ]
 ];

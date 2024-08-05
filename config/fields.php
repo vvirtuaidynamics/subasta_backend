@@ -276,6 +276,16 @@ return [
             'options' => "{}",
             'default_value' => '',
         ],
+        [
+            'name' => 'date_of_birth',
+            'slug' => 'date_of_birth',
+            'label' => 'Date of birth',
+            'placeholder' => 'End date of birth',
+            'component' => 'DateField',
+            'rules' => '',
+            'options' => "{}",
+            'default_value' => '',
+        ]
 
 
     ]
