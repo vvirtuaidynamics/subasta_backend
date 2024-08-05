@@ -118,6 +118,54 @@ return [
                     'rules' => 'nullable|date',
                     'order' => 4,
                     'step' => 3
+                ],
+                [
+                    'name' => 'high_social_security',
+                    'rules' => 'nullable|file|max:10240',
+                    'order' => 1,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'end_date_high_social_security',
+                    'rules' => 'nullable|date',
+                    'order' => 2,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'payment_current',
+                    'rules' => 'nullable|file|max:10240',
+                    'order' => 1,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'end_date_payment_current',
+                    'rules' => 'nullable|date',
+                    'order' => 2,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'vehicle_insurance',
+                    'rules' => 'nullable|file|max:10240',
+                    'order' => 1,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'end_date_vehicle_insurance',
+                    'rules' => 'nullable|date',
+                    'order' => 2,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'itv',
+                    'rules' => 'nullable|file|max:10240',
+                    'order' => 1,
+                    'step' => 3
+                ],
+                [
+                    'name' => 'end_date_itv',
+                    'rules' => 'nullable|date',
+                    'order' => 2,
+                    'step' => 3
                 ]
             ]
         ],

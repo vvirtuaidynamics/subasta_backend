@@ -257,6 +257,16 @@ return [
             'default_value' => '',
         ],
         [
+            'name' => 'end_date_payment_current',
+            'slug' => 'end_date_payment_current',
+            'label' => 'End date of payment current',
+            'placeholder' => 'Enter end date of payment current',
+            'component' => 'DateField',
+            'rules' => '',
+            'options' => "{}",
+            'default_value' => '',
+        ],
+        [
             'name' => 'end_date_vehicle_insurance',
             'slug' => 'end_date_vehicle_insurance',
             'label' => 'End date of vehicle insurance',
