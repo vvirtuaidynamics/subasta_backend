@@ -13,6 +13,9 @@ class FormRepository extends BaseRepository
         return Form::class;
     }
 
+    /**
+     * @throws Exception
+     */
     public function addField($formId, $fieldId, $data = [])
     {
         try {
@@ -23,7 +26,7 @@ class FormRepository extends BaseRepository
             }
 
         } catch (Exception $e) {
-            throw new Exception($e->getMessage);
+            throw $e;
         }
 
     }
@@ -34,7 +37,7 @@ class FormRepository extends BaseRepository
             $form = $this->getById($formId);
             return $form->fields()->detach($fieldId);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage);
+            throw $e;
         }
     }
 
@@ -44,7 +47,7 @@ class FormRepository extends BaseRepository
             $form = $this->getById($formId);
             $form->fields()->sync($data);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage);
+            throw $e;
         }
     }
 
@@ -54,7 +57,7 @@ class FormRepository extends BaseRepository
             $form = $this->getById($formId);
             $form->fields()->updateExistingPivot($fieldId, $data);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage);
+            throw $e;
         }
     }
 

@@ -27,25 +27,22 @@ class FormsSeeder extends Seeder
         foreach ($forms_data as $f) {
             try {
                 $module = $moduleRepository->getByColumn($f['form']['module'], 'name');
-                $fdata = array_filter($f['form'], function ($k) {
-                    return $k != 'module';
-                }, ARRAY_FILTER_USE_KEY);
-                $form = $formRepository->create([...$fdata, "module_id" => $module['id']]); //
-                foreach ($f['fields'] as $attr) {
-                    if ($attr['field'] && array_key_exists('name', $attr['field'])) {
-                        $field = $fieldRepository->getByColumn($attr['field']['name'], 'name');
+                $form = $formRepository->create([...$f['form'], "module_id" => $module['id']]);
+                $this->command->info('Form named ' . $form->name . ' has ' . count($f['fields']) . ' fields defined');
+                foreach ($f['fields'] as $attribute) {
+                    if ($attribute['field'] && array_key_exists('name', $attribute['field'])) {
+                        $field = $fieldRepository->getByColumn($attribute['field']['name'], 'name');
                         if ($field) {
+
                             $data = ['options' => '{}'];
                             $append = ['created_at' => format_datetime_for_database(now()), 'updated_at' => format_datetime_for_database(now())];
-                            $data = [...$data, ...$attr['data'], ...$append];
-//                            $field_form_item = ["form_id" => $form->id, "field_id" => $field->id, ...$data];
-//                            DB::table(config('form.field_form_tablename', 'field_form'))->insert([...$field_form_item]);
+                            $data = [...$data, ...$attribute['data'], ...$append];
                             $formRepository->addField($form->id, $field->id, $data);
                             $this->command->info('Field ' . $field->name . ' related successfully with form ' . $form->name);
-                        } else {
-                            warning('no field');
-
                         }
+                    } else {
+                        $this->command->warn('Field ' . $field->name . ' not found in field definition');
+
                     }
                 }
             } catch (Exception $e) {

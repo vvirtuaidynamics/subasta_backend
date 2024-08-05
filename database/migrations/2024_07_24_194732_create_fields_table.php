@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('placeholder')->nullable();
             $table->string('component')->default('TextField');
             $table->boolean('include')->default(true);
-            $table->text('rules')->nullable();
+            $table->string('rules')->nullable();
             $table->json('options')->nullable();
             $table->text('default_value')->nullable();
             $table->timestamps();

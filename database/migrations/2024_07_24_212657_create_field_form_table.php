@@ -10,8 +10,8 @@ return new class extends Migration {
         $tablename = config('form.field_form_tablename', 'field_form');
         Schema::create($tablename, function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(App\Models\Field::class);
-            $table->foreignIdFor(App\Models\Form::class);
+            $table->foreignIdFor(App\Models\Field::class)->constrained()->onDelete('cascade');;
+            $table->foreignIdFor(App\Models\Form::class)->constrained()->onDelete('cascade');;
             $table->json('options')->nullable();
             $table->string('rules')->nullable();
             $table->unsignedInteger('step')->default(0);

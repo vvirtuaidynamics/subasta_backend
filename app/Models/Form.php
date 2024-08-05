@@ -25,7 +25,7 @@ class Form extends BaseModel
 
     public function fields(): BelongsToMany
     {
-        return $this->belongsToMany(Field::class)->withPivot(['options', 'rules', 'step', 'group', 'order']);
+        return $this->belongsToMany(Field::class)->withPivot(['options', 'rules', 'step', 'group', 'order'])->withTimestamps();
     }
 
     public function setOptionsAttribute($value)

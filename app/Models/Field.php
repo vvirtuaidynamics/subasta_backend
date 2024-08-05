@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Field extends Model
 {
@@ -14,9 +16,9 @@ class Field extends Model
 
     protected $with = ['forms'];
 
-    public function forms()
+    public function forms(): BelongsToMany
     {
-        return $this->belongsToMany(Form::class)->withPivot(['options', 'rules', 'step', 'group', 'order']);
+        return $this->belongsToMany(Form::class)->withPivot(['options', 'rules', 'step', 'group', 'order'])->withTimestamps();
     }
 
     public function setSlugAttribute($value)
