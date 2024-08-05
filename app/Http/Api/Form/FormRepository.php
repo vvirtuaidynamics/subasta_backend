@@ -16,8 +16,12 @@ class FormRepository extends BaseRepository
     public function addField($formId, $fieldId, $data = [])
     {
         try {
-            $form = $this->getById($formId) || $this->getByColumn($formId, 'name');
-            return $form->fields()->attach($fieldId, $data);
+            $form = $this->getById($formId);
+            if (!$form) $form = $this->getByColumn($formId, 'name');
+            if ($form instanceof \App\Models\Form) {
+                $form->fields()->attach($fieldId, $data);
+            }
+
         } catch (Exception $e) {
             throw new Exception($e->getMessage);
         }
