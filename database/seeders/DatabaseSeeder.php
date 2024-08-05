@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ModulesSeeder::class,
             FieldsSeeder::class,
+            FormsSeeder::class,
         ]);
-        
+
     }
 }
