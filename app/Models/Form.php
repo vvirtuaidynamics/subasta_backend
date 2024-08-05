@@ -11,6 +11,8 @@ class Form extends BaseModel
 {
     use HasFactory;
 
+    protected $table = 'forms';
+
     protected $fillable = ['name', 'position', 'options', 'default_value', 'route', 'class'];
 
     protected $with = ['fields', 'module'];
@@ -45,9 +47,9 @@ class Form extends BaseModel
     public function setDefaultValueAttribute($value)
     {
         if (!isset($value) || $value === '')
-            $this->attributes['options'] = "{}";
+            $this->attributes['default_value'] = "{}";
         else
-            $this->attributes['options'] = json_encode($value);
+            $this->attributes['default_value'] = json_encode($value);
     }
 
     public function getDefaultValueAttribute($value)
