@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        $tablename = config('form.field_form_tablename', 'field_form');
+        $tablename = config('forms.field_form_tablename', 'field_form');
         Schema::create($tablename, function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(App\Models\Field::class)->constrained()->onDelete('cascade');;
-            $table->foreignIdFor(App\Models\Form::class)->constrained()->onDelete('cascade');;
+            $table->foreignIdFor(App\Models\Field::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(App\Models\Form::class)->constrained()->onDelete('cascade');
             $table->json('options')->nullable();
             $table->string('rules')->nullable();
             $table->unsignedInteger('step')->default(0);

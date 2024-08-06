@@ -14,7 +14,9 @@ class FieldRepository extends BaseRepository
 
     public function getFieldByName(string $name)
     {
-        return $this->getByColumn($name, 'name');
+        $field = $this->getByColumn($name, 'name');
+        if ($field && $field instanceof Field) return $field;
+        else return null;
     }
 
 }

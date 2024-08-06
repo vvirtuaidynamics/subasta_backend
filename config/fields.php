@@ -5,7 +5,6 @@ return [
      * Fields definitions for all attributes of the application
      */
     'default' => [
-        // Administration
         [
             'name' => 'name',
             'slug' => 'name',

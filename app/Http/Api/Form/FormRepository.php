@@ -22,11 +22,13 @@ class FormRepository extends BaseRepository
             $form = $this->getById($formId);
             if (!$form) $form = $this->getByColumn($formId, 'name');
             if ($form instanceof \App\Models\Form) {
-                $form->fields()->attach($fieldId, $data);
+                $form->fields()->attach([$fieldId => $data]);
             }
+            return true;
 
-        } catch (Exception $e) {
-            throw $e;
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return false;
         }
 
     }
@@ -35,17 +37,10 @@ class FormRepository extends BaseRepository
     {
         try {
             $form = $this->getById($formId);
-            return $form->fields()->detach($fieldId);
-        } catch (Exception $e) {
-            throw $e;
-        }
-    }
-
-    public function syncFields($formId, $data)
-    {
-        try {
-            $form = $this->getById($formId);
-            $form->fields()->sync($data);
+            if (!$form) $form = $this->getByColumn($formId, 'name');
+            if ($form instanceof \App\Models\Form) {
+                return $form->fields()->detach($fieldId);
+            }
         } catch (Exception $e) {
             throw $e;
         }
@@ -55,7 +50,10 @@ class FormRepository extends BaseRepository
     {
         try {
             $form = $this->getById($formId);
-            $form->fields()->updateExistingPivot($fieldId, $data);
+            if (!$form) $form = $this->getByColumn($formId, 'name');
+            if ($form instanceof \App\Models\Form) {
+                $form->fields()->updateExistingPivot($fieldId, $data);
+            }
         } catch (Exception $e) {
             throw $e;
         }
