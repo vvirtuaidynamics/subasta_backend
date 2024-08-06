@@ -355,5 +355,12 @@ if (!function_exists('get_user_modules')) {
         }
         return $user_modules;
     }
+
+    if (!function_exists('unique_check')) {
+        function unique_check($table, $column, $value): bool
+        {
+            return DB::table($table)->where($column, $value)->exists();
+        }
+    }
 }
 
