@@ -13,5 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        // TODO: QUITAR EN PRODUCCION
+        'api/*', // Permitir todas las rutas de la API
+        'doc/*', // Permitir todas las rutas de la Documentacion
     ];
 }
