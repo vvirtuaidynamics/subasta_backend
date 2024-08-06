@@ -39,11 +39,9 @@ class FormsSeeder extends Seeder
                     if ($field != null && $form != null) {
                         $data = ['options' => '{}'];
                         $append = ['created_at' => format_datetime_for_database(now()), 'updated_at' => format_datetime_for_database(now())];
-                        $data = [...$data, ...$attribute['data'], ...$append];
-
+                        //$data = [...$data, ...$attribute['data'], ...$append];
                         $form->fields()->attach($field->id, [...$data]);
                         $this->command->info('Attached field: ' . $field->name . ' to form: ' . $form->name);
-//                        $formRepository->addField($form->id, $field->id, $data);
                     } else {
                         $this->command->warn('Field ' . $field->name || 'null' . ' not found in field definition');
 
