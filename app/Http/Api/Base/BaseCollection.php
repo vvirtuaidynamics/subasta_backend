@@ -14,7 +14,7 @@ class BaseCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return  [
+        return [
             'rows' => $this->items(),
             'pagination' => [
                 'total' => $this->total(),
@@ -24,6 +24,6 @@ class BaseCollection extends ResourceCollection
                 'from' => $this->firstItem(),
                 'to' => $this->lastItem(),
             ],
-        ];;
+        ];
     }
 }
