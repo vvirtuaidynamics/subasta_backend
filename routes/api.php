@@ -20,6 +20,15 @@ Route::post('/register/{model?}', [App\Http\Api\Auth\AuthController::class, 'reg
  * Obtener formulario por nombre
  */
 Route::get('/form/{name}', [App\Http\Api\Form\FormController::class, 'getFormByName'])->name('get_form_by_name');
+/**
+ * Check unique value {table: table_name,column: column_name, value: value}
+ */
+Route::post('/unique', [App\Http\Api\Base\HelperController::class, 'check_unique'])->name('check_unique');
+/**
+ * Get select options data {table: table, column_id: column_value, column_label: column_label, filter: filter}
+ */
+Route::post('/select', [App\Http\Api\Base\HelperController::class, 'select'])->name('select');
+
 
 /**
  *  Locales (Gestión del idioma desde el backend)
