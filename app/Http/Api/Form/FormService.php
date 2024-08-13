@@ -26,13 +26,11 @@ class FormService extends BaseService
     public function rules(): array
     {
         return [
-            'username' => 'required|string|max:50|unique:users',
-            'name' => 'required|string|max:50',
-            'surname' => 'nullable|string|max:50',
-            'email' => 'required|string|max:255|unique:users',
-            'options' => 'json|nullable',
-            'class' => 'string|nullable',
-
+            'name' => 'required|string|max:50|unique:users',
+            'model' => 'required|string|max:50',
+            'label' => 'nullable|string',
+            'icon' => 'nullable|string',
+            'data' => 'json|required|string',
         ];
     }
 
