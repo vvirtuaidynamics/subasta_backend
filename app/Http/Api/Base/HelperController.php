@@ -27,6 +27,12 @@ class HelperController extends Controller
         return response()->json(['unique' => !$exist]);
     }
 
+    public function model(Request $request, $name = null): JsonResponse
+    {
+        $models = $name ? get_models($name) : get_models();
+        return response()->json($models);
+    }
+
     public function select(Request $request)
     {
         $chuckSize = $request->has('chuck') ? (int)$request->input('chuck') : 100;
