@@ -13,51 +13,46 @@ class Form extends BaseModel
 
     protected $table = 'forms';
 
-    protected $fillable = ['name', 'position', 'options', 'default_value', 'route', 'class'];
+    protected $fillable = ['name', 'model', 'label', 'icon', 'data'];
 
-    protected $with = ['fields', 'module'];
+    protected $appends = ['model_field'];
 
-    // RELACIONES
-    public function module(): BelongsTo
-    {
-        return $this->belongsTo(Module::class);
-    }
 
-    public function fields(): BelongsToMany
-    {
-        return $this->belongsToMany(Field::class)->withPivot(['options', 'rules', 'step', 'group', 'order'])->withTimestamps();
-    }
-
-    public function setOptionsAttribute($value)
+    public function setDataAttribute($value)
     {
         if (!isset($value) || $value === '')
-            $this->attributes['options'] = "{}";
+            $this->attributes['data'] = "{}";
         else
             $this->attributes['options'] = json_encode($value);
     }
 
-    public function getOptionsAttribute($value)
+    public function getModelFieldAttribute()
     {
-        if (!isset($value) || $value === '')
-            return $value = "{}";
-        else
-            return json_decode($value);
+        return $this->model ? get_models($this->model) : null;
     }
 
-    public function setDefaultValueAttribute($value)
-    {
-        if (!isset($value) || $value === '')
-            $this->attributes['default_value'] = "{}";
-        else
-            $this->attributes['default_value'] = json_encode($value);
-    }
-
-    public function getDefaultValueAttribute($value)
-    {
-        if (!isset($value) || $value === '')
-            return $value = "{}";
-        else
-            return json_decode($value);
-    }
+//    public function getOptionsAttribute($value)
+//    {
+//        if (!isset($value) || $value === '')
+//            return $value = "{}";
+//        else
+//            return json_decode($value);
+//    }
+//
+//    public function setDefaultValueAttribute($value)
+//    {
+//        if (!isset($value) || $value === '')
+//            $this->attributes['default_value'] = "{}";
+//        else
+//            $this->attributes['default_value'] = json_encode($value);
+//    }
+//
+//    public function getDefaultValueAttribute($value)
+//    {
+//        if (!isset($value) || $value === '')
+//            return $value = "{}";
+//        else
+//            return json_decode($value);
+//    }
 
 }
