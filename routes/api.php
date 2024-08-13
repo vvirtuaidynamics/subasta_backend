@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dev', function (Illuminate\Http\Request $request) {
-//    $models = get_modules();
-    $forms_data = get_forms_data();
-    return count($forms_data) > 0 ? $forms_data : [];
+    $models = get_models('Country');
+    //$forms_data = get_forms_data();
+    return count($models) > 0 ? $models : [];
 })->name('dev');
 
 /**
@@ -19,7 +19,7 @@ Route::post('/register/{model?}', [App\Http\Api\Auth\AuthController::class, 'reg
 /**
  * Obtener formulario por nombre
  */
-Route::get('/form/{name}', [App\Http\Api\Form\FormController::class, 'getFormByName'])->name('get_form_by_name');
+Route::get('/form_by_name/{name}', [App\Http\Api\Form\FormController::class, 'getFormByName'])->name('get_form_by_name');
 /**
  * Check unique value {table: table_name,column: column_name, value: value}
  */
@@ -46,6 +46,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [App\Http\Api\Auth\AuthController::class, 'profile'])->name('profile');
     Route::post('/logout', [App\Http\Api\Auth\AuthController::class, 'logout'])->name('logout');
     Route::post('/refresh', [App\Http\Api\Auth\AuthController::class, 'refresh'])->name('refresh');
+
+    /**
+     * Get model all or by name
+     */
+    Route::get('/model/{name?}', [App\Http\Api\Base\HelperController::class, 'model'])->name('model');
+
+    /**
+     * Form
+     */
+    Route::get('/form', [App\Http\Api\Form\FormController::class, 'list'])->name('form_list');
+    Route::get('/form/{id}', [App\Http\Api\Form\FormController::class, 'view'])->name('form_view');
+    Route::post('/form', [App\Http\Api\Form\FormController::class, 'store'])->name('form_store');
+    Route::patch('/form/{id}', [App\Http\Api\Form\FormController::class, 'update'])->name('form_update');
+    Route::delete('/form/{id}', [App\Http\Api\Form\FormController::class, 'delete'])->name('form_delete');
 
     /**
      * User
