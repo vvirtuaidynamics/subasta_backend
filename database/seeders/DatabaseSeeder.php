@@ -12,8 +12,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersSeeder::class,
             ModulesSeeder::class,
-            FieldsSeeder::class,
-            FormsSeeder::class,
         ]);
 
     }
