@@ -39,7 +39,7 @@ return [
             'fields' => '[]',
             'order' => 0,
             'parent' => 'administration',
-            'permissions' => ['create', 'view', 'update']
+            'permissions' => ['create', 'view', 'update', 'delete']
         ],
         [
             'name' => 'role',
