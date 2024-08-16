@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\PostalCode;
+namespace App\Http\Api\Base\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
