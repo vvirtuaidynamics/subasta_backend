@@ -4,9 +4,12 @@ namespace App\Enums;
 
 enum Components: string
 {
-    case StringField = 'TextField';
+    case AvatarField = 'AvatarField';
+    case TextField = 'TextField';
     case TextAreaField = 'TextAreaField';
-    case EditorField = 'RichTextField';
+    case EditorField = 'EditorField';
+    case PhoneField = 'PhoneField';
+    case PasswordField = 'PasswordField';
     case NumberField = 'NumberField';
     case FileField = 'FileField';
     case DateField = 'DateField';
