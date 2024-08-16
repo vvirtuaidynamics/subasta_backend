@@ -191,11 +191,9 @@ if (!function_exists('get_forms_data')) {
                 'name' => $form['name'],
                 'module' => $form['module'],
                 'label' => $form['label'],
-                'position' => $form['position'],
                 'route' => $form['route'],
                 'options' => $form['options'],
                 'default_value' => $form['default_value'] ?? '{}',
-                'class' => $form['class'],
             ];
             $fields_of_form = $form['fields'];
             $fields_data = [];
@@ -211,7 +209,7 @@ if (!function_exists('get_forms_data')) {
                     }
                 }
                 $item_data = [];
-                foreach (['options', 'rules', 'step', 'group', 'order'] as $key) {
+                foreach (['options', 'rules', 'step', 'panel', 'position'] as $key) {
                     if (array_key_exists($key, $field)) {
                         $item_data[$key] = $field[$key];
                     }
