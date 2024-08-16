@@ -4,11 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/dev', function (Illuminate\Http\Request $request) {
-    $models = get_models('Country');
-    //$forms_data = get_forms_data();
-    return count($models) > 0 ? $models : [];
-})->name('dev');
+Route::get('/dev', [\App\Http\Controllers\DebugController::class, 'setFormField'])->name('dev');
 
 /**
  * Rutas públicas.
