@@ -6,10 +6,6 @@ use App\Enums\ApiResponseCodes;
 use App\Enums\ApiResponseMessages;
 use App\Http\Api\Base\BaseService;
 use App\Models\Form;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Carbon\Carbon;
-use Illuminate\Validation\ValidationException;
 
 class FormService extends BaseService
 {
@@ -27,10 +23,12 @@ class FormService extends BaseService
     {
         return [
             'name' => 'required|string|max:50|unique:users',
-            'model' => 'required|string|max:50',
             'label' => 'nullable|string',
-            'icon' => 'nullable|string',
-            'data' => 'json|required|string',
+            'module_id' => 'required|string|max:50',
+            'module' => 'required|string|max:50',
+            'route' => 'nullable|string',
+            'options' => 'nullable|json',
+            'default_value' => 'nullable|json',
         ];
     }
 

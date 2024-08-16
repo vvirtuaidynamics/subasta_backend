@@ -5,6 +5,7 @@ namespace App\Http\Api\Form;
 use App\Http\Api\Base\BaseRepository;
 use App\Models\Form;
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 
 class FormRepository extends BaseRepository
 {
@@ -27,9 +28,9 @@ class FormRepository extends BaseRepository
             return true;
 
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
-            return false;
+            throw new Exception($e->getMessage());
         }
+        return false;
 
     }
 
@@ -42,8 +43,11 @@ class FormRepository extends BaseRepository
                 return $form->fields()->detach($fieldId);
             }
         } catch (Exception $e) {
-            throw $e;
+            throw new Exception($e->getMessage());
+
         }
+        return false;
+
     }
 
     public function updateField($formId, $fieldId, $data = [])
@@ -55,8 +59,20 @@ class FormRepository extends BaseRepository
                 $form->fields()->updateExistingPivot($fieldId, $data);
             }
         } catch (Exception $e) {
-            throw $e;
+            throw new Exception($e->getMessage());
+
         }
+        return false;
+    }
+
+    public function create(array $data): Model
+    {
+        $this->unsetClauses();
+        $form = $this->getByColumn($data['name'], 'name');
+        if ($form && $form instanceof Form)
+            return $form;
+        else
+            return $this->model->create($data);
     }
 
 }
