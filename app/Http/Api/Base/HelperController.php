@@ -2,6 +2,8 @@
 
 namespace App\Http\Api\Base;
 
+use App\Enums\Components;
+use App\Enums\ComponentTypes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -43,6 +45,34 @@ class HelperController extends Controller
         $locale = $request->input('locale') ?? null;
         $filter = $request->input('filter') ?? '';
         $data = [];
+        if ($table === 'components') {
+            $components = Components::values();
+            if ($filter)
+                $components = array_filter($components, function ($component) use ($filter) {
+                    return str_contains(strtolower($component), strtolower($filter));
+                });
+            foreach ($components as $value) {
+                $data[] = [
+                    'value' => $value,
+                    'label' => $value
+                ];
+            }
+            return response()->json($data);
+        }
+        if ($table === 'types') {
+            $types = ComponentTypes::values();
+            if ($filter)
+                $types = array_filter($types, function ($component) use ($filter) {
+                    return str_contains(strtolower($component), strtolower($filter));
+                });
+            foreach ($types as $type) {
+                $data[] = [
+                    'value' => $type,
+                    'label' => $type
+                ];
+            }
+            return response()->json($data);
+        }
         if (Schema::hasColumn("$table", "$column_id") && Schema::hasColumn("$table", "$column_label")) {
             DB::table($table)->orderBy($column_label)->where($column_label, 'like', $filter . '%')
                 ->chunk($chuckSize, function (Collection $items) use ($column_id, $column_label, &$data, $locale, $table, $column_image) {
