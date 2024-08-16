@@ -15,7 +15,7 @@ class FieldForm extends BaseModel
     protected $table = 'field_form';
     protected $guarded = [];
 
-    protected $fillable = ['name', 'position', 'options', 'default_value', 'route', 'class'];
+    protected $fillable = ['name', 'step', 'panel', 'position', 'options', 'default_value', 'route'];
 
     protected $with = ['form', 'field'];
 
