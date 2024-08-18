@@ -6,6 +6,8 @@ use App\Enums\ApiResponseCodes;
 use App\Enums\ApiResponseMessages;
 use App\Http\Api\Base\BaseService;
 use App\Models\Form;
+use Illuminate\Http\Request;
+
 
 class FormService extends BaseService
 {
@@ -22,10 +24,10 @@ class FormService extends BaseService
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:50|unique:users',
+            'name' => 'required|string|max:50|unique:forms',
             'label' => 'nullable|string',
-            'module_id' => 'required|string|max:50',
-            'module' => 'required|string|max:50',
+            'module_id' => 'nullable|numeric',
+            'model' => 'nullable|string|max:50',
             'route' => 'nullable|string',
             'options' => 'nullable|json',
             'default_value' => 'nullable|json',
@@ -34,6 +36,13 @@ class FormService extends BaseService
 
     public function getFormByName($name, $request)
     {
+        $user = auth()->user();
+        if ($user) {
+            $require_permission = strtolower($this->getBaseModel()) . ':list';
+            if (!$user->super_admin || !in_array($require_permission, $user->permission_names))
+                return null;
+        }
+
         if ($name) {
             $f = $this->repository->getByColumn($name, 'name');
             if ($f) {
@@ -42,4 +51,35 @@ class FormService extends BaseService
         }
         return $this->sendError(ApiResponseMessages::RESOURCE_NOT_FOUND, ApiResponseCodes::HTTP_NOT_FOUND);
     }
+
+    public function addField($form_id, $field_id, Request $request)
+    {
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':update';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            return $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+        $data = $request->has('data') ? $request->input('data') : [];
+        return $this->repository->addField($form_id, $field_id, $data);
+    }
+
+    public function updateField($form_id, $field_id, Request $request)
+    {
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':update';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            return $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+        $data = $request->has('data') ? $request->input('data') : [];
+        return $this->repository->updateField($form_id, $field_id, $data);
+    }
+
+    public function removeField($form_id, $field_id, Request $request)
+    {
+        $user = auth()->user();
+        $require_permission = strtolower($this->getBaseModel()) . ':update';
+        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+            return $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+        $data = $request->has('data') ? $request->input('data') : [];
+        return $this->repository->removeField($form_id, $field_id, $data);
+    }
+
 }
