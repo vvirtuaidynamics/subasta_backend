@@ -125,6 +125,11 @@ abstract class BaseService implements BaseServiceInterface
             }
         }
 
+        if ($request->has('with')) {
+            $with = $request->get('with');
+            $this->repository->with($with);
+        }
+
         if ($request->has('filters')) {
             $filters = $request->get('filters'); //[{'column', 'value', 'operator'}]
             foreach ($filters as $filter) {
@@ -243,7 +248,6 @@ abstract class BaseService implements BaseServiceInterface
         $require_permission = strtolower($this->getBaseModel()) . ':delete';
         if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
             $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
-
         if ($id) {
             $data = $this->repository->deleteById($id);
             if ($data)
