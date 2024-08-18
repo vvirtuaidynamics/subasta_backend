@@ -189,7 +189,7 @@ if (!function_exists('get_forms_data')) {
         foreach ($forms as $form) {
             $form_item = [
                 'name' => $form['name'],
-                'module' => $form['module'],
+                'model' => $form['model'],
                 'label' => $form['label'],
                 'route' => $form['route'],
                 'options' => $form['options'],

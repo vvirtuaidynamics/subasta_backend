@@ -8,7 +8,7 @@ return [
         // Register carrier
         [
             'name' => 'carrier_register',
-            'module' => 'carrier',
+            'model' => 'carrier',
             'label' => 'Register new carrier',
             'route' => 'register/carrier',
             'options' => '{}',
@@ -169,7 +169,7 @@ return [
         // Register Client
         [
             'name' => 'client_register',
-            'module' => 'client',
+            'model' => 'client',
             'label' => 'Register new client',
             'route' => 'register/client',
             'options' => '{}',

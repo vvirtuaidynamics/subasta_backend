@@ -27,7 +27,7 @@ class FormsSeeder extends Seeder
         $forms_data = get_forms_data();
         // Each form has ['form'=>[name,module,label,position,route,options,default_value], 'fields'=>array]
         foreach ($forms_data as $f) {
-            $module = $moduleRepository->getByColumn($f['form']['module'], 'name');
+            $module = $moduleRepository->getByColumn($f['form']['model'], 'name');
             $append_form = $module && $module->id ? ["module_id" => $module->id] : [];
             $form = $formRepository->create([...$f['form'], ...$append_form]);
             if (!empty($form)) {
