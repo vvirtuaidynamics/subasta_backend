@@ -70,6 +70,27 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/field/{id}', [App\Http\Api\Field\FieldController::class, 'delete'])->name('field_delete');
 
     /**
+     * Role
+     */
+    Route::get('/role', [App\Http\Api\Role\RoleController::class, 'list']);
+    Route::get('/role/{id}', [App\Http\Api\Role\RoleController::class, 'view']);
+    Route::post('/role', [App\Http\Api\Role\RoleController::class, 'store']);
+    Route::patch('/role/{id}', [App\Http\Api\Role\RoleController::class, 'update']);
+    Route::delete('/role/{id}', [App\Http\Api\Role\RoleController::class, 'delete']);
+    Route::post('/role/{role_id}/permission/{permission_id}', [App\Http\Api\Role\RoleController::class, 'addPermission']);
+    Route::post('/role/{role_id}/permissions', [App\Http\Api\Role\RoleController::class, 'syncPermissions']);
+    Route::delete('/role/{role_id}/permission/{permission_id}', [App\Http\Api\Role\RoleController::class, 'removePermission']);
+
+    /**
+     * Permission
+     */
+    Route::get('/permission', [App\Http\Api\Permission\PermissionController::class, 'list']);
+    Route::get('/permission/{id}', [App\Http\Api\Permission\PermissionController::class, 'view']);
+    Route::post('/permission', [App\Http\Api\Permission\PermissionController::class, 'store']);
+    Route::patch('/permission/{id}', [App\Http\Api\Permission\PermissionController::class, 'update']);
+    Route::delete('/permission/{id}', [App\Http\Api\Permission\PermissionController::class, 'delete']);
+
+    /**
      * User
      */
     Route::get('/user', [App\Http\Api\User\UserController::class, 'list'])->name('user_list');
@@ -78,6 +99,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/user', [App\Http\Api\User\UserController::class, 'store'])->name('user_store');
     Route::patch('/user/{id}', [App\Http\Api\User\UserController::class, 'update'])->name('user_update');
     Route::delete('/user/{id}', [App\Http\Api\User\UserController::class, 'delete'])->name('user_delete');
+    Route::get('/user/{id}/roles', [App\Http\Api\User\UserController::class, 'roles']);
+    Route::get('/user/{id}/permissions', [App\Http\Api\User\UserController::class, 'permissions']);
+
 
     /**
      * Client
@@ -115,8 +139,8 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * State Routes
      */
-    Route::get('/state', [App\Http\Api\State\StateController::class, 'list'])->name('state_list');
-    Route::get('/state/{id}', [App\Http\Api\State\StateController::class, 'view'])->name('state_view');
+    Route::get('/state', [App\Http\Api\State\PermissionController::class, 'list'])->name('state_list');
+    Route::get('/state/{id}', [App\Http\Api\State\PermissionController::class, 'view'])->name('state_view');
 
     /**
      * City Routes
