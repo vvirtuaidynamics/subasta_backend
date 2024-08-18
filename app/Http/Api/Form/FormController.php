@@ -44,4 +44,20 @@ class FormController extends BaseController
     {
         return $this->service->delete($id);
     }
+
+    public function addField($form_id, $field_id, Request $request)
+    {
+        return $this->service->addField($form_id, $field_id, $request);
+    }
+
+    public function updateField($form_id, $field_id, Request $request)
+    {
+        return $this->service->updateField($form_id, $field_id, $request);
+    }
+
+    public function removeField($form_id, $field_id, Request $request)
+    {
+        return $this->service->removeField($form_id, $field_id, $request);
+    }
+
 }
