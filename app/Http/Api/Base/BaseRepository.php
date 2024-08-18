@@ -136,8 +136,12 @@ use JasonGuru\LaravelMakeRepository\Exceptions\GeneralException;
     {
         $this->unsetClauses();
         $model = $this->getById($id);
-        $model->update($data, $options);
-        return $model;
+        if ($model) {
+            $model->update($data, $options);
+            return $model;
+        }
+        return false;
+
     }
 
     public function limit($limit)

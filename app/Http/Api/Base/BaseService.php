@@ -204,7 +204,7 @@ abstract class BaseService implements BaseServiceInterface
             return $this->sendResponse($result, ApiResponseMessages::CREATED_SUCCESSFULLY);
         } catch (ValidationException $e) {
             return $this->sendError(
-                ApiResponseMessages::UNPROCESSABLE_CONTENT,
+                $e->getMessage(),
                 ApiResponseCodes::HTTP_UNPROCESSABLE_CONTENT,
                 ['errors' => $e->errors()]
             );
@@ -225,35 +225,46 @@ abstract class BaseService implements BaseServiceInterface
             $validator = $this->makeValidator($request->all(), $id);
             $validatedData = $validator->validate();
             $result = $this->repository->updateById($id, $validatedData);
-            if ($getModel) return $result;
-            return $this->sendResponse(
-                $result,
-                ApiResponseMessages::UPDATED_SUCCESSFULLY
-            );
+            if ($getModel && $result) return $result;
+            if ($result)
+                return $this->sendResponse(
+                    $result,
+                    ApiResponseMessages::UPDATED_SUCCESSFULLY
+                );
+            else
+                return $this->sendError(
+                    ApiResponseMessages::NO_QUERY_RESULTS
+                );
 
-        } catch (ValidationException $ex) {
+        } catch (ValidationException $e) {
             return $this->sendError(
-                ApiResponseMessages::UNPROCESSABLE_CONTENT,
+                $e->getMessage(),
                 ApiResponseCodes::HTTP_UNPROCESSABLE_CONTENT,
-                ['errors' => $ex->errors()]
+                ['errors' => $e->errors()]
             );
         }
 
     }
 
-    public function delete($id)
+    public function delete($id, Request $request = null)
     {
-        // Authorization check
-        $user = auth()->user();
-        $require_permission = strtolower($this->getBaseModel()) . ':delete';
-        if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
-            $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
-        if ($id) {
-            $data = $this->repository->deleteById($id);
-            if ($data)
-                return $this->sendResponse($data, ApiResponseMessages::DELETED_SUCCESSFULLY);
+        try {
+            $user = auth()->user();
+            $require_permission = strtolower($this->getBaseModel()) . ':delete';
+            if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+                $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+            if ($id) {
+                $data = $this->repository->deleteById($id);
+                if ($data)
+                    return $this->sendResponse($data, ApiResponseMessages::DELETED_SUCCESSFULLY);
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage());
+
         }
         return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
+
+
     }
 
     public function mergeCreateRequestBefore(Request $request)
