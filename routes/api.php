@@ -56,6 +56,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/form', [App\Http\Api\Form\FormController::class, 'store'])->name('form_store');
     Route::patch('/form/{id}', [App\Http\Api\Form\FormController::class, 'update'])->name('form_update');
     Route::delete('/form/{id}', [App\Http\Api\Form\FormController::class, 'delete'])->name('form_delete');
+    Route::post('/form/{form_id}/field/{field_id}', [App\Http\Api\Form\FormController::class, 'addField'])->name('form_add_field');
+    Route::patch('/form/{form_id}/field/{field_id}', [App\Http\Api\Form\FormController::class, 'updateField'])->name('form_update_field');
+    Route::delete('/form/{form_id}/field/{field_id}', [App\Http\Api\Form\FormController::class, 'removeField'])->name('form_remove_field');
+
+    /**
+     * Field
+     */
+    Route::get('/field', [App\Http\Api\Field\FieldController::class, 'list'])->name('field_list');
+    Route::get('/field/{id}', [App\Http\Api\Field\FieldController::class, 'view'])->name('field_view');
+    Route::post('/field', [App\Http\Api\Field\FieldController::class, 'store'])->name('field_store');
+    Route::patch('/field/{id}', [App\Http\Api\Field\FieldController::class, 'update'])->name('field_update');
+    Route::delete('/field/{id}', [App\Http\Api\Field\FieldController::class, 'delete'])->name('field_delete');
 
     /**
      * User
