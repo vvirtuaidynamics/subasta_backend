@@ -40,4 +40,16 @@ class UserController extends BaseController
     {
         return $this->service->delete($id);
     }
+
+    public function roles($id, Request $request)
+    {
+        return $this->service->roles($id, $request);
+    }
+
+    public function permissions($id, Request $request)
+    {
+        return $this->service->permissions($id, $request);
+    }
+
+
 }

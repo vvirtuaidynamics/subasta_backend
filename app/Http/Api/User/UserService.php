@@ -2,6 +2,7 @@
 
 namespace App\Http\Api\User;
 
+use App\Enums\ApiResponseMessages;
 use App\Http\Api\Base\BaseService;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,5 +42,55 @@ class UserService extends BaseService
             $request = $request->merge(['active' => 0]);
         return $request;
     }
+
+    public function roles($id, Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $require_permission = strtolower($this->getBaseModel()) . ':update';
+            if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+                $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+
+            $model_user = $this->repository->getById($id);
+            if ($model_user) {
+                $data = $model_user->getRoleNames();
+                if ($data)
+                    return $this->sendResponse($data, ApiResponseMessages::FETCHED_SUCCESSFULLY);
+
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage());
+        }
+        return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
+
+
+    }
+
+    public function permissions($id, Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $require_permission = strtolower($this->getBaseModel()) . ':update';
+            if (!$user || (!$user->super_admin || !in_array($require_permission, $user->permission_names)))
+                $this->sendError(ApiResponseMessages::FORBIDDEN, ApiResponseCodes::HTTP_FORBIDDEN);
+
+            $model_user = $this->repository->getById($id);
+            if ($model_user) {
+                $data = collect($model_user->getAllPermissions())->map(function ($permission) {
+                    return [
+                        'id' => $permission->id,
+                        'name' => $permission->name,
+                    ];
+                });
+                if ($data)
+                    return $this->sendResponse($data, ApiResponseMessages::UPDATED_SUCCESSFULLY);
+
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage());
+        }
+        return $this->sendError(ApiResponseMessages::NO_QUERY_RESULTS);
+    }
+
 
 }
