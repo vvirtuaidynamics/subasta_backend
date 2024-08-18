@@ -26,7 +26,7 @@ interface BaseServiceInterface
 
     public function update($id, Request $request);
 
-    public function delete($id);
+    public function delete($id, Request $request = null);
 
 
 }
