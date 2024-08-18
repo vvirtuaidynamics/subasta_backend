@@ -14,7 +14,6 @@ class Field extends Model
     protected $table = 'fields';
     protected $fillable = ['name', 'label', 'placeholder', 'component', 'type', 'include', 'options', 'default_value'];
 
-
     public function forms(): BelongsToMany
     {
         return $this->belongsToMany(Form::class)->withPivot(['options', 'rules', 'step', 'panel', 'position'])->withTimestamps();
@@ -36,4 +35,18 @@ class Field extends Model
         if (!isset($value) || $value === null || $value === '') $value = "{}";
         return json_decode($value);
     }
+
+    public function setCreatedAtAttribute($value)
+    {
+        if (!isset($value) || $value === null || $value === '')
+            $this->attributes['created_at'] = format_datetime_for_database(now());
+    }
+
+    public function setUpdatedAtAttribute($value)
+    {
+        if (!isset($value) || $value === null || $value === '')
+            $this->attributes['updated_at'] = format_datetime_for_database(now());
+    }
+
+
 }
