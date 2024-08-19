@@ -171,7 +171,7 @@ if (!function_exists('get_models')) {
 
                 $model_schema = ["name" => $model, "class" => $class_namespace, "fields" => $model_fields];
                 $schemas[] = $model_schema;
-                if ($model_name && $model_name == $model) {
+                if ($model_name && strtolower($model_name) == strtolower($model)) {
                     return $model_schema;
                 }
             }
