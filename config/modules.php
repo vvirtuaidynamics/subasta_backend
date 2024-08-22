@@ -34,7 +34,7 @@ return [
             'class' => 'App\\Models\\Form',
             'label' => 'Forms',
             'title' => 'Forms',
-            'url' => 'form',
+            'url' => 'forms',
             'icon' => 'mdi-format-list-checks',
             'fields' => '[]',
             'order' => 0,
@@ -48,7 +48,7 @@ return [
             'class' => 'App\\Models\\Field',
             'label' => 'Fields',
             'title' => 'Fields',
-            'url' => 'field',
+            'url' => 'fields',
             'icon' => 'mdi-form-textbox',
             'fields' => '[]',
             'order' => 0,
@@ -74,8 +74,8 @@ return [
             'table' => 'permissions',
             'model' => 'Permission',
             'class' => 'Spatie\\Permission\\Models\\Permission',
-            'label' => 'Permission',
-            'title' => 'Permission',
+            'label' => 'Permissions',
+            'title' => 'Permissions',
             'url' => 'permissions',
             'icon' => 'mdi-key',
             'fields' => '[]',
@@ -240,6 +240,4 @@ return [
         'types' => ['int', 'bigint', 'timestamp'],
         'column_exceptions' => ['id', 'created_at', 'updated_at', 'deleted_at'],
     ],
-
-
 ];
