@@ -13,9 +13,10 @@ class Form extends BaseModel
 
     protected $table = 'forms';
 
-    protected $fillable = ['name', 'position', 'options', 'model', 'module_id', 'default_value', 'route', 'class'];
+    protected $fillable = ['name', 'position', 'options', 'module_name', 'module_id', 'default_value', 'route', 'class'];
 
-    protected $relations = ['module', 'fields'];
+    protected $with = ['module', 'fields'];
+
 
     // RELACIONES
     public function module(): BelongsTo
