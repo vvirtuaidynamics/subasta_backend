@@ -36,13 +36,6 @@ class FormService extends BaseService
 
     public function getFormByName($name, $request)
     {
-        $user = auth()->user();
-        if ($user) {
-            $require_permission = strtolower($this->getBaseModel()) . ':list';
-            if (!$user->super_admin || !in_array($require_permission, $user->permission_names))
-                return null;
-        }
-
         if ($name) {
             $f = $this->repository->getByColumn($name, 'name');
             if ($f) {
