@@ -16,7 +16,7 @@ return [
             'fields' => [
                 [
                     'name' => 'avatar',
-                    'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048',
+                    'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|size:2048',
                     'position' => 1,
                     'step' => 1
                 ],
@@ -94,7 +94,7 @@ return [
                 ],
                 [
                     'name' => 'transportation_card',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 1,
                     'step' => 3
                 ],
@@ -106,7 +106,7 @@ return [
                 ],
                 [
                     'name' => 'merchandise_insurance',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 3,
                     'step' => 2
                 ],
@@ -118,7 +118,7 @@ return [
                 ],
                 [
                     'name' => 'high_social_security',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 1,
                     'step' => 3
                 ],
@@ -130,7 +130,7 @@ return [
                 ],
                 [
                     'name' => 'payment_current',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 1,
                     'step' => 3
                 ],
@@ -142,7 +142,7 @@ return [
                 ],
                 [
                     'name' => 'vehicle_insurance',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 1,
                     'step' => 3
                 ],
@@ -154,7 +154,7 @@ return [
                 ],
                 [
                     'name' => 'itv',
-                    'rules' => 'nullable|file|max:10240',
+                    'rules' => 'nullable|file|size:10240',
                     'position' => 1,
                     'step' => 3
                 ],
@@ -177,7 +177,7 @@ return [
             'fields' => [
                 [
                     'name' => 'avatar',
-                    'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048',
+                    'rules' => 'image|nullable|mimes:jpeg,png,jpg,gif|size:2048',
                     'position' => 1,
                     'step' => 1
                 ],
