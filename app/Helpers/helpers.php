@@ -190,6 +190,7 @@ if (!function_exists('get_forms_data')) {
             $form_item = [
                 'name' => $form['name'],
                 'module_name' => $form['module_name'],
+                'type' => $form['type'],
                 'label' => $form['label'],
                 'route' => $form['route'],
                 'options' => $form['options'],

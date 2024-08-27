@@ -4,6 +4,7 @@ namespace App\Http\Api\Form;
 
 use App\Enums\ApiResponseCodes;
 use App\Enums\ApiResponseMessages;
+use App\Enums\FormTypes;
 use App\Http\Api\Base\BaseService;
 use App\Models\Form;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class FormService extends BaseService
         return [
             'name' => 'required|string|max:50|unique:forms',
             'label' => 'nullable|string',
+            'type' => 'string|in:' . FormTypes::values() . join(','),
             'module_id' => 'nullable|numeric',
             'model' => 'nullable|string|max:50',
             'route' => 'nullable|string',

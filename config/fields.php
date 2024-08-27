@@ -166,7 +166,7 @@ return [
         ],
         [
             'name' => 'transportation_card',
-            'label' => 'Transportation Card',
+            'label' => 'Transportation card',
             'placeholder' => 'Enter transportation card',
             'component' => \App\Enums\Components::FileField->value,
             'type' => \App\Enums\ComponentTypes::File->value,
@@ -186,7 +186,7 @@ return [
         ],
         [
             'name' => 'high_social_security',
-            'label' => 'High Social Security',
+            'label' => 'High social security',
             'placeholder' => 'Enter high social security',
             'component' => \App\Enums\Components::FileField->value,
             'type' => \App\Enums\ComponentTypes::File->value,

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('label')->nullable()->comment('The name of the form is computed by the name of the model and name of action. Ej. user_create, user_register');
             $table->foreignIdFor(\App\Models\Module::class)->nullable();
             $table->string('module_name')->nullable();
+            $table->enum('type', \App\Enums\FormTypes::values())->default(\App\Enums\FormTypes::form);
             $table->string('route')->nullable()->comment('The route to action of the controller to process the form');
             $table->json('options')->nullable();
             $table->json('default_value')->nullable();
